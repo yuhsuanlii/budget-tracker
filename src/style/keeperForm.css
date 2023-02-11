@@ -1,0 +1,177 @@
+
+.keeperContainer {
+    display: grid;
+    grid-template-columns: 10% 80% 10%;
+    width: min(100%, 1440px);
+    padding-top: 30px;
+    margin: auto;
+    /* border-bottom: black 2px solid; */
+}
+
+.kmonth {
+    float: left;
+    font-size: 36px;
+    font-weight: 700;
+    color: #B99B6B;
+}
+
+.kbtn {
+    position: relative;
+    float: right;
+    color: #FFFFFF;
+    background-color: #AA5656;
+    width: 200px;
+    height: 50px;
+    font-size: 20px;
+    font-weight: 700;
+    border-radius: 5px;
+    border: none;
+    z-index: 10;
+}
+
+.kbtn:hover {
+    opacity: 0.8;
+}
+
+.kform{
+    background-color: #ede1d6;
+    border: hsl(0, 0%, 100%) 8px solid;
+    width: 300px;
+    height: 400px;
+    margin: auto;
+    text-align: center;
+    position: absolute;
+    left: 42%;
+    top: 90px;
+    border-radius: 30px;
+    -moz-box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    z-index: 10;
+}
+
+.formDate,
+.formCat,
+.formSub,
+.formNum,
+.formMemo{
+    font-weight: 700;
+    font-size: 18px;
+    border-style: none;
+    border-radius: 5px;
+    padding: 10px;
+    color: rgb(92, 92, 92);
+}
+
+.formDate:focus,
+.formCat:focus,
+.formSub:focus,
+.formNum:focus,
+.formMemo:focus{
+    outline: 0;
+    cursor: pointer;
+}
+
+.formDate{
+    margin-top: 35px;
+    margin-bottom: 5px;
+    width: 200px;
+}
+
+.formCat,
+.formSub{
+    width: 105px;
+    margin: 5px;
+}
+
+.formCat{
+    margin-right: 5px;
+}
+
+.formNum{
+    width: 200px;
+    margin: 5px;
+}
+
+.formMemo{
+    width: 200px;
+    height: 100px;
+    margin: 5px;
+    word-wrap: break-word;
+    resize: none;
+    overflow: auto;
+}
+
+.formBtn{
+    color: #FFFFFF;
+    background-color: #B99B6B;
+    width: 220px;
+    height: 40px;
+    font-size: 18px;
+    font-weight: 700;
+    border-radius: 5px;
+    border: none;
+    margin: 10px;
+}
+
+.formbkg{
+    position: absolute;
+    background-color: black;
+    opacity: 0.2;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    z-index: 1;
+}
+
+@media only screen and (max-width: 900px) {
+    .kform{
+        left: 32%;
+    }
+}
+
+@media only screen and (max-width: 750px) {
+    .kform{
+        left: 26%;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .kform{
+        left: 20%;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .kform{
+        left: 15%;
+    }
+    .kbtn{
+        width: 140px;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    .kform{
+        top: 100px;
+        left: 10%;
+    }
+    
+    .kmonth{
+        font-size: 34px;
+    }
+
+    .kbtn{
+        width: 130px;
+    }
+}
+
+@media only screen and (max-width: 376px) {
+    .kform{
+        left: 6%;
+    }
+    .kbtn{
+        width: 110px;
+    }
+}

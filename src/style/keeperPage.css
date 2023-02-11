@@ -1,0 +1,285 @@
+
+.receiptContainer {
+    display: grid;
+    grid-template-columns: 10% 85% 5%;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    /* border-bottom: black 2px solid; */
+}
+
+.klist {
+    position: relative;
+    width: min(100%, 1200px);
+    margin: auto;
+    /* font-family: tahoma; */
+}
+
+/* receipt */
+
+.paid {
+    display: none;
+    width: 300px;
+    margin: 0 auto;
+    background-color: #fff;
+    text-align: center;
+    padding-top: 25px;
+    border-radius: 0px 0px 10px 10px;
+    padding-bottom: 25px;
+    color: #00773D;
+    line-height: 30px;
+}
+
+.paid p {
+    background-image: url("http://dc455.4shared.com/download/VILITso0/tsid20130720-183900-9216b81f/check.png");
+    background-repeat: no-repeat;
+    background-position: left center;
+    padding-left: 30px;
+    width: 190px;
+    margin: 0 auto;
+}
+
+/* .container {
+    width: 350px;
+    margin: 50px auto;
+} */
+
+.tab {
+    width: 100%;
+    margin: 0 auto;
+    height: 10px;
+    background-color: #2B2929;
+    border-radius: 50px
+}
+
+.receipt {
+    background-color: #FAFAF9;
+    padding-top: 20px;
+    width: 96%;
+    height: auto;
+    margin: -5px auto;
+    border-radius: 5px 5px 50px 50px;
+    -moz-box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.paper {
+    border-top: 2px dashed #ccc;
+    width: 96%;
+    margin: 0 auto;
+    height: auto;
+    margin-bottom: 100px;
+}
+
+.title {
+    color: #698269;
+    margin-top: 20px;
+    margin-left: 10px;
+    font-weight: bold;
+    float: left;
+    font-size: 24px;
+    line-height: 30px;
+    font-family: 'Pacifico', cursive;
+    padding-left: 10px;
+}
+
+.category {
+    color: #B99B6B;
+    font-weight: 700;
+    font-size: 20px;
+    display: grid;
+    grid-template-columns: 15% 15% 15% 15% 30% 0% 10%;
+    width: 96%;
+    text-align: left;
+    margin: auto;
+    padding-top: 20px;
+}
+
+.lilist {
+    list-style: none;
+    /* 消除li點點 */
+}
+
+.list {
+    display: grid;
+    grid-template-columns: 15% 15% 15% 15% 30% 5% 5%;
+    font-size: 20px;
+    font-weight: 700;
+    text-align: left;
+    margin: auto;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    word-wrap:break-word;
+    /* 換行 */
+}
+
+/* .listEdit,
+.listDelete{
+    color: #FFFFFF;
+    width: 80px;
+    height: 30px;
+    font-size: 16px;
+    font-weight: 700;
+    border-radius: 5px;
+    border: none;
+}
+
+.listEdit{
+    background-color: #698269;
+}
+.listDelete{
+    background-color: #AA5656;
+
+} */
+
+.listEdit{
+    /* padding-right: 20px; */
+}
+
+
+.listEdit:hover,
+.listDelete:hover{
+    cursor: pointer;
+    opacity: 0.5;
+}
+
+
+.excel {
+    float: right;
+    color: #FFFFFF;
+    background-color: #698269;
+    width: 120px;
+    height: 30px;
+    font-size: 16px;
+    font-weight: 700;
+    border-radius: 5px;
+    border: none;
+    margin-top: 20px;
+    margin-right: 10px;
+}
+
+.excel:hover{
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+.table {
+    clear: both;
+    width: 96%;
+    margin: 0 auto;
+    color: #5B5B5B;
+    font-size: 20px;
+    padding-top: 10px;
+    padding-bottom: 20px;
+    border-bottom: 2px dashed #ccc;
+    line-height: 30px;
+}
+
+
+.right {
+    text-align: right;
+}
+
+.center {
+    text-align: center;
+    padding-top: 20px;
+}
+
+.tnbtn{
+    margin-top: 100px;
+}
+
+input[type=button] {
+    background-color: #698269;
+    outline: none;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    color: #fff;
+    padding-left: 30px;
+    background-image: url("http://dc707.4shared.com/img/zr6_o80l/s3/13ffd4de138/cart.png");
+    background-repeat: no-repeat;
+    background-position: 5px center;
+    font-size: 16px;
+}
+
+input[type=button]:hover {
+    -moz-box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    color: #f0f0f0;
+}
+
+.barcode {
+    position: relative;
+    top: -5px;
+    font-family: 'Lato', sans-serif;
+}
+
+.sign {
+    text-align: center;
+}
+
+.thankyou {
+    line-height: 14px;
+    font-size: 14px;
+    margin-top: 5px;
+    /* color: #5B5B5B; */
+    color: #B99B6B;
+    width: 100%;
+    padding-bottom: 30px;
+}
+
+@media only screen and (max-width: 600px) {
+
+    .keeperContainer {
+        grid-template-columns: 5% 90% 5%;
+    }
+
+    .receiptContainer{
+        grid-template-columns: 5% 90% 5%;
+    }
+
+    .category{
+        grid-template-columns: 20% 20% 20% 20% 20%;
+        text-align: center;
+    }
+    .list{
+        grid-template-columns: 20% 20% 20% 20%;
+        text-align: center;
+        white-space:nowrap;
+    }
+
+    .listEdit{
+        position: absolute;
+        right: 60px;
+    }
+
+    .listDelete{
+        position: absolute;
+        right: 20px;
+    }
+
+    .kmonth{
+        font-size: 36px;
+        text-align: center;
+    }
+
+    .receipt,
+    .paper{
+        width: 100%;
+    }
+
+    .tab{
+        width: 105%;
+        margin-left: -10px;
+    }
+
+    .kbtn{
+        height: 48px;
+        width: 180px;
+    }
+
+}

@@ -9,7 +9,8 @@ module.exports = {
     },
     plugins: [
         new HTMLWebpackPlugin({
-            template: './src/index.html'
+            template: "./template/index.html",
+            inject: "body",
         })
     ],
     devServer: {

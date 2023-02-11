@@ -1,6 +1,6 @@
 .keeperContainer {
     display: grid;
-    grid-template-columns: 10% 80% 10%;
+    grid-template-columns: 10% 82% 8%;
     width: min(100%, 1440px);
     padding-top: 30px;
     margin: auto;
@@ -170,6 +170,10 @@
 }
 
 @media only screen and (max-width: 600px) {
+    .keeperContainer{
+        grid-template-columns: 5% 90% 5%;
+    }
+
     .kform {
         left: 20%;
     }
@@ -188,24 +192,29 @@
 @media only screen and (max-width: 400px) {
     .kform {
         top: 100px;
-        left: 10%;
+        left: 11.5%;
     }
 
     .kmonth {
-        font-size: 34px;
-    }
-
-    .kbtn {
-        width: 130px;
-    }
-}
-
-@media only screen and (max-width: 376px) {
-    .kform {
-        left: 6%;
+        font-size: 36px;
     }
 
     .kbtn {
         width: 110px;
+    }
+}
+
+@media only screen and (max-width: 376px) {
+
+    .kform {
+        left: 8.5%;
+    }
+
+    .kmonth{
+        font-size: 36px;
+    }
+
+    .kbtn {
+        width: 100px;
     }
 }

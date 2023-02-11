@@ -8,6 +8,13 @@
     /* border-bottom: black 2px solid; */
 }
 
+.kmonth2 {
+    float: left;
+    font-size: 36px;
+    font-weight: 700;
+    color: #B99B6B;
+}
+
 .budget{
     float: right;
     color: #FFFFFF;
@@ -181,5 +188,22 @@ input[type=number]::-webkit-inner-spin-button {
 @media only screen and (max-width: 500px) {
     .binput{
         width: 60px;
+    }
+}
+
+@media only screen and (max-width: 440px) {
+    .binput{
+        width: 45px;
+    }
+    .kb{
+        display: grid;
+        grid-template-columns: 100%;
+        margin: auto;
+    }
+    .budget{
+        margin-top: 20px;
+        margin-bottom: -20px;
+        /* margin-left: 20px; */
+        width: 230px;
     }
 }

@@ -40,8 +40,8 @@ const TrackerPage = () => {
             <Home />
             <div className="keeperContainer2">
                 <div></div>
-                <div>
-                    <span className="kmonth">
+                <div className="kb">
+                    <span className="kmonth2">
                         <BsCaretLeftFill size={30} />
                         &nbsp;{date.substring(0, 7)}&nbsp;
                         <BsCaretRightFill size={30} />

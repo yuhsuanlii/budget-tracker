@@ -1,5 +1,4 @@
 import React from "react";
-import '../style/keeperForm.css';
 import '../style/keeperPage.css';
 import Home from "../components/navbar";
 import KeeperForm from "../components/keeperForm";

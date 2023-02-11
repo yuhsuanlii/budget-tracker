@@ -1,6 +1,5 @@
 import React from "react";
 import '../style/keeperForm.css';
-import '../style/keeperPage.css';
 import { useBudgetTracker } from '../hooks/useBudgetTracker';
 import { BsCaretRightFill, BsCaretLeftFill } from "react-icons/bs";
 
@@ -78,7 +77,7 @@ const KeeperForm = () => {
                 <div></div>
                 <div>
                     <span className="kmonth">
-                        <BsCaretLeftFill size={30} />
+                        <BsCaretLeftFill  size={30} />
                         &nbsp;{date.substring(0, 7)}&nbsp;
                         <BsCaretRightFill size={30} />
                     </span>

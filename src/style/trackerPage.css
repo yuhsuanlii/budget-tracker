@@ -48,6 +48,16 @@
     display: grid;
     grid-template-columns: 30% 70%;
     margin-bottom: 50px;
+    animation: fadeIn 1.5s;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }
 
 .trackerPic {

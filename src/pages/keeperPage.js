@@ -1,5 +1,6 @@
 import React from "react";
-import '../style/keeperPage.css'
+import '../style/keeperForm.css';
+import '../style/keeperPage.css';
 import Home from "../components/navbar";
 import KeeperForm from "../components/keeperForm";
 import { Link } from "react-router-dom";
@@ -95,13 +96,13 @@ const KeeperPage = () => {
     return (
         <div>
             <Home />
-            <KeeperForm/>
+            <KeeperForm />
             <div className="receiptContainer">
                 <div></div>
                 <div>
                     <div class="klist">
                         <div class="tab"></div>
-                        <div class="paid"><p>Receipt Paid successfully</p></div>
+                        {/* <div class="paid"><p>Receipt Paid successfully</p></div> */}
                         <div class="receipt">
                             <div class="paper">
                                 <div class="title">Account Book</div>

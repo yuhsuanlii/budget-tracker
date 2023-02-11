@@ -1,5 +1,6 @@
 import React from "react";
 import '../style/keeperForm.css';
+import '../style/keeperPage.css';
 import { useBudgetTracker } from '../hooks/useBudgetTracker';
 import { BsCaretRightFill, BsCaretLeftFill } from "react-icons/bs";
 
@@ -81,7 +82,6 @@ const KeeperForm = () => {
                         &nbsp;{date.substring(0, 7)}&nbsp;
                         <BsCaretRightFill size={30} />
                     </span>
-
                     <button className="kbtn" onClick={() => setShowForm(!showForm)}>
                         {showForm ? '關閉介面' : '新增一筆'}
                     </button>
@@ -90,7 +90,7 @@ const KeeperForm = () => {
 
                         <div>
                             <div className="kform">
-                                
+                                <div className="dashTop"></div>
                                 <form onSubmit={handleSubmit}>
                                     <input className="formDate" type="date" value={date} onChange={event => setDate(event.target.value)} />
                                     <br />
@@ -139,6 +139,7 @@ const KeeperForm = () => {
                                     <button className="formBtn" type="submit">送出</button>
                                     {/* <button type="button" onClick={() => setShowForm(false)}>關閉</button> */}
                                 </form>
+                                <div className="dashBottom"></div>
                             </div>
                             <div className="formbkg"></div>
                         </div>

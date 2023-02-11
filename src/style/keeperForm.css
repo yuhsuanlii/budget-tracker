@@ -1,4 +1,3 @@
-
 .keeperContainer {
     display: grid;
     grid-template-columns: 10% 80% 10%;
@@ -33,9 +32,25 @@
     opacity: 0.8;
 }
 
-.kform{
+.dashTop {
+    position: relative;
+    top: 15px;
+    width: 95%;
+    margin: auto;
+    border-bottom: hsl(0, 0%, 100%) 3px dotted;
+}
+
+.dashBottom {
+    position: relative;
+    bottom: -13px;
+    width: 100%;
+    width: 95%;
+    margin: auto;
+    border-bottom: hsl(0, 0%, 100%) 3px dotted;
+}
+
+.kform {
     background-color: #ede1d6;
-    border: hsl(0, 0%, 100%) 8px solid;
     width: 300px;
     height: 400px;
     margin: auto;
@@ -48,13 +63,25 @@
     -webkit-box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
     z-index: 10;
+    animation: slideInFromTop 0.3s;
 }
+
+
+@keyframes slideInFromTop {
+    0% {
+        transform: translateY(-100%);
+    }
+    100% {
+        transform: translateY(0%);
+    }
+}
+
 
 .formDate,
 .formCat,
 .formSub,
 .formNum,
-.formMemo{
+.formMemo {
     font-weight: 700;
     font-size: 18px;
     border-style: none;
@@ -67,33 +94,33 @@
 .formCat:focus,
 .formSub:focus,
 .formNum:focus,
-.formMemo:focus{
+.formMemo:focus {
     outline: 0;
     cursor: pointer;
 }
 
-.formDate{
-    margin-top: 35px;
+.formDate {
+    margin-top: 33px;
     margin-bottom: 5px;
     width: 200px;
 }
 
 .formCat,
-.formSub{
+.formSub {
     width: 105px;
     margin: 5px;
 }
 
-.formCat{
+.formCat {
     margin-right: 5px;
 }
 
-.formNum{
+.formNum {
     width: 200px;
     margin: 5px;
 }
 
-.formMemo{
+.formMemo {
     width: 200px;
     height: 100px;
     margin: 5px;
@@ -102,7 +129,7 @@
     overflow: auto;
 }
 
-.formBtn{
+.formBtn {
     color: #FFFFFF;
     background-color: #B99B6B;
     width: 220px;
@@ -111,10 +138,15 @@
     font-weight: 700;
     border-radius: 5px;
     border: none;
-    margin: 10px;
+    margin: 5px;
 }
 
-.formbkg{
+.formBtn:hover {
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+.formbkg {
     position: absolute;
     background-color: black;
     opacity: 0.2;
@@ -126,52 +158,54 @@
 }
 
 @media only screen and (max-width: 900px) {
-    .kform{
+    .kform {
         left: 32%;
     }
 }
 
 @media only screen and (max-width: 750px) {
-    .kform{
+    .kform {
         left: 26%;
     }
 }
 
 @media only screen and (max-width: 600px) {
-    .kform{
+    .kform {
         left: 20%;
     }
 }
 
 @media only screen and (max-width: 500px) {
-    .kform{
+    .kform {
         left: 15%;
     }
-    .kbtn{
+
+    .kbtn {
         width: 140px;
     }
 }
 
 @media only screen and (max-width: 400px) {
-    .kform{
+    .kform {
         top: 100px;
         left: 10%;
     }
-    
-    .kmonth{
+
+    .kmonth {
         font-size: 34px;
     }
 
-    .kbtn{
+    .kbtn {
         width: 130px;
     }
 }
 
 @media only screen and (max-width: 376px) {
-    .kform{
+    .kform {
         left: 6%;
     }
-    .kbtn{
+
+    .kbtn {
         width: 110px;
     }
 }

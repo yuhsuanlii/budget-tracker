@@ -71,6 +71,7 @@ const TrackerPage = () => {
                                                 <input
                                                     type="number"
                                                     className="binput"
+                                                    max={8}
                                                     value={food}
                                                     onChange={event => setFood(event.target.value)}
                                                 />

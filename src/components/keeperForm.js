@@ -65,7 +65,7 @@ const KeeperForm = () => {
             setCostOther(costOther + parseInt(amount));
         }
 
-        // setAmount(0);
+        setAmount(0);
         setDescription('');
         setCategory({ type: '支出', subType: '食物' });
         setShowForm(false);
@@ -75,7 +75,7 @@ const KeeperForm = () => {
         <div>
             <div className="keeperContainer">
                 <div></div>
-                <div>
+                <div className="kb">
                     <span className="kmonth">
                         <BsCaretLeftFill  size={30} />
                         &nbsp;{date.substring(0, 7)}&nbsp;
@@ -89,7 +89,6 @@ const KeeperForm = () => {
 
                         <div>
                             <div className="kform">
-                                <div className="dashTop"></div>
                                 <form onSubmit={handleSubmit}>
                                     <input className="formDate" type="date" value={date} onChange={event => setDate(event.target.value)} />
                                     <br />
@@ -138,7 +137,6 @@ const KeeperForm = () => {
                                     <button className="formBtn" type="submit">送出</button>
                                     {/* <button type="button" onClick={() => setShowForm(false)}>關閉</button> */}
                                 </form>
-                                <div className="dashBottom"></div>
                             </div>
                             <div className="formbkg"></div>
                         </div>

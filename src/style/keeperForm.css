@@ -32,23 +32,6 @@
     opacity: 0.8;
 }
 
-.dashTop {
-    position: relative;
-    top: 15px;
-    width: 95%;
-    margin: auto;
-    border-bottom: hsl(0, 0%, 100%) 3px dotted;
-}
-
-.dashBottom {
-    position: relative;
-    bottom: -13px;
-    width: 100%;
-    width: 95%;
-    margin: auto;
-    border-bottom: hsl(0, 0%, 100%) 3px dotted;
-}
-
 .kform {
     background-color: #ede1d6;
     width: 300px;
@@ -64,6 +47,8 @@
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
     z-index: 10;
     animation: slideInFromTop 0.3s;
+    border-bottom: #dbb77f 5px solid;
+    border-right: #dbb77f 5px solid;
 }
 
 
@@ -138,7 +123,7 @@
     font-weight: 700;
     border-radius: 5px;
     border: none;
-    margin: 5px;
+    margin: 10px;
 }
 
 .formBtn:hover {
@@ -189,18 +174,21 @@
     }
 }
 
+@media only screen and (max-width: 440px) {
+
+    .kform{
+        top: 160px;
+    }
+
+    .kbtn{
+        width: 230px;
+        margin-top: 20px;
+    }
+}
+
 @media only screen and (max-width: 400px) {
     .kform {
-        top: 100px;
         left: 11.5%;
-    }
-
-    .kmonth {
-        font-size: 36px;
-    }
-
-    .kbtn {
-        width: 110px;
     }
 }
 
@@ -208,13 +196,5 @@
 
     .kform {
         left: 8.5%;
-    }
-
-    .kmonth{
-        font-size: 36px;
-    }
-
-    .kbtn {
-        width: 100px;
     }
 }

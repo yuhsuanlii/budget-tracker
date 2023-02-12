@@ -77,6 +77,8 @@ body {
     margin-left: -15px;
     text-decoration: none;
     color: #b6b6b6;
+	letter-spacing: 0.2em;
+
 }
 
 .link{
@@ -100,7 +102,7 @@ body {
 	text-align: center;
 	color: black;
 	background: var(--bg-secondary);
-	font-size: 1.5rem;
+	/* font-size: 1.5rem; */
 	letter-spacing: 0.3ch;
 	width: 100%;
 }

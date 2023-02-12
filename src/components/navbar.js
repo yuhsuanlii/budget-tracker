@@ -31,35 +31,35 @@ const Navbar = () => {
                         <Link to="/user" className="link">
                             <label class="nav-link">
                                 <CgProfile size={30} />
-                                <span class="link-text">User</span>
+                                <span class="link-text">USER</span>
                             </label>
                         </Link>
 
                         <Link to="/keeper" className="link">
                             <label class="nav-link">
                                 <BiBook size={30} />
-                                <span class="link-text">Keeper</span>
+                                <span class="link-text">KEEPER</span>
                             </label>
                         </Link>
 
                         <Link to="/tracker" className="link">
                             <label class="nav-link">
                                 <HiOutlineClipboardDocumentList size={30} />
-                                <span class="link-text">Tracker</span>
+                                <span class="link-text">TRACKER</span>
                             </label>
                         </Link>
 
                         <Link to="/chart" className="link">
                             <label class="nav-link">
                                 <AiOutlineBarChart size={30} />
-                                <span class="link-text">Chart</span>
+                                <span class="link-text">CHART</span>
                             </label>
                         </Link>
 
                         <Link to="/logout" className="link">
                             <label class="nav-link">
                                 <IoMdPower size={30} />
-                                <span class="link-text">Logout</span>
+                                <span class="link-text">LOGOUT</span>
                             </label>
                         </Link>
 

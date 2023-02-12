@@ -1,7 +1,7 @@
 import React from "react";
 import '../style/trackerPage.css';
 import '../style/progressBar.css';
-import Home from "../components/navbar";
+import Navbar from "../components/navbar";
 import { useBudgetTracker } from '../hooks/useBudgetTracker';
 import { BsCaretRightFill, BsCaretLeftFill } from "react-icons/bs";
 
@@ -35,16 +35,28 @@ const TrackerPage = () => {
         costPlay, setCostPlay,
         costOther, setCostOther } = useBudgetTracker();
 
+    const handlePrevMonth = () => {
+        const prevMonth = new Date(date);
+        prevMonth.setMonth(prevMonth.getMonth() - 1);
+        setDate(prevMonth.toISOString().substring(0, 10));
+    };
+
+    const handleNextMonth = () => {
+        const nextMonth = new Date(date);
+        nextMonth.setMonth(nextMonth.getMonth() + 1);
+        setDate(nextMonth.toISOString().substring(0, 10));
+    };
+
     return (
         <div>
-            <Home />
+            <Navbar />
             <div className="keeperContainer2">
                 <div></div>
                 <div className="kb">
                     <span className="kmonth2">
-                        <BsCaretLeftFill size={30} />
+                        <BsCaretLeftFill className="preMonth" size={30} onClick={handlePrevMonth} />
                         &nbsp;{date.substring(0, 7)}&nbsp;
-                        <BsCaretRightFill size={30} />
+                        <BsCaretRightFill className="nextMonth" size={30} onClick={handleNextMonth} />
                     </span>
                     <div className="budget">待分配預算&nbsp;&nbsp;&nbsp;
                         {totalIncome - food - traffic - play - other}</div>
@@ -235,7 +247,6 @@ const TrackerPage = () => {
                     </div>
 
                 </div>
-
                 <div></div>
             </div>
 

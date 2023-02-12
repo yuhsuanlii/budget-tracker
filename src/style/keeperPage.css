@@ -204,6 +204,14 @@ input[type=button]:hover {
     padding-bottom: 30px;
 }
 
+@media only screen and (max-width: 860px) {
+    
+    .receiptContainer {
+        display: grid;
+        grid-template-columns: 15% 80% 5%;
+    }
+}
+
 @media only screen and (max-width: 600px) {
 
     .keeperContainer {

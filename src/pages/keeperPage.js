@@ -1,6 +1,6 @@
 import React from "react";
 import '../style/keeperPage.css';
-import Home from "../components/navbar";
+import Navbar from "../components/navbar";
 import KeeperForm from "../components/keeperForm";
 import { Link } from "react-router-dom";
 import { useBudgetTracker } from '../hooks/useBudgetTracker';
@@ -47,7 +47,7 @@ const KeeperPage = () => {
             setTotalIncome(totalIncome - expense.amount);
         } else {
             setTotalExpense(totalExpense - expense.amount);
-            if (expense.category.type === '支出' && expense.category.subType === '食物') {
+            if (expense.category.type === '支出' && expense.category.subType === '飲食') {
                 setCostFood(costFood - expense.amount);
             }
             if (expense.category.type === '支出' && expense.category.subType === '交通') {
@@ -76,7 +76,7 @@ const KeeperPage = () => {
             setTotalIncome(totalIncome - expense.amount);
         } else {
             setTotalExpense(totalExpense - expense.amount);
-            if (expense.category.type === '支出' && expense.category.subType === '食物') {
+            if (expense.category.type === '支出' && expense.category.subType === '飲食') {
                 setCostFood(costFood - expense.amount);
             }
             if (expense.category.type === '支出' && expense.category.subType === '交通') {
@@ -94,7 +94,7 @@ const KeeperPage = () => {
 
     return (
         <div>
-            <Home />
+            <Navbar />
             <KeeperForm />
             <div className="receiptContainer">
                 <div></div>

@@ -1,0 +1,140 @@
+.monthItem {
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+    float: right;
+}
+
+.monthIncome,
+.monthExpense,
+.monthTotal {
+    position: relative;
+    float: right;
+    color: #FFFFFF;
+    width: 100px;
+    height: 55px;
+    font-size: 20px;
+    font-weight: 700;
+    border-radius: 5px;
+    border: none;
+    display: grid;
+    grid-template: 100%;
+    text-align: center;
+    padding: 3px;
+}
+
+.monthIncome {
+    background-color: #698269;
+    margin-right: 20px;
+}
+
+.monthExpense {
+    background-color: #AA5656;
+    margin-right: 20px;
+}
+
+.monthTotal {
+    background-color: #B99B6B;
+}
+
+.chartContainer{
+    display: grid;
+    grid-template-columns: 10% 85% 5%;
+    padding-top: 50px;
+    margin-bottom: 100px;
+}
+
+.cc {
+    display: grid;
+    width: min(100%, 1180px);
+    grid-template-columns: 50% 50%;
+    gap: 4%;
+}
+
+.chartBoard{
+    background-color: #FAFAF9;
+    width: min(100%, 1200px);
+    height: 400px;
+    border-radius: 30px;
+    -moz-box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    animation: fadeIn 1.5s;
+}
+
+.chartTitle{
+    font-size: 24px;
+    font-weight: 700;
+    background-color: #a79883;
+    color: #FFFFFF;
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 15px;
+    border-radius: 30px 30px 0px 0px;
+    /* border-bottom: 2px dotted #ccc; */
+}
+
+@media only screen and (max-width: 860px) {
+    
+    .chartContainer {
+        display: grid;
+        grid-template-columns: 15% 80% 5%;
+    }
+
+    .cc {
+        grid-template-columns: 100%;
+    }
+
+    .chartContainer{
+        margin-bottom: 300px;
+    }
+
+}
+
+
+@media only screen and (max-width: 750px) {
+
+    .chartContainer {
+        display: grid;
+        grid-template-columns: 17% 80% 3%;
+    }
+
+    .kb2 {
+        display: grid;
+        grid-template-columns: 100%;
+        margin: auto;
+        text-align: center;
+        float: right;
+        width: 300px;
+    }
+
+    .monthItem {
+        margin-top: 20px;
+        display: flex;
+    }
+
+    .monthIncome,
+    .monthExpense {
+        margin-right: 10px;
+    }
+
+    .monthIncome,
+    .monthExpense,
+    .monthTotal {
+        font-size: 18px;
+        height: 50px;
+    }
+
+}
+
+@media only screen and (max-width: 600px) {
+
+    .chartContainer {
+        display: grid;
+        grid-template-columns: 5% 90% 5%;
+    }
+
+    .cc {
+        grid-template-columns: 100%;
+    }
+
+}

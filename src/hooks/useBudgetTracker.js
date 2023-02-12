@@ -14,9 +14,9 @@ export const BudgetTrackerProvider = ({ children }) => {
   const [costOther, setCostOther] = useState(0);
 
   const [expenses, setExpenses] = useState([]);
-  const [amount, setAmount] = useState(0);
+  const [amount, setAmount] = useState('');
   const [description, setDescription] = useState('');
-  const [category, setCategory] = useState({ type: '支出', subType: '食物' });
+  const [category, setCategory] = useState({ type: '支出', subType: '' });
   const [showForm, setShowForm] = useState(false);
   const [date, setDate] = useState(new Date().toISOString().substring(0, 10));
 
@@ -24,7 +24,7 @@ export const BudgetTrackerProvider = ({ children }) => {
   const [budget, setBudget] = useState(0); // 設定預算金額
 
   const [allocatedBudget, setAllocatedBudget] = useState(0); // 已分配出去的預算
-  const [bcategory, setbCategory] = useState({ type: '支出', subType: '食物' });
+  const [bcategory, setbCategory] = useState({ type: '支出', subType: '' });
 
   const [food, setFood] = useState(0);
   const [traffic, setTraffic] = useState(0);

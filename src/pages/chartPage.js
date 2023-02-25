@@ -1,8 +1,13 @@
 import React from "react";
+import { useEffect } from "react";
 import '../style/chartPage.css';
 import Navbar from "../components/navbar";
 import { useBudgetTracker } from '../hooks/useBudgetTracker';
 import { BsCaretRightFill, BsCaretLeftFill } from "react-icons/bs";
+import CostChart from "../components/costChart";
+import EarnChart from "../components/earnChart";
+import Totle1Chart from "../components/totle1Chart";
+import Totle2Chart from "../components/totle2Chart";
 
 const ChartPage = () => {
 
@@ -79,22 +84,28 @@ const ChartPage = () => {
                 <div></div>
                 <div className="cc">
                     <div className="chartBoard">
-                        <div className="chartTitle">支出類別月比例</div>
-                        <div>
-                           
+                        <div className="chartTitle">收入類別月比例</div>
+                        <div className="pie">
+                            <EarnChart />
                         </div>
                     </div>
                     <div className="chartBoard">
-                        <div className="chartTitle">收入類別月比例</div>
-                        <div></div>
+                        <div className="chartTitle">支出類別月比例</div>
+                        <div className="pie">
+                            <CostChart />
+                        </div>
                     </div>
                     <div className="chartBoard">
                         <div className="chartTitle">上半年度結餘分析</div>
-                        <div></div>
+                        <div className="bar">
+                            <Totle1Chart />
+                        </div>
                     </div>
                     <div className="chartBoard">
                         <div className="chartTitle">下半年度結餘分析</div>
-                        <div></div>
+                        <div className="bar">
+                        <Totle2Chart />
+                        </div>
                     </div>
                 </div>
                 <div></div>

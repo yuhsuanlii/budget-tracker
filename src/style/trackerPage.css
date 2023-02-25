@@ -3,7 +3,7 @@
 
 .keeperContainer2 {
     display: grid;
-    grid-template-columns: 10% 83% 7%;
+    grid-template-columns: 12% 83% 5%;
     padding-top: 30px;
     /* border-bottom: black 2px solid; */
 }
@@ -19,7 +19,7 @@
     float: right;
     color: #FFFFFF;
     background-color: #AA5656;
-    width: 200px;
+    width: 250px;
     height: 50px;
     font-size: 20px;
     font-weight: 700;
@@ -53,7 +53,7 @@
     -webkit-box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
     display: grid;
-    grid-template-columns: 30% 70%;
+    grid-template-columns: 25% 75%;
     margin-bottom: 50px;
     animation: fadeIn 1.5s;
 }
@@ -93,10 +93,12 @@
 }
 
 .tbn {
+    font-family: FakePearl-Regular;
     margin-top: 20px;
     color: #AA5656;
     font-size: 20px;
     font-weight: 700;
+    letter-spacing: 3px;
 }
 
 
@@ -108,24 +110,21 @@
     margin-top: 20px;
     margin-bottom: 30px;
     color: #363636;
-    font-size: 24px;
+    font-size: 20px;
     text-align: center;
-}
-
-.tbmok:hover {
-    border: 5px #F1DBBF solid;
-    border-radius: 5px;
-    width: 20px;
 }
 
 .binput {
-    width: 70px;
-    height: 30px;
+    width: 80px;
+    height: 25px;
     font-size: 18px;
     border-style: none;
     text-align: center;
-    background-color: #F1DBBF;
+    background-color: #937b55;
+    opacity: 0.9;
+    color: #FFF;
     border-radius: 5px;
+    width: 50px;
 }
 
 .binput:focus {
@@ -140,9 +139,25 @@ input[type=number]::-webkit-inner-spin-button {
 }
 
 .tickicon {
-    background-color: #FAFAF9;
+    /* background-color: #FAFAF9; */
     border-style: none;
-    font-size: 20px;
+    font-size: 18px;
+    font-weight: 700;
+    color: #FFF;
+    background-color: #698269;
+    border-radius: 100px;
+    margin-left: 5px;
+}
+
+.editicon{
+    color: #698269;
+    margin-left: 5px;
+}
+
+.tickicon:hover,
+.editicon:hover{
+    cursor: pointer;
+    opacity: 0.8;
 }
 
 
@@ -178,7 +193,7 @@ input[type=number]::-webkit-inner-spin-button {
 
     .budget{
         font-size: 18px;
-        width: 180px;
+        width: 200px;
     }
     .binput{
         width: 65px;
@@ -192,6 +207,18 @@ input[type=number]::-webkit-inner-spin-button {
     .pBar{
         position: relative;
         float: left;
+    }
+    .trackerCategory{
+        font-size: 30px;
+    }
+    .trackerPic{
+        padding-top: 60px;
+    }
+    .binput{
+        font-size: 16px;
+    }
+    .budget{
+        width: 180px;
     }
 }
 
@@ -213,5 +240,8 @@ input[type=number]::-webkit-inner-spin-button {
     }
     .trackerBudget{
         grid-template-columns: 40% 30% 30%;
+    }
+    .tbm{
+        font-size: 18px;
     }
 }

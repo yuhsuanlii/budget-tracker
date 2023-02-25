@@ -4,6 +4,7 @@ import '../style/progressBar.css';
 import Navbar from "../components/navbar";
 import { useBudgetTracker } from '../hooks/useBudgetTracker';
 import { BsCaretRightFill, BsCaretLeftFill } from "react-icons/bs";
+import { FiEdit3 } from "react-icons/fi";
 
 
 const TrackerPage = () => {
@@ -91,7 +92,10 @@ const TrackerPage = () => {
                                                 <button className="tickicon" onClick={() => setIsEditingFood(null)}>✔</button>
                                             </>
                                         ) : (
-                                            <span className="tbmok" onClick={() => setIsEditingFood(true)}>{food}</span>
+                                            <>
+                                                <span>{food}</span>
+                                                <FiEdit3 className="editicon" size={20} onClick={() => setIsEditingFood(true)} />
+                                            </>
                                         )}
                                     </div>
                                 </div>
@@ -135,7 +139,10 @@ const TrackerPage = () => {
                                                 <button className="tickicon" onClick={() => setIsEditingTraffic(null)}>✔</button>
                                             </>
                                         ) : (
-                                            <span className="tbmok" onClick={() => setIsEditingTraffic(true)}>{traffic}</span>
+                                            <>
+                                                <span>{traffic}</span>
+                                                <FiEdit3 className="editicon" size={20} onClick={() => setIsEditingTraffic(true)} />
+                                            </>
                                         )}
                                     </div>
                                 </div>
@@ -179,7 +186,10 @@ const TrackerPage = () => {
                                                 <button className="tickicon" onClick={() => setIsEditingPlay(null)}>✔</button>
                                             </>
                                         ) : (
-                                            <span className="tbmok" onClick={() => setIsEditingPlay(true)}>{play}</span>
+                                            <>
+                                                <span>{play}</span>
+                                                <FiEdit3 className="editicon" size={20} onClick={() => setIsEditingPlay(true)} />
+                                            </>
                                         )}
                                     </div>
                                 </div>
@@ -223,7 +233,11 @@ const TrackerPage = () => {
                                                 <button className="tickicon" onClick={() => setIsEditingOther(null)}>✔</button>
                                             </>
                                         ) : (
-                                            <span className="tbmok" onClick={() => setIsEditingOther(true)}>{other}</span>
+                                            <>
+                                             <span>{other}</span>
+                                            <FiEdit3 className="editicon" size={20} onClick={() => setIsEditingOther(true)}/>
+                                            </>
+                    
                                         )}
                                     </div>
                                 </div>

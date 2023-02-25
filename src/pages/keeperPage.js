@@ -126,10 +126,10 @@ const KeeperPage = () => {
                                             {expenses.map((expense, index) => (
                                                 <li key={index} className="lilist">
                                                     <div className="list">
-                                                        <div>Day {expense.date.substring(8, 10)}</div>
+                                                        <div>{expense.date.substring(8, 10)}</div>
                                                         <div>{expense.category.type}</div>
                                                         <div>{expense.category.subType}</div>
-                                                        <div>$ {expense.amount}</div>
+                                                        <div>${expense.amount}</div>
                                                         <div className="description">{expense.description}</div>
                                                         <div><FaPencilAlt className="listEdit" size={25} color='#698269' onClick={() => handleUpdate(expense)} /></div>
                                                         <div>

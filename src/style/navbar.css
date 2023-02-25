@@ -50,8 +50,14 @@ body {
 .link{
     width: 100%;
 }
+
 .link:last-child{
     margin-top: auto;
+}
+
+.link2{
+    width: 100%;
+    text-decoration: none;
 }
 
 .nav-link {

@@ -73,7 +73,49 @@
     /* border-bottom: 2px dotted #ccc; */
 }
 
-@media only screen and (max-width: 860px) {
+.pie{
+    margin-top: -30px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 390px;
+    /* margin: auto; */
+}
+
+.nodata{
+   text-align: center;
+   margin-top: 45%;
+   font-size: 24px;
+   color: #AA5656;
+   font-weight: 700;
+   letter-spacing: 3px;
+   font-family: FakePearl-Regular;
+}
+
+.nodata2{
+    text-align: center;
+    margin-top: 22%;
+    font-size: 24px;
+    color: #AA5656;
+    font-weight: 700;
+    letter-spacing: 3px;
+    font-family: FakePearl-Regular;
+ }
+
+.bar{
+    width: min(95%, 550px);
+    margin: auto;
+    padding-top: 30px;
+    height: auto;
+}
+
+@media only screen and (max-width: 1200px) {
+
+    .bar{
+        padding-top: 50px;
+    }
+}
+
+@media only screen and (max-width: 950px) {
     
     .chartContainer {
         display: grid;
@@ -87,7 +129,9 @@
     .chartContainer{
         margin-bottom: 300px;
     }
-
+    .bar{
+        padding-top: 30px;
+    }
 }
 
 
@@ -135,6 +179,26 @@
 
     .cc {
         grid-template-columns: 100%;
+    }
+
+    .bar{
+        padding-top: 45px;
+    }
+
+}
+
+@media only screen and (max-width: 450px) {
+
+    .chartBoard{
+        height: 310px;
+    }
+
+    .pie{
+        width: 300px;
+    }
+
+    .bar{
+        padding-top: 30px;
     }
 
 }

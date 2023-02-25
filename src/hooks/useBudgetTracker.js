@@ -18,6 +18,7 @@ export const BudgetTrackerProvider = ({ children }) => {
   const [description, setDescription] = useState('');
   const [category, setCategory] = useState({ type: '支出', subType: '' });
   const [showForm, setShowForm] = useState(false);
+  const [showLoginForm, setShowLoginForm] = useState(false);
   const [date, setDate] = useState(new Date().toISOString().substring(0, 10));
 
   const [costs, setCosts] = useState([]); // 設定預算的陣列
@@ -37,11 +38,41 @@ export const BudgetTrackerProvider = ({ children }) => {
   const [isEditingOther, setIsEditingOther] = useState(false);
   const [selectedBudgetId, setSelectedBudgetId] = useState(null);
 
+  const [isEditingName, setIsEditingName] = useState(false);
+  const [isEditingGender, setIsEditingGender] = useState(false);
+  const [isEditingBirthday, setIsEditingBirthday] = useState(false);
+  const [isEditingEmail, setIsEditingEmail] = useState(false);
+  const [isEditingPassword, setIsEditingPassword] = useState(false);
+
+  const [username, setUsername] = useState('John');
+  const [gender, setGender] = useState('男');
+  const [birthday, setBirthday] = useState(new Date().toISOString().substring(0, 10));
+  const [email, setEmail] = useState('john@gmail.com');
+  const [password, setPassword] = useState('******');
+
+  const [showLogin, setShowLogin] = useState(true);
+
+
   return (
     <BudgetTrackerContext.Provider
       value={{
+        
+        showLogin, setShowLogin,
+
+        username, setUsername,
+        gender, setGender,
+        birthday, setBirthday,
+        email, setEmail,
+        password, setPassword,
+
+        isEditingName, setIsEditingName,
+        isEditingGender, setIsEditingGender,
+        isEditingBirthday, setIsEditingBirthday,
+        isEditingEmail, setIsEditingEmail,
+        isEditingPassword, setIsEditingPassword,
 
         showForm, setShowForm,
+        showLoginForm, setShowLoginForm,
         expenses, setExpenses,
         amount, setAmount,
         description, setDescription,

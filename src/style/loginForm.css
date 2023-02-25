@@ -1,0 +1,186 @@
+@keyframes wave {
+    0% { transform: translateY(0); }
+    /* 33% { transform: translateY(-5px); } */
+    50% { transform: translateY(-5px); }
+    /* 66% { transform: translateY(5px); } */
+    100% { transform: translateY(0); }
+  }
+
+.projectName {
+    font-family: 'Pacifico', cursive;
+    float: left;
+    font-size: 36px;
+    font-weight: 600;
+    color: #698269;
+    letter-spacing: 3px;
+}
+
+.kform2 {
+    /* background-color: #ede1d6; */
+    background-color: #dbb77f;
+    width: 300px;
+    height: 400px;
+    margin: auto;
+    text-align: center;
+    position: absolute;
+    left: 42%;
+    top: 160px;
+    border-radius: 0px 30px 30px 30px;
+    -moz-box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    z-index: 10;
+    animation: slideInFromTop 0.3s;
+    border-bottom: #ede1d6 5px solid;
+    border-right: #ede1d6 5px solid;
+}
+
+.kform3 {
+    background-color: #ede1d6;
+    /* background-color: #dbb77f; */
+    width: 300px;
+    height: 400px;
+    margin: auto;
+    text-align: center;
+    position: absolute;
+    left: 42%;
+    top: 160px;
+    border-radius: 0px 30px 30px 30px;
+    -moz-box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    z-index: 10;
+    animation: slideInFromTop 0.3s;
+    border-bottom: #dbb77f 5px solid;
+    border-right: #dbb77f 5px solid;
+}
+
+.login {
+    width: 100px;
+    height: 50px;
+    background-color: #dbb77f;
+    position: absolute;
+    top: -50px;
+    border-radius: 30px 30px 0px 0px;
+    border-right: #ede1d6 5px solid;
+}
+
+.loginbtn {
+    font-family: FakePearl-Regular;
+    border: none;
+    color: #FFF;
+    background-color: #dbb77f;
+    font-size: 20px;
+    font-weight: 700;
+    margin-top: 10px;
+    letter-spacing: 2px;
+}
+
+.signup {
+    width: 110px;
+    height: 50px;
+    background-color: #ede1d6;
+    position: absolute;
+    top: -50px;
+    margin-left: 100px;
+    border-radius: 30px 30px 0px 0px;
+    border-right: #dbb77f 5px solid;
+}
+
+.signupbtn {
+    font-family: FakePearl-Regular;
+    border: none;
+    color: #666;
+    background-color: #ede1d6;
+    font-size: 20px;
+    font-weight: 700;
+    margin-top: 10px;
+    letter-spacing: 2px;
+}
+
+.loginbtn:hover,
+.signupbtn:hover {
+    animation: wave 1s ease-in-out infinite;
+    opacity: 0.8;
+}
+
+@media only screen and (max-width: 1100px) {
+    .kform2,
+    .kform3 {
+        left: 38%;
+    }
+}
+
+@media only screen and (max-width: 1000px) {
+    .kform2,
+    .kform3 {
+        left: 36%;
+    }
+}
+
+@media only screen and (max-width: 860px) {
+
+    .kform2,
+    .kform3 {
+        left: 35%;
+    }
+}
+
+@media only screen and (max-width: 750px) {
+    .kform2,
+    .kform3 {
+        left: 33%;
+    }
+
+    .projectName{
+        font-size: 32px;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+
+    .kform2,
+    .kform3 {
+        left: 23%;
+    }
+
+}
+
+@media only screen and (max-width: 500px) {
+
+    .projectName{
+        font-size: 30px;
+    }
+
+    .kform2,
+    .kform3 {
+        left: 15%;
+    }
+
+}
+
+@media only screen and (max-width: 440px) {
+
+
+    .kform2,
+    .kform3{
+        top: 215px;
+    }
+
+   
+}
+
+@media only screen and (max-width: 400px) {
+    .kform2,
+    .kform3{
+        left: 11.5%;
+    }
+}
+
+@media only screen and (max-width: 376px) {
+
+    .kform2,
+    .kform3 {
+        left: 8.5%;
+    }
+}

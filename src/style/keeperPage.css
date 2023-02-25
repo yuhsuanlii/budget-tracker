@@ -8,9 +8,11 @@
 }
 
 .klist {
+    font-family: FakePearl-Regular;
     position: relative;
     width: min(100%, 1200px);
     margin: auto;
+    letter-spacing: 1px;
     /* font-family: tahoma; */
 }
 
@@ -100,7 +102,7 @@
     display: grid;
     grid-template-columns: 15% 15% 15% 15% 30% 5% 5%;
     font-size: 20px;
-    font-weight: 700;
+    font-weight: 500;
     text-align: left;
     margin: auto;
     padding-top: 10px;
@@ -117,10 +119,11 @@
 
 
 .excel {
+    font-family: FakePearl-Regular;
     float: right;
     color: #FFFFFF;
     background-color: #698269;
-    width: 135px;
+    width: 130px;
     height: 30px;
     font-size: 16px;
     font-weight: 700;
@@ -139,12 +142,14 @@
     clear: both;
     width: 96%;
     margin: 0 auto;
-    color: #5B5B5B;
-    font-size: 20px;
+    /* color: #5B5B5B; */
+    font-size: 18px;
     padding-top: 10px;
     padding-bottom: 20px;
     border-bottom: 2px dashed #ccc;
     line-height: 30px;
+    color: #606060;
+
 }
 
 
@@ -162,6 +167,7 @@
 }
 
 input[type=button] {
+    font-family: FakePearl-Regular;
     background-color: #698269;
     outline: none;
     border: 1px solid #ccc;

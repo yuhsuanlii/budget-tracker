@@ -1,0 +1,177 @@
+@import url('https://fonts.googleapis.com/css2?family=Tilt+Neon&display=swap');
+@font-face {
+    font-family: FakePearl-Regular;
+    src: url(https://cdn.jsdelivr.net/gh/max32002/FakePearl@1.1/webfont/FakePearl-Regular.woff2) format("woff2")
+    , url(https://cdn.jsdelivr.net/gh/max32002/FakePearl@1.1/webfont/FakePearl-Regular.woff) format("woff");
+  }
+
+.userbg {
+    width: min(100%, 1200px);
+    font-family: FakePearl-Regular;
+    float: left;
+    font-size: 36px;
+    font-weight: 700;
+    color: #698269;
+    padding-left: 20px;
+}
+
+.userbd1 {
+    margin: auto;
+    display: grid;
+    width: min(98%, 1180px);
+    grid-template-columns: 100%;
+    height: auto;
+    background-color: #FAFAF9;
+    border-radius: 30px;
+    -moz-box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    animation: fadeIn 1.5s;
+    margin-top: -10px;
+}
+
+.userbd2 {
+    display: grid;
+    width: min(97%, 1180px);
+    grid-template-columns: 50% 50%;
+    height: 96%;
+    /* background-color: #FAFAF9; */
+    /* border: 3px dashed #B99B6B; */
+    background-color: #FAFAF9;
+    margin: auto;
+    /* background-color: #B99B6B; */
+}
+
+.userbd3 {
+    padding: 40px;
+    /* background-color: antiquewhite; */
+}
+
+.ut{
+    font-family: FakePearl-Regular;
+    background-color: #B99B6B;
+    opacity: 0.8;
+    width: 90%;
+    color: #FAFAF9;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 24px;
+    margin-bottom: 50px;
+    text-align: center;
+    letter-spacing: 5px;
+    font-weight: 700;
+}
+
+.ut2{
+    padding-left: 10px;
+    padding-bottom: 50px;
+}
+
+.userTitle{
+    font-family: FakePearl-Regular;
+    font-weight: 600;
+    font-size: 20px;
+    /* font-family: 'Tilt Neon', cursive; */
+    color: #B99B6B;
+    padding-bottom: 20px;
+    letter-spacing: 2px;
+}
+
+.userInfo{
+    font-family: FakePearl-Regular;
+    font-size: 20px;
+    border-bottom: 2px dashed #B99B6B;
+    width: 90%;
+    padding-bottom: 10px;
+    padding-left: 5px;
+    color: #606060;
+    letter-spacing: 1px;
+}
+
+.userInfo:hover{
+    cursor: pointer;
+}
+
+.userEdit{
+    font-family: FakePearl-Regular;
+    font-size: 20px;
+    background-color: #FAFAF9;
+    border: none;
+    outline: none;
+    color: #AA5656;
+    width: 85%;
+    /* border-bottom: 2px solid #B99B6B; */
+}
+
+.btntick{
+    border: none;
+    /* background-color: #FAFAF9; */
+    font-size: 18px;
+    font-weight: 700;
+    color: #FAFAF9;
+    background-color: #698269;
+    border-radius: 100px;
+}
+
+.btntick:hover{
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+.connectbtn {
+    position: relative;
+    color: #FFFFFF;
+    background-color: #AA5656;
+    width: 180px;
+    height: 40px;
+    font-size: 18px;
+    font-weight: 700;
+    border-radius: 5px;
+    border: none;
+    letter-spacing: 2px;
+}
+
+.connectbtn:hover{
+    cursor: pointer;
+    opacity: 0.8;
+}
+@media only screen and (max-width: 1000px) {
+    .userbd3{
+        padding: 20px;
+    }
+}
+
+@media only screen and (max-width: 750px) {
+
+    .userbg{
+        padding-left: 0px;
+    }
+    .userbd1{
+        margin-top: -30px;
+    }
+
+    .userbd2{
+        grid-template-columns: 100%;
+    }
+    .userbd3{
+        padding: 20px;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+
+    .userbd1{
+        margin-bottom: 80px;
+    }
+
+    .ut2{
+        padding-bottom: 30px;
+    }
+    .userTitle{
+        padding-bottom: 15px;
+    }
+    .userbg{
+        font-size: 30px;
+    }
+
+}

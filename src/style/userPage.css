@@ -95,11 +95,12 @@
 .userEdit{
     font-family: FakePearl-Regular;
     font-size: 20px;
+    height: 20px;
     background-color: #FAFAF9;
     border: none;
     outline: none;
     color: #AA5656;
-    width: 85%;
+    width: 90%;
     /* border-bottom: 2px solid #B99B6B; */
 }
 
@@ -116,6 +117,12 @@
 .btntick:hover{
     cursor: pointer;
     opacity: 0.8;
+}
+
+.editicon2{
+    color: #698269;
+    float: right;
+    margin-right: 5%;
 }
 
 .connectbtn {

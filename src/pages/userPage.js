@@ -2,6 +2,7 @@ import React from "react";
 import '../style/userPage.css';
 import Navbar from "../components/navbar";
 import { useBudgetTracker } from '../hooks/useBudgetTracker';
+import { FiEdit3 } from "react-icons/fi";
 
 const UserPage = () => {
     const {
@@ -45,6 +46,21 @@ const UserPage = () => {
         costPlay, setCostPlay,
         costOther, setCostOther } = useBudgetTracker();
 
+    if (username == "") {
+        setUsername('　');
+    }
+
+    if (gender == "") {
+        setGender('男');
+    }
+
+    if (email == "") {
+        setEmail('　');
+    }
+    if (password == "") {
+        setPassword('　');
+    }
+
     return (
         <div>
             <Navbar />
@@ -81,7 +97,10 @@ const UserPage = () => {
                                             <button className="btntick" onClick={() => setIsEditingName(null)}>✔</button>
                                         </>
                                     ) : (
-                                        <span onClick={() => setIsEditingName(true)}>{username}</span>
+                                        <>
+                                            <span>{username}</span>
+                                            <FiEdit3 className="editicon2" size={20} onClick={() => setIsEditingName(true)} />
+                                        </>
                                     )}
                                 </div>
                             </div>
@@ -99,7 +118,10 @@ const UserPage = () => {
                                             <button className="btntick" onClick={() => setIsEditingGender(null)}>✔</button>
                                         </>
                                     ) : (
-                                        <span onClick={() => setIsEditingGender(true)}>{gender}</span>
+                                        <>
+                                            <span>{gender}</span>
+                                            <FiEdit3 className="editicon2" size={20} onClick={() => setIsEditingGender(true)} />
+                                        </>
                                     )}
                                 </div>
                             </div>
@@ -120,7 +142,11 @@ const UserPage = () => {
                                             <button className="btntick" onClick={() => setIsEditingBirthday(null)}>✔</button>
                                         </>
                                     ) : (
-                                        <span onClick={() => setIsEditingBirthday(true)}>{birthday}</span>
+                                        <>
+                                            <span>{birthday}</span>
+                                            <FiEdit3 className="editicon2" size={20} onClick={() => setIsEditingBirthday(true)} />
+                                        </>
+
                                     )}
                                 </div>
                             </div>
@@ -135,15 +161,19 @@ const UserPage = () => {
                                     {isEditingEmail ? (
                                         <>
                                             <input
-                                            className="userEdit"
+                                                className="userEdit"
                                                 type="text"
                                                 value={email}
                                                 onChange={event => setEmail(event.target.value)}
+                                                required
                                             />
                                             <button className="btntick" onClick={() => setIsEditingEmail(null)}>✔</button>
                                         </>
                                     ) : (
-                                        <span onClick={() => setIsEditingEmail(true)}>{email}</span>
+                                        <>
+                                            <span>{email}</span>
+                                            <FiEdit3 className="editicon2" size={20} onClick={() => setIsEditingEmail(true)} />
+                                        </>
                                     )}
                                 </div>
                             </div>
@@ -155,15 +185,19 @@ const UserPage = () => {
                                     {isEditingPassword ? (
                                         <>
                                             <input
-                                            className="userEdit"
+                                                className="userEdit"
                                                 type="password"
                                                 value={password}
                                                 onChange={event => setPassword(event.target.value)}
+                                                required
                                             />
                                             <button className="btntick" onClick={() => setIsEditingPassword(null)}>✔</button>
                                         </>
                                     ) : (
-                                        <span onClick={() => setIsEditingPassword(true)}>{password}</span>
+                                        <>
+                                            <span>{password}</span>
+                                            <FiEdit3 className="editicon2" size={20} onClick={() => setIsEditingPassword(true)} />
+                                        </>
                                     )}
                                 </div>
                             </div>

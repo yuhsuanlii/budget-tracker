@@ -44,11 +44,11 @@ export const BudgetTrackerProvider = ({ children }) => {
   const [isEditingEmail, setIsEditingEmail] = useState(false);
   const [isEditingPassword, setIsEditingPassword] = useState(false);
 
-  const [username, setUsername] = useState('John');
-  const [gender, setGender] = useState('男');
+  const [username, setUsername] = useState('');
+  const [gender, setGender] = useState('');
   const [birthday, setBirthday] = useState(new Date().toISOString().substring(0, 10));
-  const [email, setEmail] = useState('john@gmail.com');
-  const [password, setPassword] = useState('******');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
   const [showLogin, setShowLogin] = useState(true);
 

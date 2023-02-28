@@ -147,7 +147,6 @@
     letter-spacing: 2px;
 }
 
-.connectbtn:hover,
 .resetbtn:hover{
     cursor: pointer;
     opacity: 0.8;

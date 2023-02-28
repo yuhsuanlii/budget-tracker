@@ -5,7 +5,7 @@ import KeeperForm from "../components/keeperForm";
 import { Link } from "react-router-dom";
 import { useBudgetTracker } from '../hooks/useBudgetTracker';
 import { FaBarcode, FaPencilAlt, FaTrashAlt } from "react-icons/fa";
-import { auth } from "../firebase-config";
+import { auth } from "../firebase";
 import { onAuthStateChanged } from "firebase/auth";
 import { useEffect } from "react";
 

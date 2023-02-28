@@ -5,7 +5,7 @@ import Navbar from "../components/navbar";
 import { useBudgetTracker } from '../hooks/useBudgetTracker';
 import { BsCaretRightFill, BsCaretLeftFill } from "react-icons/bs";
 import { FiEdit3 } from "react-icons/fi";
-import { auth } from "../firebase-config";
+import { auth } from "../firebase";
 import { onAuthStateChanged } from "firebase/auth";
 import { useEffect } from "react";
 

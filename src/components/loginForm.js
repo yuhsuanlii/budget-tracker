@@ -6,7 +6,7 @@ import { useBudgetTracker } from "../hooks/useBudgetTracker";
 import { useState, useEffect } from 'react';
 import { FcGoogle } from "react-icons/fc";
 import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut, updateProfile, displayName, getAuth, sendPasswordResetEmail } from "firebase/auth";
-import { auth, singInWithGoogle } from "../firebase-config";
+import { auth, singInWithGoogle } from "../firebase";
 
 const LoginForm = () => {
 
@@ -279,7 +279,7 @@ const LoginForm = () => {
         <div>
             {loggedIn ? (
                 <Navbar />
-            ): (
+            ) : (
                 <NavbarCover />
             )}
             <div className="keeperContainer">
@@ -314,7 +314,8 @@ const LoginForm = () => {
                                             <button className="loginbtn" onClick={handleLoginClick}>login</button>
                                         </div>
                                         <div className="signup">
-                                            <button className="signupbtn" onClick={handleSignupClick}>signup</button>                                </div>
+                                            <button className="signupbtn" onClick={handleSignupClick}>signup</button>
+                                        </div>
                                         <div>
                                             {/* 登入表單 */}
 
@@ -393,7 +394,7 @@ const LoginForm = () => {
                                                 className="signupBirthday"
                                                 placeholder="生日"
                                                 type="date"
-                                                min="" max=""
+                                                min="" max={new Date().toISOString().split("T")[0]}
                                                 onChange={(event) => setSignupBirthday(event.target.value)}>
                                             </input>
                                             <input

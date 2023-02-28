@@ -8,7 +8,7 @@ import { IoMdPower } from "react-icons/io";
 import { HiOutlineClipboardDocumentList } from "react-icons/hi2";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { signOut } from "firebase/auth";
-import { auth } from "../firebase-config";
+import { auth } from "../firebase";
 
 const Navbar = () => {
 

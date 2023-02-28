@@ -8,7 +8,7 @@ import CostChart from "../components/costChart";
 import EarnChart from "../components/earnChart";
 import Totle1Chart from "../components/totle1Chart";
 import Totle2Chart from "../components/totle2Chart";
-import { auth } from "../firebase-config";
+import { auth } from "../firebase";
 import { onAuthStateChanged } from "firebase/auth";
 
 const ChartPage = () => {

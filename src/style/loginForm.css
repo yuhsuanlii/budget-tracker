@@ -112,8 +112,6 @@
     cursor: pointer;
 }
 
-
-
 .signupLayout{
     display: grid;
     grid-template-columns: 5% 55% 25% 10%;

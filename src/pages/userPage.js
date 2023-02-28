@@ -4,7 +4,7 @@ import Navbar from "../components/navbar";
 import { useBudgetTracker } from '../hooks/useBudgetTracker';
 import { FiEdit3 } from "react-icons/fi";
 import { useState, useEffect } from "react";
-import { auth, singInWithGoogle } from "../firebase-config";
+import { auth, singInWithGoogle } from "../firebase";
 import {
     createUserWithEmailAndPassword,
     onAuthStateChanged,
@@ -218,8 +218,8 @@ const UserPage = () => {
                                             <input
                                                 className="userEdit"
                                                 type="text"
-                                                placeholder="new name"
-                                                required={true} maxLength={10}
+                                                placeholder="請輸入新名稱"
+                                                required={true} minLength={1} maxLength={10}
                                                 onChange={event => setNewUsername(event.target.value)}
                                             />
                                             <button className="btntick" onClick={updateUsername}>✔</button>
@@ -266,7 +266,7 @@ const UserPage = () => {
                                             <input
                                                 className="userEdit"
                                                 type="date"
-                                                min="" max=""
+                                                min="1930-01-01" max={new Date().toISOString().split("T")[0]}
                                                 onChange={event => setNewBirthday(event.target.value)}>
                                             </input>
                                             <button className="btntick" onClick={updateBirthday}>✔</button>

@@ -2,6 +2,8 @@ import React from "react";
 import '../style/keeperForm.css';
 import { useBudgetTracker } from '../hooks/useBudgetTracker';
 import { BsCaretRightFill, BsCaretLeftFill } from "react-icons/bs";
+import { db } from '../firebase';
+import { useState, useEffect } from "react";
 
 const KeeperForm = () => {
 
@@ -118,7 +120,12 @@ const KeeperForm = () => {
                         <div>
                             <div className="kform">
                                 <form onSubmit={handleSubmit}>
-                                    <input className="formDate" type="date" value={date} onChange={event => setDate(event.target.value)} />
+                                    <input
+                                        className="formDate"
+                                        type="date"
+                                        min="2020-01-01"
+                                        value={date}
+                                        onChange={event => setDate(event.target.value)} />
                                     <br />
                                     <select className="formCat" value={category.type} onChange={event => setCategory({ type: event.target.value, subType: category.subType })}>
                                         <option value="支出">支出</option>

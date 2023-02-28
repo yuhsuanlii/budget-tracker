@@ -7,9 +7,17 @@ import { AiOutlineBarChart } from "react-icons/ai";
 import { IoMdPower } from "react-icons/io";
 import { HiOutlineClipboardDocumentList } from "react-icons/hi2";
 import { RxHamburgerMenu } from "react-icons/rx";
-
+import { signOut } from "firebase/auth";
+import { auth } from "../firebase-config";
 
 const Navbar = () => {
+
+    const logout = async () => {
+        await signOut(auth);
+        localStorage.clear();
+        window.location.href = '/';
+    }
+
     return (
         <div>
             <div>
@@ -56,12 +64,12 @@ const Navbar = () => {
                             </label>
                         </Link>
 
-                        <Link to="/logout" className="link">
+                        <div className="link" onClick={logout}>
                             <label class="nav-link">
                                 <IoMdPower size={30} />
                                 <span class="link-text">LOGOUT</span>
                             </label>
-                        </Link>
+                        </div>
 
                     </ul>
                 </nav>

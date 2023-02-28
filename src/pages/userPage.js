@@ -3,9 +3,25 @@ import '../style/userPage.css';
 import Navbar from "../components/navbar";
 import { useBudgetTracker } from '../hooks/useBudgetTracker';
 import { FiEdit3 } from "react-icons/fi";
+import { useState, useEffect } from "react";
+import { auth, singInWithGoogle } from "../firebase-config";
+import {
+    createUserWithEmailAndPassword,
+    onAuthStateChanged,
+    signInWithEmailAndPassword,
+    signOut,
+    updateProfile,
+    displayName,
+    sendPasswordResetEmail,
+    getAuth,
+    updateEmail
+} from "firebase/auth";
+
 
 const UserPage = () => {
     const {
+        user, setUser,
+        userData, setUserData,
 
         username, setUsername,
         gender, setGender,
@@ -46,19 +62,132 @@ const UserPage = () => {
         costPlay, setCostPlay,
         costOther, setCostOther } = useBudgetTracker();
 
-    if (username == "") {
-        setUsername('　');
+    const [notice, setNotice] = useState("");
+
+    useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+            setUser(currentUser);
+            if (!currentUser) {
+                window.location.href = '/';
+            } else {
+                console.log(currentUser);
+                const displayName = currentUser.displayName;
+                const data = JSON.parse(displayName);
+                setUsername(data.username);
+                setGender(data.gender);
+                setBirthday(data.birthday);
+                setEmail(currentUser.email);
+                setPassword(currentUser.password);
+            }
+        });
+
+        return () => unsubscribe();
+    }, []);
+
+    // if (!currentUser) {
+    //     return <div>Loading...</div>;
+    // }
+
+    const handleResetPassword = () => {
+        const auth = getAuth();
+        sendPasswordResetEmail(auth, email)
+            .then(() => {
+                setNotice('信件已寄出');
+                console.log('Password reset email sent');
+            }).catch((error) => {
+                setNotice(error.message.split('/')[1].split(')')[0]);
+                console.log(error.message);
+            });
+    };
+
+
+    const [newUsername, setNewUsername] = useState("");
+    const [newGender, setNewGender] = useState("");
+    const [newBirthday, setNewBirthday] = useState("");
+
+    const updateUsername = async () => {
+        onAuthStateChanged(auth, (currentUser) => {
+            setUser(currentUser);
+            if (newUsername.trim() == "") {
+                return;
+            } else {
+                const newdata = {
+                    username: newUsername,
+                    gender: gender,
+                    birthday: birthday
+                };
+                updateProfile(currentUser, { displayName: JSON.stringify(newdata) })
+                    .then(() => {
+                        console.log('ok');
+                        localStorage.setItem('username', newUsername);
+                        setIsEditingName(false);
+                        setUsername(newUsername);
+                    })
+                    .catch((error) => {
+                        console.log(error.message);
+                    });
+                // localStorage.setItem('username', newUsername);
+                // setIsEditingBirthday(false);
+                // setBirthday(newUsername);
+            }
+        })
+
     }
 
-    if (gender == "") {
-        setGender('男');
+    const updateGender = async () => {
+        onAuthStateChanged(auth, (currentUser) => {
+            setUser(currentUser);
+            if (newGender == "") {
+                return;
+            } else {
+                const newdata = {
+                    username: username || localStorage.getItem("username"),
+                    gender: newGender,
+                    birthday: birthday
+                };
+                updateProfile(currentUser, { displayName: JSON.stringify(newdata) })
+                    .then(() => {
+                        console.log('ok');
+                        localStorage.setItem('gender', newGender);
+                        setIsEditingGender(false);
+                        setGender(newGender);
+                    })
+                    .catch((error) => {
+                        console.log(error.message);
+                    });
+                // localStorage.setItem('gender', newGender);
+                // setIsEditingBirthday(false);
+                // setBirthday(newGender);
+            }
+        })
     }
 
-    if (email == "") {
-        setEmail('　');
-    }
-    if (password == "") {
-        setPassword('　');
+    const updateBirthday = async () => {
+        onAuthStateChanged(auth, (currentUser) => {
+            setUser(currentUser);
+            if (newBirthday == "") {
+                return;
+            } else {
+                const newdata = {
+                    username: username || localStorage.getItem("username"),
+                    gender: gender,
+                    birthday: newBirthday
+                };
+                updateProfile(currentUser, { displayName: JSON.stringify(newdata) })
+                    .then(() => {
+                        console.log('ok');
+                        localStorage.setItem('birthday', newBirthday);
+                        setIsEditingBirthday(false);
+                        setBirthday(newBirthday);
+                    })
+                    .catch((error) => {
+                        console.log(error.message);
+                    });
+                // localStorage.setItem('birthday', newBirthday);
+                // setIsEditingBirthday(false);
+                // setBirthday(newBirthday);
+            }
+        })
     }
 
     return (
@@ -89,16 +218,15 @@ const UserPage = () => {
                                             <input
                                                 className="userEdit"
                                                 type="text"
-                                                value={username}
-                                                placeholder="username"
-                                                required={true} minLength={2} maxLength={10}
-                                                onChange={event => setUsername(event.target.value)}
+                                                placeholder="new name"
+                                                required={true} maxLength={10}
+                                                onChange={event => setNewUsername(event.target.value)}
                                             />
-                                            <button className="btntick" onClick={() => setIsEditingName(null)}>✔</button>
+                                            <button className="btntick" onClick={updateUsername}>✔</button>
                                         </>
                                     ) : (
                                         <>
-                                            <span>{username}</span>
+                                            <span>{username || localStorage.getItem("username")}</span>
                                             <FiEdit3 className="editicon2" size={20} onClick={() => setIsEditingName(true)} />
                                         </>
                                     )}
@@ -111,15 +239,18 @@ const UserPage = () => {
                                 <div className="userInfo">
                                     {isEditingGender ? (
                                         <>
-                                            <select className="userEdit" value={gender} onChange={event => setGender(event.target.value)}>
-                                                <option value="男">男</option>
+                                            <select className="userEdit"
+                                                placeholder="select gender"
+                                                onChange={event => setNewGender(event.target.value)}>
+                                                <option value="">請選擇性別</option>
+                                                <option value="男" default>男</option>
                                                 <option value="女">女</option>
                                             </select>
-                                            <button className="btntick" onClick={() => setIsEditingGender(null)}>✔</button>
+                                            <button className="btntick" onClick={updateGender}>✔</button>
                                         </>
                                     ) : (
                                         <>
-                                            <span>{gender}</span>
+                                            <span>{gender || localStorage.getItem("gender")}</span>
                                             <FiEdit3 className="editicon2" size={20} onClick={() => setIsEditingGender(true)} />
                                         </>
                                     )}
@@ -134,16 +265,15 @@ const UserPage = () => {
                                         <>
                                             <input
                                                 className="userEdit"
-                                                type="date" id="start" name="trip-start"
-                                                value={birthday}
+                                                type="date"
                                                 min="" max=""
-                                                onChange={event => setBirthday(event.target.value)}>
+                                                onChange={event => setNewBirthday(event.target.value)}>
                                             </input>
-                                            <button className="btntick" onClick={() => setIsEditingBirthday(null)}>✔</button>
+                                            <button className="btntick" onClick={updateBirthday}>✔</button>
                                         </>
                                     ) : (
                                         <>
-                                            <span>{birthday}</span>
+                                            <span>{birthday || localStorage.getItem("birthday")}</span>
                                             <FiEdit3 className="editicon2" size={20} onClick={() => setIsEditingBirthday(true)} />
                                         </>
 
@@ -158,54 +288,38 @@ const UserPage = () => {
                                     電子信箱
                                 </div>
                                 <div className="userInfo">
-                                    {isEditingEmail ? (
+                                    {/* {isEditingEmail ? (
                                         <>
                                             <input
                                                 className="userEdit"
                                                 type="text"
-                                                value={email}
-                                                onChange={event => setEmail(event.target.value)}
+                                                placeholder={email}
+                                                onChange={event => setNewEmail(event.target.value)}
                                                 required
                                             />
-                                            <button className="btntick" onClick={() => setIsEditingEmail(null)}>✔</button>
+                                            <button className="btntick" onClick={updateUserEmail}>✔</button>
                                         </>
                                     ) : (
-                                        <>
-                                            <span>{email}</span>
-                                            <FiEdit3 className="editicon2" size={20} onClick={() => setIsEditingEmail(true)} />
+                                        <> */}
+                                    <span>{email || localStorage.getItem("email")}</span>
+                                    {/* <FiEdit3 className="editicon2" size={20} onClick={() => setIsEditingEmail(true)} />
                                         </>
-                                    )}
+                                    )} */}
                                 </div>
                             </div>
                             <div className="ut2">
                                 <div className="userTitle">
                                     密碼
                                 </div>
-                                <div className="userInfo">
-                                    {isEditingPassword ? (
-                                        <>
-                                            <input
-                                                className="userEdit"
-                                                type="password"
-                                                value={password}
-                                                onChange={event => setPassword(event.target.value)}
-                                                required
-                                            />
-                                            <button className="btntick" onClick={() => setIsEditingPassword(null)}>✔</button>
-                                        </>
-                                    ) : (
-                                        <>
-                                            <span>{password}</span>
-                                            <FiEdit3 className="editicon2" size={20} onClick={() => setIsEditingPassword(true)} />
-                                        </>
-                                    )}
-                                </div>
+                                <button className="resetbtn" onClick={handleResetPassword}>重設密碼</button>
+                                <label className="notice">{notice}</label>
                             </div>
                             <div className="ut2">
                                 <div className="userTitle">
                                     connect with google
                                 </div>
-                                <button className="connectbtn">Disconnect</button>
+                                <img className="connectbtn" src={localStorage.getItem("pic") || "https://cdn-icons-png.flaticon.com/512/179/179376.png"} />
+
                             </div>
                         </div>
                     </div>

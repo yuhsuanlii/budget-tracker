@@ -95,12 +95,12 @@
 .userEdit{
     font-family: FakePearl-Regular;
     font-size: 20px;
-    height: 20px;
+    height: 30px;
     background-color: #FAFAF9;
     border: none;
     outline: none;
     color: #AA5656;
-    width: 90%;
+    width: 85%;
     /* border-bottom: 2px solid #B99B6B; */
 }
 
@@ -112,6 +112,7 @@
     color: #FAFAF9;
     background-color: #698269;
     border-radius: 100px;
+    float: right;
 }
 
 .btntick:hover{
@@ -122,13 +123,21 @@
 .editicon2{
     color: #698269;
     float: right;
-    margin-right: 5%;
+    /* margin-right: 5%; */
 }
 
-.connectbtn {
+.connectbtn{
+    height: 50px;
+}
+
+.resetbtn{
+    margin-right: 10px;
+    background-color: #698269;
+}
+
+.resetbtn {
     position: relative;
     color: #FFFFFF;
-    background-color: #AA5656;
     width: 180px;
     height: 40px;
     font-size: 18px;
@@ -138,10 +147,12 @@
     letter-spacing: 2px;
 }
 
-.connectbtn:hover{
+.connectbtn:hover,
+.resetbtn:hover{
     cursor: pointer;
     opacity: 0.8;
 }
+
 @media only screen and (max-width: 1000px) {
     .userbd3{
         padding: 20px;

@@ -8,11 +8,30 @@ import CostChart from "../components/costChart";
 import EarnChart from "../components/earnChart";
 import Totle1Chart from "../components/totle1Chart";
 import Totle2Chart from "../components/totle2Chart";
+import { auth } from "../firebase-config";
+import { onAuthStateChanged } from "firebase/auth";
 
 const ChartPage = () => {
 
     const {
+        user, setUser,
+        userData, setUserData,
+        showLogin, setShowLogin,
+
+        username, setUsername,
+        gender, setGender,
+        birthday, setBirthday,
+        email, setEmail,
+        password, setPassword,
+
+        isEditingName, setIsEditingName,
+        isEditingGender, setIsEditingGender,
+        isEditingBirthday, setIsEditingBirthday,
+        isEditingEmail, setIsEditingEmail,
+        isEditingPassword, setIsEditingPassword,
+
         showForm, setShowForm,
+        showLoginForm, setShowLoginForm,
         expenses, setExpenses,
         amount, setAmount,
         description, setDescription,
@@ -38,6 +57,18 @@ const ChartPage = () => {
         costTraffic, setCostTraffic,
         costPlay, setCostPlay,
         costOther, setCostOther } = useBudgetTracker();
+
+    useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+            setUser(currentUser);
+            if (!currentUser) {
+                window.location.href = '/';
+            } else {
+                console.log(currentUser)
+            }
+        });
+        return () => unsubscribe();
+    }, []);
 
     const handlePrevMonth = () => {
         const prevMonth = new Date(date);
@@ -104,7 +135,7 @@ const ChartPage = () => {
                     <div className="chartBoard">
                         <div className="chartTitle">下半年度結餘分析</div>
                         <div className="bar">
-                        <Totle2Chart />
+                            <Totle2Chart />
                         </div>
                     </div>
                 </div>

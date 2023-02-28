@@ -1,13 +1,18 @@
 import React from "react";
 import '../style/loginForm.css';
 import NavbarCover from "./navbarCover";
+import Navbar from "./navbar";
 import { useBudgetTracker } from "../hooks/useBudgetTracker";
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { FcGoogle } from "react-icons/fc";
+import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut, updateProfile, displayName, getAuth, sendPasswordResetEmail } from "firebase/auth";
+import { auth, singInWithGoogle } from "../firebase-config";
 
 const LoginForm = () => {
 
     const {
+        user, setUser,
+        userData, setUserData,
 
         username, setUsername,
         gender, setGender,
@@ -149,63 +154,156 @@ const LoginForm = () => {
         setConfirmPassword('');
     };
 
+    // firebase auth
+
+    const [signupUsername, setSignupUsername] = useState("");
+    const [signupEmail, setSignupEmail] = useState("");
+    const [signupPassword, setSignupPassword] = useState("");
+    const [signupGender, setSignupGender] = useState("");
+    const [signupBirthday, setSignupBirthday] = useState("");
+
+    const [loginEmail, setLoginEmail] = useState("");
+    const [loginPassword, setLoginPassword] = useState("");
+
+    const [signupNotice, setSignupNotice] = useState("");
+    const [loginNotice, setLoginNotice] = useState("");
+
+    const [loggedIn, setLoggedIn] = useState(false);
+
+    useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+            setUser(currentUser);
+            if (currentUser) {
+                setLoginNotice("登入成功")
+                console.log(currentUser);
+                setLoggedIn(true);
+                setShowLoginForm(false);
+            } else {
+                console.log(currentUser);
+                setLoggedIn(false);
+            }
+        });
+        return () => unsubscribe();
+    }, []);
+
+    const signup = async () => {
+        if (!signupUsername || !signupGender || !signupBirthday) {
+            setSignupNotice("請輸入所有欄位");
+        } else {
+            try {
+                const user = await createUserWithEmailAndPassword(
+                    auth,
+                    signupEmail,
+                    signupPassword
+                );
+
+                console.log(user);
+
+                const userData = {
+                    username: signupUsername,
+                    gender: signupGender,
+                    birthday: signupBirthday
+                };
+
+                // const username = userData.username;
+                // const email = userData.email;
+                // const gender = userData.gender;
+                // const birthday = userData.birthday;
+
+                // localStorage.setItem("username", username);
+                // localStorage.setItem("email", email);
+                // localStorage.setItem("gender", gender);
+                // localStorage.setItem("birthday", birthday);
+
+                await updateProfile(user.user, {
+                    displayName: JSON.stringify(userData)
+                });
+
+                console.log(user.user);
+                console.log(userData);
+                setSignupNotice("註冊成功");
+                window.location.href = '/user';
+            } catch (error) {
+                setSignupNotice(error.message.split('/')[1].split(')')[0]);
+                console.log(error.message);
+            }
+        }
+    }
+
+    const login = async () => {
+
+        if (!loginEmail || !loginPassword) {
+            setLoginNotice("請輸入所有欄位");
+        } else {
+            try {
+                const user = await signInWithEmailAndPassword(
+                    auth,
+                    loginEmail,
+                    loginPassword
+                );
+
+                console.log(user);
+                console.log(signupUsername, signupGender, signupBirthday);
+                setLoginNotice("登入成功")
+                window.location.href = '/user';
+            } catch (error) {
+                setLoginNotice(error.message.split('/')[1].split(')')[0]);
+                console.log(error.message);
+            }
+        }
+    }
+
+    const logout = async () => {
+        localStorage.clear();
+        await signOut(auth);
+        window.location.href = '/';
+    }
+
+    const handleResetPassword = () => {
+        if (!loginEmail) {
+            setLoginNotice("請輸入電子信箱");
+        } else {
+            const auth = getAuth();
+            sendPasswordResetEmail(auth, loginEmail)
+                .then(() => {
+                    setLoginNotice('重設密碼信件已寄出');
+                    console.log('Password reset email sent');
+                }).catch((error) => {
+                    setLoginNotice(error.message.split('/')[1].split(')')[0]);
+                    console.log(error.message);
+                });
+        }
+    };
+
     return (
         <div>
-            <NavbarCover />
+            {loggedIn ? (
+                <Navbar />
+            ): (
+                <NavbarCover />
+            )}
             <div className="keeperContainer">
                 <div></div>
                 <div className="kb">
                     <span className="projectName">
-                        Budget Tracker
+                        Budget
                     </span>
-                    <button className="kbtn" onClick={() => setShowLoginForm(!showLoginForm)}>
-                        {showLoginForm ? '關閉介面' : '點此登入'}
-                    </button>
+                    {loggedIn ? (
+                        // 如果用戶已經登入
+                        <>
+                            <button className="kbtn" onClick={logout}>
+                                登出系統
+                            </button>
+                        </>
+                    ) : (
+                        // 如果用戶還沒有登入，渲染帶有按鈕的頁面
+                        <>
+                            <button className="kbtn" onClick={() => setShowLoginForm(!showLoginForm)}>
+                                {showLoginForm ? '關閉介面' : '點此登入'}
+                            </button>
+                        </>
+                    )}
 
-                    {/* {showLoginForm && (
-                        < div className="kform">
-                            <h1>{isLogin ? '登入' : '註冊'}</h1>
-                            <form onSubmit={handleSubmit}>
-                                <div>
-                                    <label htmlFor="email">Email:</label>
-                                    <input
-                                        type="email"
-                                        id="email"
-                                        value={email}
-                                        onChange={(e) => setEmail(e.target.value)}
-                                    />
-                                </div>
-                                <div>
-                                    <label htmlFor="password">Password:</label>
-                                    <input
-                                        type="password"
-                                        id="password"
-                                        value={password}
-                                        onChange={(e) => setPassword(e.target.value)}
-                                    />
-                                </div>
-                                {!isLogin && (
-                                    <div>
-                                        <label htmlFor="confirmPassword">Confirm Password:</label>
-                                        <input
-                                            type="password"
-                                            id="confirmPassword"
-                                            value={confirmPassword}
-                                            onChange={(e) => setConfirmPassword(e.target.value)}
-                                        />
-                                    </div>
-                                )}
-                                <button type="submit">{isLogin ? '登入' : '註冊'}</button>
-                            </form>
-                            <p>
-                                {isLogin ? '還沒有帳號？' : '已經有帳號？'}
-                                <button type="button" onClick={handleToggle}>
-                                    {isLogin ? '註冊' : '登入'}
-                                </button>
-                            </p>
-
-                        </div>
-                    )} */}
 
                     {showLoginForm && (
                         <>
@@ -219,29 +317,35 @@ const LoginForm = () => {
                                             <button className="signupbtn" onClick={handleSignupClick}>signup</button>                                </div>
                                         <div>
                                             {/* 登入表單 */}
-                                            <form onSubmit={handleLoginSubmit}>
-                                                <input
-                                                    type="email"
-                                                    className="loginEmail"
-                                                    placeholder="電子信箱"
-                                                    // value={email}
-                                                    onChange={(e) => setEmail(e.target.value)}
-                                                    required
-                                                />
+
+                                            <input
+                                                type="email"
+                                                className="loginEmail"
+                                                placeholder="電子信箱"
+                                                // value={email}
+                                                onChange={(event) => setLoginEmail(event.target.value)}
+                                                required
+                                            />
+                                            <div className="pw">
+                                                <div></div>
                                                 <input
                                                     type="password"
                                                     className="loginPassword"
                                                     placeholder="密碼"
                                                     // value={password}
-                                                    onChange={(e) => setPassword(e.target.value)}
+                                                    onChange={(event) => setLoginPassword(event.target.value)}
                                                     required
                                                 />
-                                                <button className="loginFormBtn" type="submit">送出</button>
-                                            </form>
+                                                <button className="rpbtn" onClick={handleResetPassword}>忘記密碼</button>
+                                                <div></div>
+                                            </div>
+                                            <button className="loginFormBtn" onClick={login}>登入</button>
+                                            <div className="notice">{loginNotice}</div>
+
                                             <div className="dashlogin"></div>
                                             <div className="loginThird">
                                                 <div className="loginWith">or login with </div>
-                                                <div className="loginGoogle">
+                                                <div className="loginGoogle" onClick={singInWithGoogle}>
                                                     <FcGoogle size={30} className='iconG' />
                                                 </div>
                                             </div>
@@ -263,60 +367,62 @@ const LoginForm = () => {
                                         <div>
                                             {/* <h1>註冊</h1> */}
                                             {/* 註冊表單 */}
-                                            <form onSubmit={handleSignupSubmit}>
-                                                <div className="signupLayout">
-                                                    <div></div>
-                                                    <input
-                                                        className="signupUsername"
-                                                        type="text"
-                                                        // value={username}
-                                                        placeholder="名稱"
-                                                        required={true} minLength={2} maxLength={10}
-                                                        onChange={event => setUsername(event.target.value)}
-                                                    />
-                                                    <select
-                                                        className="signupGender"
-                                                        // value={gender}
-                                                        placeholder="性別"
-                                                        onChange={event => setGender(event.target.value)}>
-                                                        <option value="男">男</option>
-                                                        <option value="女">女</option>
-                                                    </select>
-                                                    <div></div>
-                                                </div>
+
+                                            <div className="signupLayout">
+                                                <div></div>
                                                 <input
-                                                    className="signupBirthday"
-                                                    placeholder="生日"
-                                                    type="date" id="start" name="trip-start"
-                                                    // value={birthday}
-                                                    min="" max=""
-                                                    onChange={event => setBirthday(event.target.value)}>
-                                                </input>
-                                                <input
-                                                    type="email"
-                                                    className="signupEmail"
-                                                    placeholder="電子信箱"
-                                                    // value={email}
-                                                    onChange={(e) => setEmail(e.target.value)}
-                                                    required
+                                                    className="signupUsername"
+                                                    type="text"
+                                                    // value={username}
+                                                    placeholder="名稱"
+                                                    required={true} minLength={1} maxLength={10}
+                                                    onChange={(event) => setSignupUsername(event.target.value)}
                                                 />
-                                                <input
-                                                    type="password"
-                                                    className="signupPassword"
-                                                    placeholder="密碼"
-                                                    // value={password}
-                                                    onChange={(e) => setPassword(e.target.value)}
-                                                    required
-                                                />
-                                                <button className="loginFormBtn" type="submit">送出</button>
-                                            </form>
-                                            <div className="dashsignup"></div>
+                                                <select
+                                                    className="signupGender"
+                                                    value={signupGender}
+                                                    placeholder="性別"
+                                                    onChange={(event) => setSignupGender(event.target.value)}>
+                                                    <option value="">性別</option>
+                                                    <option value="男">男</option>
+                                                    <option value="女">女</option>
+                                                </select>
+                                                <div></div>
+                                            </div>
+                                            <input
+                                                className="signupBirthday"
+                                                placeholder="生日"
+                                                type="date"
+                                                min="" max=""
+                                                onChange={(event) => setSignupBirthday(event.target.value)}>
+                                            </input>
+                                            <input
+                                                type="email"
+                                                className="signupEmail"
+                                                placeholder="電子信箱"
+                                                // value={email}
+                                                onChange={(event) => setSignupEmail(event.target.value)}
+                                                required
+                                            />
+                                            <input
+                                                type="password"
+                                                className="signupPassword"
+                                                placeholder="密碼(至少6位)"
+                                                // value={password}
+                                                onChange={(event) => setSignupPassword(event.target.value)}
+                                                required
+                                            />
+                                            <button className="loginFormBtn" onClick={signup}>註冊</button>
+                                            {/* <div>{user?.email}</div> */}
+                                            <div className="notice">{signupNotice}</div>
+
+                                            {/* <div className="dashsignup"></div>
                                             <div className="loginThird">
                                                 <div className="signupWith">or signup with </div>
                                                 <div className="signupGoogle">
                                                     <FcGoogle size={30} className='iconG' />
                                                 </div>
-                                            </div>
+                                            </div> */}
 
                                         </div>
                                     </div>

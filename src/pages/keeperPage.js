@@ -5,11 +5,31 @@ import KeeperForm from "../components/keeperForm";
 import { Link } from "react-router-dom";
 import { useBudgetTracker } from '../hooks/useBudgetTracker';
 import { FaBarcode, FaPencilAlt, FaTrashAlt } from "react-icons/fa";
+import { auth } from "../firebase-config";
+import { onAuthStateChanged } from "firebase/auth";
+import { useEffect } from "react";
 
 const KeeperPage = () => {
 
     const {
+        user, setUser,
+        userData, setUserData,
+        showLogin, setShowLogin,
+
+        username, setUsername,
+        gender, setGender,
+        birthday, setBirthday,
+        email, setEmail,
+        password, setPassword,
+
+        isEditingName, setIsEditingName,
+        isEditingGender, setIsEditingGender,
+        isEditingBirthday, setIsEditingBirthday,
+        isEditingEmail, setIsEditingEmail,
+        isEditingPassword, setIsEditingPassword,
+
         showForm, setShowForm,
+        showLoginForm, setShowLoginForm,
         expenses, setExpenses,
         amount, setAmount,
         description, setDescription,
@@ -35,6 +55,18 @@ const KeeperPage = () => {
         costTraffic, setCostTraffic,
         costPlay, setCostPlay,
         costOther, setCostOther } = useBudgetTracker();
+
+    useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+            setUser(currentUser);
+            if (!currentUser) {
+                window.location.href = '/';
+            } else {
+                console.log(currentUser)
+            }
+        });
+        return () => unsubscribe();
+    }, []);
 
     function handleUpdate(expense) {
         setExpenses(
@@ -105,7 +137,7 @@ const KeeperPage = () => {
                         <div class="receipt">
                             <div class="paper">
                                 <div class="title">Account Book</div>
-                                <button class="excel">Export Excel</button>
+                                {/* <button class="excel">Export Excel</button> */}
                                 <br /><br />
                                 <div className="category">
                                     <span>日期</span>

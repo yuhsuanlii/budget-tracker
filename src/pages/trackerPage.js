@@ -5,11 +5,31 @@ import Navbar from "../components/navbar";
 import { useBudgetTracker } from '../hooks/useBudgetTracker';
 import { BsCaretRightFill, BsCaretLeftFill } from "react-icons/bs";
 import { FiEdit3 } from "react-icons/fi";
+import { auth } from "../firebase-config";
+import { onAuthStateChanged } from "firebase/auth";
+import { useEffect } from "react";
 
 
 const TrackerPage = () => {
     const {
+        user, setUser,
+        userData, setUserData,
+        showLogin, setShowLogin,
+
+        username, setUsername,
+        gender, setGender,
+        birthday, setBirthday,
+        email, setEmail,
+        password, setPassword,
+
+        isEditingName, setIsEditingName,
+        isEditingGender, setIsEditingGender,
+        isEditingBirthday, setIsEditingBirthday,
+        isEditingEmail, setIsEditingEmail,
+        isEditingPassword, setIsEditingPassword,
+
         showForm, setShowForm,
+        showLoginForm, setShowLoginForm,
         expenses, setExpenses,
         amount, setAmount,
         description, setDescription,
@@ -35,6 +55,18 @@ const TrackerPage = () => {
         costTraffic, setCostTraffic,
         costPlay, setCostPlay,
         costOther, setCostOther } = useBudgetTracker();
+
+    useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+            setUser(currentUser);
+            if (!currentUser) {
+                window.location.href = '/';
+            } else {
+                console.log(currentUser)
+            }
+        });
+        return () => unsubscribe();
+    }, []);
 
     const handlePrevMonth = () => {
         const prevMonth = new Date(date);
@@ -234,10 +266,10 @@ const TrackerPage = () => {
                                             </>
                                         ) : (
                                             <>
-                                             <span>{other}</span>
-                                            <FiEdit3 className="editicon" size={20} onClick={() => setIsEditingOther(true)}/>
+                                                <span>{other}</span>
+                                                <FiEdit3 className="editicon" size={20} onClick={() => setIsEditingOther(true)} />
                                             </>
-                    
+
                                         )}
                                     </div>
                                 </div>

@@ -8,6 +8,8 @@ import { FaBarcode, FaPencilAlt, FaTrashAlt } from "react-icons/fa";
 import { auth } from "../firebase";
 import { onAuthStateChanged } from "firebase/auth";
 import { useEffect } from "react";
+import { db } from "../firebase";
+import { collection, onSnapshot, where, query } from "firebase/firestore";
 
 const KeeperPage = () => {
 
@@ -62,9 +64,22 @@ const KeeperPage = () => {
             if (!currentUser) {
                 window.location.href = '/';
             } else {
-                console.log(currentUser)
+                console.log(currentUser.uid);
+                const q = query(
+                    collection(db, 'keeper'),
+                    where('uid', '==', currentUser.uid)
+                );
+                const unsubscribe = onSnapshot(q, (snapshot) => {
+                    setExpenses(snapshot.docs.map(doc => ({ ...doc.data(), id: doc.id })));
+                });
+                return unsubscribe;
             }
         });
+
+        // onSnapshot(collection(db, "keeper"), (snapshot) => {
+        //     setExpenses(snapshot.docs.map(doc => ({ ...doc.data(), id: doc.id })));
+        // });
+
         return () => unsubscribe();
     }, []);
 
@@ -149,13 +164,13 @@ const KeeperPage = () => {
                                     <span></span>
 
                                 </div>
-                                <table className="table">
-                                    <tbody>
+                                <div className="table">
+                                    <div>
                                         {/* <tr><td>2 x Coffee</td><td class="right">$10</td></tr>
                                         <tr><td>1 x Rice</td><td class="right">$30</td></tr>
                                         <tr><td>5 x Milk</td><td class="right">$90</td></tr> */}
-                                        <tr>
-                                            {expenses.map((expense, index) => (
+                                        {/* <ul> */}
+                                        {/* {expenses.map((expense, index) => (
                                                 <li key={index} className="lilist">
                                                     <div className="list">
                                                         <div>{expense.date.substring(8, 10)}</div>
@@ -170,23 +185,40 @@ const KeeperPage = () => {
                                                     </div>
                                                 </li>
 
-                                            ))}
-                                        </tr>
-                                    </tbody>
-                                    <tr><td colspan="2" class="center">
+                                            ))} */}
+
+                                        {expenses.map((expense) => (
+                                            <li key={expense.id} className="lilist">
+                                                <div className="list">
+                                                    <div>&nbsp;{expense.date.split("-")[2]}</div>
+                                                    <div>{expense.category}</div>
+                                                    <div>{expense.subCategory}</div>
+                                                    <div>${expense.amount}</div>
+                                                    <div className="description">{expense.memo}</div>
+                                                    <div>
+                                                        <FaPencilAlt className="listEdit" size={25} color='#698269' />
+                                                    </div>
+                                                    <div>
+                                                        <FaTrashAlt className="listDelete" size={25} color='#AA5656' />
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        ))}
+                                        {/* </ul> */}
+                                    </div>
+
+                                    <div className="tnbtn">
                                         <Link to="/tracker">
-                                            <input className="tnbtn" type="button" value="Track Now" />
+                                            <input className="" type="button" value="Track Now" />
                                         </Link>
-                                    </td></tr>
-                                </table>
+                                    </div>
+
+                                </div>
                                 <div class="sign center">
-                                    {/* <div class="barcode"></div> */}
-                                    <FaBarcode size={40} /><FaBarcode size={40} /><FaBarcode size={40} /><FaBarcode size={40} />
-                                    <br />
                                     <span className="barcode">00020230223000</span>
                                     <br />
                                     <div class="thankyou">
-                                        Thank you for your purchase
+                                        A penny saved is a penny earned
                                     </div>
                                 </div>
                             </div>

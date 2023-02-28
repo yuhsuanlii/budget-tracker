@@ -70,7 +70,7 @@ const UserPage = () => {
             if (!currentUser) {
                 window.location.href = '/';
             } else {
-                console.log(currentUser);
+                console.log(currentUser.uid);
                 const displayName = currentUser.displayName;
                 const data = JSON.parse(displayName);
                 setUsername(data.username);

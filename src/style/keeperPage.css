@@ -163,10 +163,15 @@
 }
 
 .tnbtn{
-    margin-top: 100px;
+    height: 50px;
+    padding-top: 100px;
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
 }
 
 input[type=button] {
+    margin-top: 20px;
     font-family: FakePearl-Regular;
     background-color: #698269;
     outline: none;
@@ -180,6 +185,8 @@ input[type=button] {
     background-repeat: no-repeat;
     background-position: 5px center;
     font-size: 16px;
+    margin: auto;
+    text-align: center;
 }
 
 input[type=button]:hover {
@@ -190,10 +197,11 @@ input[type=button]:hover {
     color: #f0f0f0;
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Libre+Barcode+128+Text&display=swap');
+
 .barcode {
-    position: relative;
-    top: -5px;
-    font-family: 'Lato', sans-serif;
+    font-family: 'Libre Barcode 128 Text', cursive;
+    font-size: 30px;
 }
 
 .sign {
@@ -203,7 +211,7 @@ input[type=button]:hover {
 .thankyou {
     line-height: 14px;
     font-size: 14px;
-    margin-top: 5px;
+    margin-top: 10px;
     /* color: #5B5B5B; */
     color: #B99B6B;
     width: 100%;
@@ -230,12 +238,14 @@ input[type=button]:hover {
 
     .category{
         grid-template-columns: 20% 20% 20% 20% 20%;
-        text-align: center;
+        text-align: left;
+        padding-left: 15px;
     }
     .list{
         grid-template-columns: 20% 20% 20% 20%;
-        text-align: center;
+        text-align: left;
         white-space:nowrap;
+        padding-left: 15px;
     }
 
     .listEdit{

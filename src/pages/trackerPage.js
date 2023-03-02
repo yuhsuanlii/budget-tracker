@@ -7,11 +7,23 @@ import { BsCaretRightFill, BsCaretLeftFill } from "react-icons/bs";
 import { FiEdit3 } from "react-icons/fi";
 import { auth } from "../firebase";
 import { onAuthStateChanged } from "firebase/auth";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+
+import { db } from '../firebase';
+import { addDoc, collection } from "firebase/firestore";
+import { doc, updateDoc, getDoc, setDoc } from 'firebase/firestore';
+import { startOfMonth, endOfMonth } from 'date-fns';
+import { onSnapshot, where, query, deleteDoc, getDocs } from "firebase/firestore";
 
 
 const TrackerPage = () => {
     const {
+
+        apparel, setApparel,
+        housing, setHousing,
+        educate, setEducate,
+        savings, setSavings,
+
         user, setUser,
         userData, setUserData,
         showLogin, setShowLogin,
@@ -43,10 +55,7 @@ const TrackerPage = () => {
         traffic, setTraffic,
         play, setPlay,
         other, setOther,
-        isEditingFood, setIsEditingFood,
-        isEditingTraffic, setIsEditingTraffic,
-        isEditingPlay, setIsEditingPlay,
-        isEditingOther, setIsEditingOther,
+      
         selectedBudgetId, setSelectedBudgetId,
 
         totalIncome, setTotalIncome,
@@ -56,29 +65,170 @@ const TrackerPage = () => {
         costPlay, setCostPlay,
         costOther, setCostOther } = useBudgetTracker();
 
+    const [isEditingFood, setIsEditingFood] = useState(false);
+    const [isEditingTraffic, setIsEditingTraffic] = useState(false);
+    const [isEditingPlay, setIsEditingPlay] = useState(false);
+    const [isEditingOther, setIsEditingOther] = useState(false);
+    const [isEditingApparel, setIsEditingApparel] = useState(false);
+    const [isEditingHousing, setIsEditingHousing] = useState(false);
+    const [isEditingEducate, setIsEditingEducate] = useState(false);
+    const [isEditingSavings, setIsEditingSavings] = useState(false);
+
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
             setUser(currentUser);
             if (!currentUser) {
                 window.location.href = '/';
             } else {
-                console.log(currentUser)
+                // console.log(currentUser)
             }
         });
         return () => unsubscribe();
     }, []);
 
-    const handlePrevMonth = () => {
-        const prevMonth = new Date(date);
-        prevMonth.setMonth(prevMonth.getMonth() - 1);
-        setDate(prevMonth.toISOString().substring(0, 10));
-    };
+    useEffect(() => {
+        const docId = localStorage.getItem('firstDay') + localStorage.getItem('uid');
+        const budgetRef = doc(db, "budget", docId);
+        const data = {
+            food: 0,
+            traffic: 0,
+            play: 0,
+            other: 0,
+            apparel: 0,
+            housing: 0,
+            educate: 0,
+            savings: 0
+        };
 
-    const handleNextMonth = () => {
-        const nextMonth = new Date(date);
-        nextMonth.setMonth(nextMonth.getMonth() + 1);
-        setDate(nextMonth.toISOString().substring(0, 10));
-    };
+        getDoc(budgetRef)
+            .then((docSnapshot) => {
+                if (docSnapshot.exists()) {
+                    console.log("Document exists with data:", docSnapshot.data());
+                    setFood(docSnapshot.data().food);
+                    setTraffic(docSnapshot.data().traffic);
+                    setPlay(docSnapshot.data().play);
+                    setOther(docSnapshot.data().other)
+                    setApparel(docSnapshot.data().apparel);
+                    setHousing(docSnapshot.data().housing);
+                    setEducate(docSnapshot.data().educate);
+                    setSavings(docSnapshot.data().savings);
+                } else {
+                    setDoc(budgetRef, data)
+                        .then(() => console.log("Document created successfully!"))
+                        .catch((error) => console.error("Error creating document: ", error));
+                }
+            })
+            .catch((error) => {
+                console.error("Error getting document:", error);
+            });
+    }, []);
+
+    const handleUpdateFood = async () => {
+        if (!food) {
+            alert("請輸入預算");
+            return;
+        }
+        const docId = localStorage.getItem('firstDay') + localStorage.getItem('uid');
+        const budgetRef = doc(db, "budget", docId);
+        const payload = {
+            food: food
+        }
+        await updateDoc(budgetRef, payload);
+        setIsEditingFood(null);
+    }
+    const handleUpdateTraffic = async () => {
+        if (!traffic) {
+            alert("請輸入預算");
+            return;
+        }
+        const docId = localStorage.getItem('firstDay') + localStorage.getItem('uid');
+        const budgetRef = doc(db, "budget", docId);
+        const payload = {
+            traffic: traffic
+        }
+        await updateDoc(budgetRef, payload);
+        setIsEditingTraffic(null);
+    }
+    const handleUpdateOther = async () => {
+        if (!other) {
+            alert("請輸入預算");
+            return;
+        }
+        const docId = localStorage.getItem('firstDay') + localStorage.getItem('uid');
+        const budgetRef = doc(db, "budget", docId);
+        const payload = {
+            other: other
+        }
+        await updateDoc(budgetRef, payload);
+        setIsEditingOther(null);
+    }
+    const handleUpdatePlay = async () => {
+        if (!play) {
+            alert("請輸入預算");
+            return;
+        }
+        const docId = localStorage.getItem('firstDay') + localStorage.getItem('uid');
+        const budgetRef = doc(db, "budget", docId);
+        const payload = {
+            play: play
+        }
+        await updateDoc(budgetRef, payload);
+        setIsEditingPlay(null);
+    }
+    const handleUpdateApparel = async () => {
+        if (!apparel) {
+            alert("請輸入預算");
+            return;
+        }
+        const docId = localStorage.getItem('firstDay') + localStorage.getItem('uid');
+        const budgetRef = doc(db, "budget", docId);
+        const payload = {
+            apparel: apparel
+        }
+        await updateDoc(budgetRef, payload);
+        setIsEditingApparel(null);
+    }
+    const handleUpdateHousing = async () => {
+        if (!housing) {
+            alert("請輸入預算");
+            return;
+        }
+        const docId = localStorage.getItem('firstDay') + localStorage.getItem('uid');
+        const budgetRef = doc(db, "budget", docId);
+        const payload = {
+            housing: housing
+        }
+        await updateDoc(budgetRef, payload);
+        setIsEditingHousing(null);
+    }
+    const handleUpdateEducate = async () => {
+        if (!educate) {
+            alert("請輸入預算");
+            return;
+        }
+        const docId = localStorage.getItem('firstDay') + localStorage.getItem('uid');
+        const budgetRef = doc(db, "budget", docId);
+        const payload = {
+            educate: educate
+        }
+        await updateDoc(budgetRef, payload);
+        setIsEditingEducate(null);
+    }
+    const handleUpdateSavings = async () => {
+        if (!savings) {
+            alert("請輸入預算");
+            return;
+        }
+        const docId = localStorage.getItem('firstDay') + localStorage.getItem('uid');
+        const budgetRef = doc(db, "budget", docId);
+        const payload = {
+            savings: savings
+        }
+        await updateDoc(budgetRef, payload);
+        setIsEditingSavings(null);
+    }
+
+
 
     return (
         <div>
@@ -87,12 +237,12 @@ const TrackerPage = () => {
                 <div></div>
                 <div className="kb">
                     <span className="kmonth2">
-                        <BsCaretLeftFill className="preMonth" size={30} onClick={handlePrevMonth} />
+                        {/* <BsCaretLeftFill className="preMonth" size={30} onClick={handlePrevMonth} /> */}
                         &nbsp;{date.substring(0, 7)}&nbsp;
-                        <BsCaretRightFill className="nextMonth" size={30} onClick={handleNextMonth} />
+                        {/* <BsCaretRightFill className="nextMonth" size={30} onClick={handleNextMonth} /> */}
                     </span>
                     <div className="budget">待分配預算&nbsp;&nbsp;&nbsp;
-                        {totalIncome - food - traffic - play - other}</div>
+                        {localStorage.getItem("totalIncome") - food - traffic - play - other}</div>
                 </div>
                 <div></div>
             </div>
@@ -118,10 +268,10 @@ const TrackerPage = () => {
                                                     className="binput"
                                                     max={8}
                                                     value={food}
-                                                    onChange={event => setFood(event.target.value)}
+                                                    onChange={event => setFood(parseInt(event.target.value))}
                                                 />
                                                 {/* <TiTick className="tickicon" size={20} onClick={() => setIsEditingFood(null)} /> */}
-                                                <button className="tickicon" onClick={() => setIsEditingFood(null)}>✔</button>
+                                                <button className="tickicon" onClick={handleUpdateFood}>✔</button>
                                             </>
                                         ) : (
                                             <>
@@ -168,7 +318,7 @@ const TrackerPage = () => {
                                                     value={traffic}
                                                     onChange={event => setTraffic(event.target.value)}
                                                 />
-                                                <button className="tickicon" onClick={() => setIsEditingTraffic(null)}>✔</button>
+                                                <button className="tickicon" onClick={handleUpdateTraffic}>✔</button>
                                             </>
                                         ) : (
                                             <>
@@ -215,7 +365,7 @@ const TrackerPage = () => {
                                                     value={play}
                                                     onChange={event => setPlay(event.target.value)}
                                                 />
-                                                <button className="tickicon" onClick={() => setIsEditingPlay(null)}>✔</button>
+                                                <button className="tickicon" onClick={handleUpdatePlay}>✔</button>
                                             </>
                                         ) : (
                                             <>
@@ -262,14 +412,13 @@ const TrackerPage = () => {
                                                     value={other}
                                                     onChange={event => setOther(event.target.value)}
                                                 />
-                                                <button className="tickicon" onClick={() => setIsEditingOther(null)}>✔</button>
+                                                <button className="tickicon" onClick={handleUpdateOther}>✔</button>
                                             </>
                                         ) : (
                                             <>
                                                 <span>{other}</span>
                                                 <FiEdit3 className="editicon" size={20} onClick={() => setIsEditingOther(true)} />
                                             </>
-
                                         )}
                                     </div>
                                 </div>

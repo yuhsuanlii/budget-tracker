@@ -6,18 +6,27 @@ const BudgetTrackerContext = createContext();
 export const useBudgetTracker = () => useContext(BudgetTrackerContext);
 
 export const BudgetTrackerProvider = ({ children }) => {
+  const [uid, setUid] = useState("");
+
   const [totalIncome, setTotalIncome] = useState(0);
   const [totalExpense, setTotalExpense] = useState(0);
+
   const [costFood, setCostFood] = useState(0);
   const [costTraffic, setCostTraffic] = useState(0);
   const [costPlay, setCostPlay] = useState(0);
   const [costOther, setCostOther] = useState(0);
-
+  
+  const [costApparel, setCostApparel] = useState(0);
+  const [costHousing, setCostHousing] = useState(0);
+  const [costEducate, setCostEducate] = useState(0);
+  const [costSavings, setCostSavings] = useState(0);
+ 
   const [expenses, setExpenses] = useState([]);
   const [amount, setAmount] = useState('');
   const [description, setDescription] = useState('');
   const [category, setCategory] = useState({ type: '支出', subType: '' });
   const [showForm, setShowForm] = useState(false);
+  const [showEditForm, setShowEditForm] = useState(false);
   const [showLoginForm, setShowLoginForm] = useState(false);
   const [date, setDate] = useState(new Date().toISOString().substring(0, 10));
 
@@ -32,17 +41,12 @@ export const BudgetTrackerProvider = ({ children }) => {
   const [play, setPlay] = useState(0);
   const [other, setOther] = useState(0);
 
-  const [isEditingFood, setIsEditingFood] = useState(false);
-  const [isEditingTraffic, setIsEditingTraffic] = useState(false);
-  const [isEditingPlay, setIsEditingPlay] = useState(false);
-  const [isEditingOther, setIsEditingOther] = useState(false);
-  const [selectedBudgetId, setSelectedBudgetId] = useState(null);
+  const [apparel, setApparel] = useState(0);
+  const [housing, setHousing] = useState(0);
+  const [educate, setEducate] = useState(0);
+  const [savings, setSavings] = useState(0);
 
-  const [isEditingName, setIsEditingName] = useState(false);
-  const [isEditingGender, setIsEditingGender] = useState(false);
-  const [isEditingBirthday, setIsEditingBirthday] = useState(false);
-  const [isEditingEmail, setIsEditingEmail] = useState(false);
-  const [isEditingPassword, setIsEditingPassword] = useState(false);
+  const [selectedBudgetId, setSelectedBudgetId] = useState(null);
 
   const [username, setUsername] = useState('');
   const [gender, setGender] = useState('');
@@ -54,11 +58,11 @@ export const BudgetTrackerProvider = ({ children }) => {
   const [userData, setUserData] = useState(null);
   const [user, setUser] = useState({});
 
-
-
   return (
     <BudgetTrackerContext.Provider
       value={{
+
+        uid, setUid,
         user, setUser,
         userData, setUserData,
         showLogin, setShowLogin,
@@ -69,40 +73,45 @@ export const BudgetTrackerProvider = ({ children }) => {
         email, setEmail,
         password, setPassword,
 
-        isEditingName, setIsEditingName,
-        isEditingGender, setIsEditingGender,
-        isEditingBirthday, setIsEditingBirthday,
-        isEditingEmail, setIsEditingEmail,
-        isEditingPassword, setIsEditingPassword,
-
         showForm, setShowForm,
+        showEditForm, setShowEditForm,
         showLoginForm, setShowLoginForm,
+        
         expenses, setExpenses,
         amount, setAmount,
         description, setDescription,
         category, setCategory,
         date, setDate,
         costs, setCosts,
+        
         budget, setBudget,
         allocatedBudget, setAllocatedBudget,
         bcategory, setbCategory,
+        
         food, setFood,
         traffic, setTraffic,
         play, setPlay,
         other, setOther,
-        isEditingFood, setIsEditingFood,
-        isEditingTraffic, setIsEditingTraffic,
-        isEditingPlay, setIsEditingPlay,
-        isEditingOther, setIsEditingOther,
+        
         selectedBudgetId, setSelectedBudgetId,
 
         totalIncome, setTotalIncome,
         totalExpense, setTotalExpense,
+        
         costFood, setCostFood,
         costTraffic, setCostTraffic,
         costPlay, setCostPlay,
-        costOther, setCostOther
-        
+        costOther, setCostOther,
+
+        costApparel, setCostApparel,
+        costHousing, setCostHousing,
+        costEducate, setCostEducate,
+        costSavings, setCostSavings,
+
+        apparel, setApparel,
+        housing, setHousing,
+        educate, setEducate,
+        savings, setSavings,
       }}
     >
       {children}

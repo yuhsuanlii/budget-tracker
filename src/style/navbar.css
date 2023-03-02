@@ -6,7 +6,8 @@ body {
     margin: 0px;
     /* background-color: #fffdfa; */
 	background-color: #EFE8E2;
-	font-family: 'Raleway', sans-serif;
+	/* font-family: 'Raleway', sans-serif; */
+	font-family: FakePearl-Regular;
 }
 
 
@@ -16,7 +17,7 @@ body {
 
 :root {
   font-size: 16px;
-  font-family: 'Open Sans', sans-serif;
+  /* font-family: 'Open Sans', sans-serif; */
   --text-primary: #b6b6b6;
   --text-secondary: #ececec;
 	--fa-fill: #A22C29;

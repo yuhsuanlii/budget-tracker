@@ -29,12 +29,6 @@ const UserPage = () => {
         email, setEmail,
         password, setPassword,
 
-        isEditingName, setIsEditingName,
-        isEditingGender, setIsEditingGender,
-        isEditingBirthday, setIsEditingBirthday,
-        isEditingEmail, setIsEditingEmail,
-        isEditingPassword, setIsEditingPassword,
-
         showForm, setShowForm,
         expenses, setExpenses,
         amount, setAmount,
@@ -49,10 +43,7 @@ const UserPage = () => {
         traffic, setTraffic,
         play, setPlay,
         other, setOther,
-        isEditingFood, setIsEditingFood,
-        isEditingTraffic, setIsEditingTraffic,
-        isEditingPlay, setIsEditingPlay,
-        isEditingOther, setIsEditingOther,
+
         selectedBudgetId, setSelectedBudgetId,
 
         totalIncome, setTotalIncome,
@@ -61,6 +52,10 @@ const UserPage = () => {
         costTraffic, setCostTraffic,
         costPlay, setCostPlay,
         costOther, setCostOther } = useBudgetTracker();
+
+    const [isEditingName, setIsEditingName] = useState(false);
+    const [isEditingGender, setIsEditingGender] = useState(false);
+    const [isEditingBirthday, setIsEditingBirthday] = useState(false);
 
     const [notice, setNotice] = useState("");
 

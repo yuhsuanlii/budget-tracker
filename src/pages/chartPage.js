@@ -90,22 +90,22 @@ const ChartPage = () => {
                 <div></div>
                 <div className="kb2">
                     <span className="kmonth2">
-                        <BsCaretLeftFill className="preMonth" size={30} onClick={handlePrevMonth} />
+                        {/* <BsCaretLeftFill className="preMonth" size={30} onClick={handlePrevMonth} /> */}
                         &nbsp;{date.substring(0, 7)}&nbsp;
-                        <BsCaretRightFill className="nextMonth" size={30} onClick={handleNextMonth} />
+                        {/* <BsCaretRightFill className="nextMonth" size={30} onClick={handleNextMonth} /> */}
                     </span>
                     <div className="monthItem">
                         <div className="monthIncome">
                             <div>總收入</div>
-                            <div>{totalIncome}</div>
+                            <div>{localStorage.getItem("totalIncome")}</div>
                         </div>
                         <div className="monthExpense">
                             <div>總支出</div>
-                            <div>{totalExpense}</div>
+                            <div>{localStorage.getItem("totalAmount")}</div>
                         </div>
                         <div className="monthTotal">
                             <div>月結餘</div>
-                            <div>{totalIncome - totalExpense}</div>
+                            <div>{localStorage.getItem("totalIncome") - localStorage.getItem("totalAmount")}</div>
                         </div>
                     </div>
                 </div>

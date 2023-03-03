@@ -22,6 +22,8 @@
 
 .kbtn {
     position: relative;
+    font-family: FakePearl-Regular;
+    letter-spacing: 2px;
     float: right;
     color: #FFFFFF;
     background-color: #AA5656;

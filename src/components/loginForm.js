@@ -175,9 +175,10 @@ const LoginForm = () => {
             setUser(currentUser);
             if (currentUser) {
                 setLoginNotice("登入成功")
-                console.log(currentUser);
+                // console.log(currentUser);
                 setLoggedIn(true);
                 setShowLoginForm(false);
+                // window.location.href = '/keeper';
             } else {
                 console.log(currentUser);
                 setLoggedIn(false);
@@ -222,7 +223,7 @@ const LoginForm = () => {
                 console.log(user.user);
                 console.log(userData);
                 setSignupNotice("註冊成功");
-                window.location.href = '/user';
+                window.location.href = '/keeper';
             } catch (error) {
                 setSignupNotice(error.message.split('/')[1].split(')')[0]);
                 console.log(error.message);
@@ -245,7 +246,7 @@ const LoginForm = () => {
                 console.log(user);
                 console.log(signupUsername, signupGender, signupBirthday);
                 setLoginNotice("登入成功")
-                window.location.href = '/user';
+                window.location.href = '/keeper';
             } catch (error) {
                 setLoginNotice(error.message.split('/')[1].split(')')[0]);
                 console.log(error.message);
@@ -291,14 +292,14 @@ const LoginForm = () => {
                     {loggedIn ? (
                         // 如果用戶已經登入
                         <>
-                            <button className="kbtn" onClick={logout}>
+                            <button className="lbtn" onClick={logout}>
                                 登出系統
                             </button>
                         </>
                     ) : (
                         // 如果用戶還沒有登入，渲染帶有按鈕的頁面
                         <>
-                            <button className="kbtn" onClick={() => setShowLoginForm(!showLoginForm)}>
+                            <button className="lbtn" onClick={() => setShowLoginForm(!showLoginForm)}>
                                 {showLoginForm ? '關閉介面' : '點此登入'}
                             </button>
                         </>

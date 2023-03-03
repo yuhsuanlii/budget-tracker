@@ -91,7 +91,7 @@ const ChartPage = () => {
                 <div className="kb2">
                     <span className="kmonth2">
                         {/* <BsCaretLeftFill className="preMonth" size={30} onClick={handlePrevMonth} /> */}
-                        &nbsp;{date.substring(0, 7)}&nbsp;
+                        &nbsp;{(localStorage.getItem('firstDay')).substring(0, 7)}&nbsp;
                         {/* <BsCaretRightFill className="nextMonth" size={30} onClick={handleNextMonth} /> */}
                     </span>
                     <div className="monthItem">
@@ -101,11 +101,11 @@ const ChartPage = () => {
                         </div>
                         <div className="monthExpense">
                             <div>總支出</div>
-                            <div>{localStorage.getItem("totalAmount")}</div>
+                            <div>{localStorage.getItem("totalExpense")}</div>
                         </div>
                         <div className="monthTotal">
                             <div>月結餘</div>
-                            <div>{localStorage.getItem("totalIncome") - localStorage.getItem("totalAmount")}</div>
+                            <div>{localStorage.getItem("totalIncome") - localStorage.getItem("totalExpense")}</div>
                         </div>
                     </div>
                 </div>

@@ -253,7 +253,6 @@ input[type=button]:hover {
     font-size: 25px;
     font-weight: 700;
     line-height: 40px;
-    text-align: center;
     border-radius: 50%;
     border-top: none;
     border-left: none;
@@ -280,9 +279,13 @@ input[type=button]:hover {
     /* margin-right: 10px; */
     /* background-color: #f7f4f4; */
     /* background-color: #EFE8E2; */
-    background-color: rgb(249, 240, 228);
-    border-right: 3px solid #F1DBBF;
-    border-bottom: 3px solid #F1DBBF;
+    /* background-color: rgb(249, 240, 228); */
+    /* border-right: 3px solid #F1DBBF;
+    border-bottom: 3px solid #F1DBBF; */
+    color: #FFF;
+    background-color: #cdac78;
+    border-right: 3px solid #b89a6b;
+    border-bottom: 3px solid #b89a6b;
     border-radius: 50%;
     width: 38px;
     height: 38px;
@@ -359,13 +362,7 @@ input[type=button]:hover {
         left: 23%;
     }
 
-    .date {
-        width: 35px;
-        height: 35px;
-        background-color: rgb(249, 240, 228);
-        border-right: 3px solid #F1DBBF;
-        border-bottom: 3px solid #F1DBBF;
-    }
+
 
     .listEdit,
     .listDelete {
@@ -443,6 +440,16 @@ input[type=button]:hover {
 
     .form {
         top: 150px;
+    }
+
+    .list,
+    .category {
+        font-size: 18px;
+    }
+
+    .date {
+        width: 33px;
+        height: 33px;
     }
 }
 

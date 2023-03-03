@@ -5,7 +5,6 @@ import { BsCaretRightFill, BsCaretLeftFill } from "react-icons/bs";
 import { db } from '../firebase';
 import { addDoc, collection } from "firebase/firestore";
 import { doc, updateDoc, getDoc, setDoc } from 'firebase/firestore';
-import { startOfMonth, endOfMonth } from 'date-fns';
 import { onSnapshot, where, query, deleteDoc, getDocs } from "firebase/firestore";
 
 
@@ -58,7 +57,6 @@ const KeeperForm = () => {
         costPlay, setCostPlay,
         costOther, setCostOther } = useBudgetTracker();
 
-
     const formatDate = (date) => {
         const year = date.getFullYear();
         const month = (date.getMonth() + 1).toString().padStart(2, '0');
@@ -67,13 +65,13 @@ const KeeperForm = () => {
     }
 
     const [firstDay, setFirstDay] = useState(() => {
-        const now = new Date();
+        const now = new Date(date);
         const firstDay = new Date(now.getFullYear(), now.getMonth(), 1);
         return formatDate(firstDay);
     });
 
     const [lastDay, setLastDay] = useState(() => {
-        const now = new Date();
+        const now = new Date(date);
         const lastDay = new Date(now.getFullYear(), now.getMonth() + 1, 0);
         return formatDate(lastDay);
     });
@@ -106,8 +104,6 @@ const KeeperForm = () => {
         // console.log(formatDate(firstDay),formatDate(lastDay))
         return formatDate(firstDay), formatDate(lastDay);
     };
-
-
 
     // function handleSubmit(event) {
     //     event.preventDefault();
@@ -183,11 +179,13 @@ const KeeperForm = () => {
         localStorage.setItem("firstDay", firstDay);
         localStorage.setItem("lastDay", lastDay);
 
+        localStorage.getItem('firstDay')
+
         const q = query(
             collection(db, 'keeper'),
             where('uid', '==', localStorage.getItem("uid")),
-            where('date', '>=', firstDay),
-            where('date', '<=', lastDay),
+            where('date', '>=', localStorage.getItem('firstDay')),
+            where('date', '<=', localStorage.getItem('lastDay')),
         );
 
         // const unsubscribe = 
@@ -207,16 +205,72 @@ const KeeperForm = () => {
         // setTotalIncome(totalIncome);
 
         // return unsubscribe;
-
-
-
+        setDate(date);
 
     }, [(localStorage.getItem("uid")), date, firstDay, lastDay]);
+
+
+    useEffect(() => {
+        const firstDay = localStorage.getItem('firstDay');
+        const uid = localStorage.getItem('uid');
+
+        if (firstDay && uid) {
+            const docId = firstDay + uid;
+            const totalRef = doc(db, "total", docId);
+            const data = {
+                totalExpense: 0,
+                totalIncome: 0,
+                costFood: 0,
+                costTraffic: 0, 
+                costPlay: 0,
+                costOther: 0,
+                costApparel: 0,
+                costHousing: 0, 
+                costEducate: 0, 
+                costSavings: 0,
+                earnSalary: 0,
+                earnStock: 0,
+                earnGift: 0,
+                earnOther: 0
+            };
+
+            getDoc(totalRef)
+                .then((totalDocSnapshot) => {
+                    if (totalDocSnapshot.exists()) {
+                        console.log("Document exists with data:", totalDocSnapshot.data());
+                        setTotalExpense(totalDocSnapshot.data().totalExpense);
+                        setTotalIncome(totalDocSnapshot.data().totalIncome);
+                        setCostFood(totalDocSnapshot.data().costFood);
+                    } else {
+                        setDoc(totalRef, data)
+                            .then(() => console.log("Document created successfully!"))
+                            .catch((error) => console.error("Error creating document: ", error));
+                    }
+                })
+                .catch((error) => {
+                    console.error("Error getting document:", error);
+                });
+        }
+    }, [(localStorage.getItem("uid")), date, firstDay, lastDay]);
+
+
+    const handleDayChange = async (event) => {
+        const date1 = new Date(date);
+        const firstDay = new Date(date1.getFullYear(), date1.getMonth(), 1);
+        const lastDay = new Date(date1.getFullYear(), date1.getMonth() + 1, 0);
+
+        setFirstDay(formatDate(firstDay));
+        setLastDay(formatDate(lastDay))
+
+        localStorage.setItem("firstDay", firstDay);
+        localStorage.setItem("lastDay", lastDay);
+
+        return setDate(event.target.value);
+    }
 
     const handleSubmit = async (event) => {
 
         event.preventDefault();
-
         if (!amount) {
             // 使用者輸入欄不能為空
             alert("請輸入金額");
@@ -250,69 +304,58 @@ const KeeperForm = () => {
         await addDoc(collectionRef, payload);
         // console.log(docRef.id);
 
-        console.log(date);
+
+        // 取得 total 文件的 docRef
+        // const totalDocId = localStorage.getItem("firstDay") + localStorage.getItem("uid");
+        // const totalDocRef = doc(db, "total", totalDocId);
+
+        // // 取得原本的 total 文件資料
+        // const totalDocSnapshot = await getDoc(totalDocRef);
+        // let totalData;
+        // if (totalDocSnapshot.exists()) {
+        //     totalData = totalDocSnapshot.data();
+        // } else {
+        //     // 如果 total 文件不存在，則新增一個
+        //     totalData = {
+        //         totalExpense: 0,
+        //         totalIncome: 0,
+        //     };
+        //     await setDoc(totalDocRef, totalData);
+        // }
+
+        // // 更新 total 文件
+        // if (category.type === '支出') {
+        //     totalData.totalExpense += Number(amount);
+        // } else {
+        //     totalData.totalIncome += Number(amount);
+        // }
+        // await updateDoc(totalDocRef, totalData);
+
+        // original code
+        
+        // const docId = localStorage.getItem("firstDay") + localStorage.getItem("uid")
+        // const totalRef = doc(db, "total", docId);
+        // if(category.type === "支出"){
+        //     const payloadTotal = {
+        //         totalExpense: amount
+        //     }
+        //     await updateDoc(totalRef, payloadTotal);
+        // }else if(category.type === "收入"){
+        //     const payloadTotal = {
+        //         totalIncome: amount
+        //     }
+        //     await updateDoc(totalRef, payloadTotal);
+        // }
 
         const year = date.split("-")[0];
         const month = date.split("-")[1];
         const firstDay = new Date(year, month - 1, 1);
         const lastDay = new Date(year, month, 0);
 
-        // console.log(formatDate(firstDay),formatDate(lastDay));
-
-
-
-
-
-        // if (category.type === "收入") {
-        //     const totalIncomeDocRef = doc(db, "totalIncome", localStorage.getItem("uid"));
-        //     const totalIncomeDocSnap = await getDoc(totalIncomeDocRef);
-
-        //     if (totalIncomeDocSnap.exists()) {
-
-        //         const newTotalIncome = totalIncomeDocSnap.data().value + amount;
-
-        //         const docRef = doc(db, "totalIncome", localStorage.getItem("uid"));
-        //         const payload = {
-
-        //            value: newTotalIncome
-        //         }
-        //         await setDoc(docRef, payload);
-
-        //         setTotalIncome(newTotalIncome);
-        //     }
-        // }
-
-        // 獲取該月份的所有數據
-
-        // const querySnapshot = await getDocs(
-        //     query(collectionRef, where("uid", "==", localStorage.getItem("uid")),
-        //     where('date', '>=', firstDay),
-        //     where('date', '<=', lastDay))
-        // );
-        // const data = querySnapshot.docs.map(doc => doc.data());
-
-        // // // 計算數據的總和
-        // const totalAmount = data.reduce((sum, item) => sum + item.amount, 0);
-
-        // // // 將總和顯示在畫面上
-        // alert(`本月總支出為 ${totalAmount}`);
-
-        // const q = query(
-        //     collection(db, 'keeper'),
-        //     where('uid', '==', localStorage.getItem("uid")),
-        //     where('date', '>=', firstDay),
-        //     where('date', '<=', lastDay)
-        // );
-
-        // onSnapshot(q, (snapshot) => {
-        //     setExpenses(snapshot.docs.map(doc => ({ ...doc.data(), id: doc.id })));
-        // });
-
         setAmount('');
         setDescription('');
         setCategory({ type: '支出', subType: '' });
         setShowForm(false);
-
         setFirstDay(formatDate(firstDay));
         setLastDay(formatDate(lastDay));
     }
@@ -334,6 +377,7 @@ const KeeperForm = () => {
                     <span className="kmonth">
                         <BsCaretLeftFill className="preMonth" size={30} onClick={handlePrevMonth} />
                         &nbsp;{date.substring(0, 7)}&nbsp;
+                        {/* &nbsp;{(localStorage.getItem('firstDay')).substring(0, 7)}&nbsp; */}
                         <BsCaretRightFill className="nextMonth" size={30} onClick={handleNextMonth} />
                     </span>
                     {/* <button className="kbtn" onClick={() => setShowForm(!showForm)}> */}
@@ -352,7 +396,7 @@ const KeeperForm = () => {
                                         type="date"
                                         value={date}
                                         min="2020-01-01"
-                                        onChange={event => setDate(event.target.value)} />
+                                        onChange={handleDayChange} />
                                     <br />
                                     <select className="formCat" value={category.type} onChange={event => setCategory({ type: event.target.value, subType: category.subType })}>
                                         <option value="支出">支出</option>

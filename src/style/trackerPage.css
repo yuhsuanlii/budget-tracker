@@ -16,6 +16,8 @@
 }
 
 .budget{
+    font-family: FakePearl-Regular;
+    letter-spacing: 2px;
     float: right;
     color: #FFFFFF;
     background-color: #AA5656;
@@ -147,6 +149,9 @@ input[type=number]::-webkit-inner-spin-button {
     background-color: #698269;
     border-radius: 50%;
     margin-left: 5px;
+    width: 26px;
+    height: 26px;
+    text-align: center;
 }
 
 .editicon{

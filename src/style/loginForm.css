@@ -15,6 +15,22 @@
     letter-spacing: 3px;
 }
 
+.lbtn {
+    font-family: FakePearl-Regular;
+    letter-spacing: 2px;
+    position: relative;
+    float: right;
+    color: #FFFFFF;
+    background-color: #AA5656;
+    width: 200px;
+    height: 50px;
+    font-size: 20px;
+    font-weight: 700;
+    border-radius: 5px;
+    border: none;
+    z-index: 10;
+}
+
 .kform2 {
     /* background-color: #ede1d6; */
     background-color: #dbb77f;

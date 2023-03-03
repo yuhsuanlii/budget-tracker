@@ -20,6 +20,7 @@
     grid-template: 100%;
     text-align: center;
     padding: 3px;
+    letter-spacing: 1px;
 }
 
 .monthIncome {

@@ -12,7 +12,6 @@ import { useEffect, useState } from "react";
 import { db } from '../firebase';
 import { addDoc, collection } from "firebase/firestore";
 import { doc, updateDoc, getDoc, setDoc } from 'firebase/firestore';
-import { startOfMonth, endOfMonth } from 'date-fns';
 import { onSnapshot, where, query, deleteDoc, getDocs } from "firebase/firestore";
 
 
@@ -55,7 +54,7 @@ const TrackerPage = () => {
         traffic, setTraffic,
         play, setPlay,
         other, setOther,
-      
+
         selectedBudgetId, setSelectedBudgetId,
 
         totalIncome, setTotalIncome,
@@ -87,44 +86,49 @@ const TrackerPage = () => {
     }, []);
 
     useEffect(() => {
-        const docId = localStorage.getItem('firstDay') + localStorage.getItem('uid');
-        const budgetRef = doc(db, "budget", docId);
-        const data = {
-            food: 0,
-            traffic: 0,
-            play: 0,
-            other: 0,
-            apparel: 0,
-            housing: 0,
-            educate: 0,
-            savings: 0
-        };
+        const firstDay = localStorage.getItem('firstDay');
+        const uid = localStorage.getItem('uid');
 
-        getDoc(budgetRef)
-            .then((docSnapshot) => {
-                if (docSnapshot.exists()) {
-                    console.log("Document exists with data:", docSnapshot.data());
-                    setFood(docSnapshot.data().food);
-                    setTraffic(docSnapshot.data().traffic);
-                    setPlay(docSnapshot.data().play);
-                    setOther(docSnapshot.data().other)
-                    setApparel(docSnapshot.data().apparel);
-                    setHousing(docSnapshot.data().housing);
-                    setEducate(docSnapshot.data().educate);
-                    setSavings(docSnapshot.data().savings);
-                } else {
-                    setDoc(budgetRef, data)
-                        .then(() => console.log("Document created successfully!"))
-                        .catch((error) => console.error("Error creating document: ", error));
-                }
-            })
-            .catch((error) => {
-                console.error("Error getting document:", error);
-            });
+        if (firstDay && uid) {
+            const docId = firstDay + uid;
+            const budgetRef = doc(db, "budget", docId);
+            const data = {
+                food: 0,
+                traffic: 0,
+                play: 0,
+                other: 0,
+                apparel: 0,
+                housing: 0,
+                educate: 0,
+                savings: 0
+            };
+
+            getDoc(budgetRef)
+                .then((docSnapshot) => {
+                    if (docSnapshot.exists()) {
+                        console.log("Document exists with data:", docSnapshot.data());
+                        setFood(docSnapshot.data().food);
+                        setTraffic(docSnapshot.data().traffic);
+                        setPlay(docSnapshot.data().play);
+                        setOther(docSnapshot.data().other)
+                        setApparel(docSnapshot.data().apparel);
+                        setHousing(docSnapshot.data().housing);
+                        setEducate(docSnapshot.data().educate);
+                        setSavings(docSnapshot.data().savings);
+                    } else {
+                        setDoc(budgetRef, data)
+                            .then(() => console.log("Document created successfully!"))
+                            .catch((error) => console.error("Error creating document: ", error));
+                    }
+                })
+                .catch((error) => {
+                    console.error("Error getting document:", error);
+                });
+        }
     }, []);
 
     const handleUpdateFood = async () => {
-        if (!food) {
+        if (isNaN(food) || food === "") {
             alert("請輸入預算");
             return;
         }
@@ -137,7 +141,7 @@ const TrackerPage = () => {
         setIsEditingFood(null);
     }
     const handleUpdateTraffic = async () => {
-        if (!traffic) {
+        if (isNaN(traffic) || traffic === "") {
             alert("請輸入預算");
             return;
         }
@@ -150,7 +154,7 @@ const TrackerPage = () => {
         setIsEditingTraffic(null);
     }
     const handleUpdateOther = async () => {
-        if (!other) {
+        if (isNaN(other) || other === "") {
             alert("請輸入預算");
             return;
         }
@@ -163,7 +167,7 @@ const TrackerPage = () => {
         setIsEditingOther(null);
     }
     const handleUpdatePlay = async () => {
-        if (!play) {
+        if (isNaN(play) || play === "") {
             alert("請輸入預算");
             return;
         }
@@ -176,7 +180,7 @@ const TrackerPage = () => {
         setIsEditingPlay(null);
     }
     const handleUpdateApparel = async () => {
-        if (!apparel) {
+        if (isNaN(apparel) || apparel === "") {
             alert("請輸入預算");
             return;
         }
@@ -189,7 +193,7 @@ const TrackerPage = () => {
         setIsEditingApparel(null);
     }
     const handleUpdateHousing = async () => {
-        if (!housing) {
+        if (isNaN(housing) || housing === "") {
             alert("請輸入預算");
             return;
         }
@@ -202,7 +206,7 @@ const TrackerPage = () => {
         setIsEditingHousing(null);
     }
     const handleUpdateEducate = async () => {
-        if (!educate) {
+        if (isNaN(educate) || educate === "") {
             alert("請輸入預算");
             return;
         }
@@ -215,7 +219,7 @@ const TrackerPage = () => {
         setIsEditingEducate(null);
     }
     const handleUpdateSavings = async () => {
-        if (!savings) {
+        if (isNaN(savings) || savings === "") {
             alert("請輸入預算");
             return;
         }
@@ -238,7 +242,7 @@ const TrackerPage = () => {
                 <div className="kb">
                     <span className="kmonth2">
                         {/* <BsCaretLeftFill className="preMonth" size={30} onClick={handlePrevMonth} /> */}
-                        &nbsp;{date.substring(0, 7)}&nbsp;
+                        &nbsp;{(localStorage.getItem('firstDay')).substring(0, 7)}&nbsp;
                         {/* <BsCaretRightFill className="nextMonth" size={30} onClick={handleNextMonth} /> */}
                     </span>
                     <div className="budget">待分配預算&nbsp;&nbsp;&nbsp;
@@ -316,7 +320,8 @@ const TrackerPage = () => {
                                                     type="number"
                                                     className="binput"
                                                     value={traffic}
-                                                    onChange={event => setTraffic(event.target.value)}
+                                                    required
+                                                    onChange={event => setTraffic(parseInt(event.target.value))}
                                                 />
                                                 <button className="tickicon" onClick={handleUpdateTraffic}>✔</button>
                                             </>
@@ -363,7 +368,7 @@ const TrackerPage = () => {
                                                     type="number"
                                                     className="binput"
                                                     value={play}
-                                                    onChange={event => setPlay(event.target.value)}
+                                                    onChange={event => setPlay(parseInt(event.target.value))}
                                                 />
                                                 <button className="tickicon" onClick={handleUpdatePlay}>✔</button>
                                             </>
@@ -410,7 +415,7 @@ const TrackerPage = () => {
                                                     type="number"
                                                     className="binput"
                                                     value={other}
-                                                    onChange={event => setOther(event.target.value)}
+                                                    onChange={event => setOther(parseInt(event.target.value))}
                                                 />
                                                 <button className="tickicon" onClick={handleUpdateOther}>✔</button>
                                             </>
@@ -440,7 +445,6 @@ const TrackerPage = () => {
                             </div>
                         </div>
                     </div>
-
                 </div>
                 <div></div>
             </div>

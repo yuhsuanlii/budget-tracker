@@ -13,8 +13,8 @@ import { auth } from "../firebase";
 const Navbar = () => {
 
     const logout = async () => {
-        await signOut(auth);
         localStorage.clear();
+        await signOut(auth);
         window.location.href = '/';
     }
 
@@ -23,7 +23,6 @@ const Navbar = () => {
             <div>
                 <nav class="navbar">
                     <ul class="navbar-nav">
-
                         <li class="logo">
                             <label class="nav-link">
                                 <Link to="/" className="link">

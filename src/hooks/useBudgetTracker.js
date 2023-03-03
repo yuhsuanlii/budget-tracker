@@ -20,6 +20,11 @@ export const BudgetTrackerProvider = ({ children }) => {
   const [costHousing, setCostHousing] = useState(0);
   const [costEducate, setCostEducate] = useState(0);
   const [costSavings, setCostSavings] = useState(0);
+
+  const [earnSalary, setEarnSalary] = useState(0);
+  const [earnStock, setEarnStock] = useState(0);
+  const [earnGift, setEarnGift] = useState(0);
+  const [earnOther, setEarnOther] = useState(0);
  
   const [expenses, setExpenses] = useState([]);
   const [amount, setAmount] = useState('');
@@ -29,6 +34,7 @@ export const BudgetTrackerProvider = ({ children }) => {
   const [showEditForm, setShowEditForm] = useState(false);
   const [showLoginForm, setShowLoginForm] = useState(false);
   const [date, setDate] = useState(new Date().toISOString().substring(0, 10));
+  // const [date, setDate] = useState('');
 
   const [costs, setCosts] = useState([]); // 設定預算的陣列
   const [budget, setBudget] = useState(0); // 設定預算金額
@@ -112,6 +118,11 @@ export const BudgetTrackerProvider = ({ children }) => {
         housing, setHousing,
         educate, setEducate,
         savings, setSavings,
+
+        earnSalary, setEarnSalary,
+        earnStock, setEarnStock,
+        earnGift, setEarnGift,
+        earnOther, setEarnOther
       }}
     >
       {children}

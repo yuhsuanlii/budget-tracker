@@ -113,6 +113,9 @@
     background-color: #698269;
     border-radius: 50%;
     float: right;
+    width: 26px;
+    height: 26px;
+    text-align: center;
 }
 
 .btntick:hover{

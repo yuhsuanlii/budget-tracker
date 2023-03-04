@@ -1,0 +1,430 @@
+@keyframes wave {
+    0% { transform: translateY(0); }
+    /* 33% { transform: translateY(-5px); } */
+    50% { transform: translateY(-3px); }
+    /* 66% { transform: translateY(5px); } */
+    100% { transform: translateY(0); }
+  }
+
+.projectName {
+    font-family: 'Pacifico', cursive;
+    float: left;
+    font-size: 36px;
+    font-weight: 600;
+    color: #698269;
+    letter-spacing: 3px;
+}
+
+.lbtn {
+    font-family: FakePearl-Regular;
+    letter-spacing: 2px;
+    position: relative;
+    float: right;
+    color: #FFFFFF;
+    background-color: #AA5656;
+    width: 200px;
+    height: 50px;
+    font-size: 20px;
+    font-weight: 700;
+    border-radius: 5px;
+    border: none;
+    z-index: 10;
+}
+
+.kform2 {
+    /* background-color: #ede1d6; */
+    background-color: #dbb77f;
+    width: 300px;
+    margin: auto;
+    text-align: center;
+    position: absolute;
+    left: 42%;
+    top: 160px;
+    border-radius: 0px 30px 30px 30px;
+    -moz-box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    z-index: 10;
+    animation: slideInFromTop 0.3s;
+    border-bottom: #ede1d6 5px solid;
+    border-right: #ede1d6 5px solid;
+}
+
+.kform3 {
+    background-color: #ede1d6;
+    /* background-color: #dbb77f; */
+    width: 300px;
+    margin: auto;
+    text-align: center;
+    position: absolute;
+    left: 42%;
+    top: 160px;
+    border-radius: 0px 30px 30px 30px;
+    -moz-box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    z-index: 10;
+    animation: slideInFromTop 0.3s;
+    border-bottom: #dbb77f 5px solid;
+    border-right: #dbb77f 5px solid;
+    padding-bottom: 10px;
+}
+
+.login {
+    width: 135px;
+    height: 50px;
+    background-color: #dbb77f;
+    position: absolute;
+    top: -50px;
+    border-radius: 30px 30px 0px 0px;
+    border-right: #ede1d6 5px solid;
+}
+
+.loginbtn {
+    font-family: FakePearl-Regular;
+    border: none;
+    color: #FFF;
+    background-color: #dbb77f;
+    font-size: 18px;
+    font-weight: 700;
+    margin-top: 10px;
+    letter-spacing: 2px;
+    border-radius: 100px;
+    text-align: center;
+    width: 100px;
+    height: 30px;
+}
+
+.signup {
+    width: 135px;
+    height: 50px;
+    background-color: #ede1d6;
+    position: absolute;
+    top: -50px;
+    margin-left: 135px;
+    border-radius: 30px 30px 0px 0px;
+    border-right: #dbb77f 5px solid;
+}
+
+.signupbtn {
+    font-family: FakePearl-Regular;
+    border: none;
+    color: #666;
+    background-color: #ede1d6;
+    font-size: 18px;
+    font-weight: 700;
+    margin-top: 10px;
+    letter-spacing: 2px;
+    border-radius: 100px;
+    text-align: center;
+    width: 100px;
+    height: 30px;
+}
+
+.loginbtn:hover,
+.signupbtn:hover {
+    animation: wave 0.8s ease-in-out infinite;
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+.signupLayout{
+    display: grid;
+    grid-template-columns: 5% 55% 25% 10%;
+    gap: 10px;
+}
+
+.signupUsername{
+    font-family: FakePearl-Regular;
+    font-size: 16px;
+    border-style: none;
+    border-radius: 5px;
+    padding: 0px 20px 0px;
+    color: rgb(98, 98, 98);
+    letter-spacing: 1px;
+    height: 40px;
+}
+
+.signupGender{
+    font-family: FakePearl-Regular;
+    font-size: 16px;
+    border-style: none;
+    border-radius: 5px;
+    padding: 10px;
+    color: rgb(98, 98, 98);
+    height: 40px;
+    margin-top: 30px;
+    background-color: #FFF;
+}
+
+.signupBirthday{
+    height: 40px;
+    font-family: FakePearl-Regular;
+    width: 230px;
+    padding: 0px 10px;
+    font-size: 16px;
+    border-style: none;
+    border-radius: 5px;
+    color: rgb(98, 98, 98);
+    letter-spacing: 1px;
+    background-color: #FFF;
+}
+
+
+.pw{
+    display: grid;
+    grid-template-columns: 8% 60% 20% 8% ;
+}
+
+.loginPassword{
+    font-family: FakePearl-Regular;
+    /* width: 210px; */
+    font-size: 16px;
+    border-style: none;
+    border-radius: 5px;
+    padding: 10px 20px 10px;
+    color: rgb(98, 98, 98);
+    letter-spacing: 1px;
+    background-color: #FFF;
+    width: 150px;
+}
+
+.rpbtn{
+    font-family: FakePearl-Regular;
+    margin-left: 20px;
+    margin-top: 20px;
+    height: 40px;
+    width: 50px;
+    border: none;
+    border-radius: 5px;
+    color: #FFF;
+    background-color: #AA5656;
+    font-weight: 700;
+}
+
+.loginEmail,
+.signupEmail,
+.signupPassword{
+    font-family: FakePearl-Regular;
+    width: 210px;
+    font-size: 16px;
+    border-style: none;
+    border-radius: 5px;
+    padding: 10px 20px 10px;
+    color: rgb(98, 98, 98);
+    letter-spacing: 1px;
+    background-color: #FFF;
+}
+
+.loginEmail,
+.signupUsername{
+    margin-top: 30px;
+}
+
+.loginPassword,
+.signupBirthday,
+.signupEmail,
+.signupPassword{
+    margin-top: 20px;
+}
+
+.loginEmail:focus,
+.loginPassword:focus,
+.signupUsername:focus,
+.signupGender:focus,
+.signupBirthday:focus,
+.signupEmail:focus,
+.signupPassword:focus{
+    outline: none;
+}
+
+.loginFormBtn {
+    font-family: FakePearl-Regular;
+    color: #FFFFFF;
+    background-color: #698269;
+    width: 250px;
+    height: 40px;
+    font-size: 16px;
+    font-weight: 700;
+    border-radius: 5px;
+    border: none;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    letter-spacing: 5px;
+}
+
+.loginFormBtn:hover,
+.rpbtn:hover{
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+.notice{
+    font-family: FakePearl-Regular;
+    margin-bottom: 12px;
+    color: #AA5656;
+    font-size: 17px;
+    font-weight: 700;
+}
+
+.notice2{
+    font-family: FakePearl-Regular;
+    margin-bottom: 12px;
+    color: #AA5656;
+    font-size: 17px;
+    font-weight: 700;
+    position: relative;
+}
+
+.dashlogin{
+    width: 85%;
+    border-top: 2px dashed #ede1d6;
+    margin: auto;
+    padding-bottom: 10px;
+}
+
+.dashsignup{
+    width: 85%;
+    border-top: 2px dashed  rgb(170, 170, 170);
+    margin: auto;
+    padding-bottom: 10px;
+}
+
+.loginThird{
+    display: grid;
+    grid-template-columns: 67% 33%;
+    padding-bottom: 10px;
+}
+
+.loginWith{
+    font-family: FakePearl-Regular;
+    color: #FFF;
+    height: 40px;
+    text-align: right;
+    font-size: 16px;
+    font-weight: 700;
+    margin-right: 10px;
+    line-height: 40px;
+    letter-spacing: 1px;
+}
+
+.signupWith{
+    font-family: FakePearl-Regular;
+    color: rgb(98, 98, 98);
+    height: 40px;
+    text-align: right;
+    font-size: 16px;
+    font-weight: 700;
+    margin-right: 10px;
+    line-height: 40px;
+    letter-spacing: 1px;
+}
+
+.loginGoogle{
+    float: left;
+    background-color: #ede1d6;
+    border-radius: 100px;
+    width: 40px;
+    height: 40px;
+}
+
+.signupGoogle{
+    float: left;
+    background-color: #ffffffbf;
+    border-radius: 100px;
+    width: 40px;
+    height: 40px;
+}
+
+.loginGoogle:hover,
+.signupGoogle:hover{
+    cursor: pointer;
+    opacity: 0.8;
+    animation: wave 0.8s ease-in-out infinite;
+}
+
+.iconG{
+    padding-top: 5px;
+}
+
+
+@media only screen and (max-width: 1100px) {
+    .kform2,
+    .kform3 {
+        left: 38%;
+    }
+}
+
+@media only screen and (max-width: 1000px) {
+    .kform2,
+    .kform3 {
+        left: 36%;
+    }
+}
+
+@media only screen and (max-width: 860px) {
+
+    .kform2,
+    .kform3 {
+        left: 35%;
+    }
+}
+
+@media only screen and (max-width: 750px) {
+    .kform2,
+    .kform3 {
+        left: 33%;
+    }
+
+    .projectName{
+        font-size: 32px;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+
+    .kform2,
+    .kform3 {
+        left: 23%;
+    }
+
+}
+
+@media only screen and (max-width: 500px) {
+
+    .projectName{
+        font-size: 30px;
+    }
+
+    .kform2,
+    .kform3 {
+        left: 15%;
+    }
+
+}
+
+@media only screen and (max-width: 440px) {
+
+
+    .kform2,
+    .kform3{
+        top: 215px;
+    }
+
+   
+}
+
+@media only screen and (max-width: 400px) {
+    .kform2,
+    .kform3{
+        left: 11.5%;
+    }
+}
+
+@media only screen and (max-width: 376px) {
+
+    .kform2,
+    .kform3 {
+        left: 8.5%;
+    }
+}

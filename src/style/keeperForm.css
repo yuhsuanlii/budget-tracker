@@ -1,6 +1,6 @@
 .keeperContainer {
     display: grid;
-    grid-template-columns: 10% 82% 8%;
+    grid-template-columns: 12% 83% 5%;
     width: min(100%, 1440px);
     padding-top: 30px;
     margin: auto;
@@ -14,8 +14,16 @@
     color: #B99B6B;
 }
 
+.preMonth:hover,
+.nextMonth:hover{
+    cursor: pointer;
+    opacity: 0.8;
+}
+
 .kbtn {
     position: relative;
+    font-family: FakePearl-Regular;
+    letter-spacing: 2px;
     float: right;
     color: #FFFFFF;
     background-color: #AA5656;
@@ -25,7 +33,7 @@
     font-weight: 700;
     border-radius: 5px;
     border: none;
-    z-index: 10;
+    /* z-index: 10; */
 }
 
 .kbtn:hover {
@@ -51,7 +59,6 @@
     border-right: #dbb77f 5px solid;
 }
 
-
 @keyframes slideInFromTop {
     0% {
         transform: translateY(-100%);
@@ -73,6 +80,7 @@
     border-radius: 5px;
     padding: 10px;
     color: rgb(92, 92, 92);
+    background-color: #FFFFFF;
 }
 
 .formDate:focus,
@@ -92,12 +100,16 @@
 
 .formCat,
 .formSub {
-    width: 105px;
     margin: 5px;
 }
 
 .formCat {
     margin-right: 5px;
+    width: 85px;
+}
+
+.formSub{
+    width: 125px;
 }
 
 .formNum {
@@ -142,15 +154,31 @@
     z-index: 1;
 }
 
-@media only screen and (max-width: 900px) {
+@media only screen and (max-width: 1100px) {
     .kform {
-        left: 32%;
+        left: 38%;
+    }
+}
+
+@media only screen and (max-width: 1000px) {
+    .kform {
+        left: 36%;
+    }
+}
+
+@media only screen and (max-width: 860px) {
+    
+    .keeperContainer {
+        grid-template-columns: 15% 80% 5%;
+    }
+    .kform {
+        left: 35%;
     }
 }
 
 @media only screen and (max-width: 750px) {
     .kform {
-        left: 26%;
+        left: 33%;
     }
 }
 
@@ -160,7 +188,10 @@
     }
 
     .kform {
-        left: 20%;
+        left: 23%;
+    }
+    .kbtn{
+        width: 180px;
     }
 }
 
@@ -177,12 +208,13 @@
 @media only screen and (max-width: 440px) {
 
     .kform{
-        top: 160px;
+        top: 150px;
     }
 
     .kbtn{
         width: 230px;
-        margin-top: 20px;
+        margin-top: 15px;
+        margin-left: 6px;
     }
 }
 

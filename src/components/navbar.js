@@ -7,18 +7,27 @@ import { AiOutlineBarChart } from "react-icons/ai";
 import { IoMdPower } from "react-icons/io";
 import { HiOutlineClipboardDocumentList } from "react-icons/hi2";
 import { RxHamburgerMenu } from "react-icons/rx";
-
+import { signOut } from "firebase/auth";
+import { auth } from "../firebase";
 
 const Navbar = () => {
+
+    const logout = async () => {
+        localStorage.clear();
+        await signOut(auth);
+        window.location.href = '/';
+    }
+
     return (
         <div>
             <div>
                 <nav class="navbar">
                     <ul class="navbar-nav">
-
                         <li class="logo">
                             <label class="nav-link">
-                                <span class="link-text"><span className="username">MENU</span></span>
+                                <Link to="/" className="link">
+                                    <span class="link-text"><span className="username">MENU</span></span>
+                                </Link>
                                 {/* <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
                                     <path d="M160 416H96c-17.67 0-32-14.33-32-32V128c0-17.67 14.33-32 32-32h64c17.67 0 32-14.33 32-32S177.7 32 160 32H96C42.98 32 0 74.98 0 128v256c0 53.02 42.98 96 96 96h64c17.67 0 32-14.33 32-32S177.7 416 160 416zM502.6 233.4l-128-128c-12.51-12.51-32.76-12.49-45.25 0c-12.5 12.5-12.5 32.75 0 45.25L402.8 224H192C174.3 224 160 238.3 160 256s14.31 32 32 32h210.8l-73.38 73.38c-12.5 12.5-12.5 32.75 0 45.25s32.75 12.5 45.25 0l128-128C515.1 266.1 515.1 245.9 502.6 233.4z" />
                                 </svg> */}
@@ -26,41 +35,40 @@ const Navbar = () => {
                             </label>
                         </li>
 
-                        <Link to="/" className="link">
+                        <Link to="/user" className="link">
                             <label class="nav-link">
                                 <CgProfile size={30} />
-                                <span class="link-text">Portfolio</span>
+                                <span class="link-text">USER</span>
                             </label>
                         </Link>
 
                         <Link to="/keeper" className="link">
                             <label class="nav-link">
                                 <BiBook size={30} />
-                                <span class="link-text">Keeper</span>
+                                <span class="link-text">KEEPER</span>
                             </label>
                         </Link>
 
                         <Link to="/tracker" className="link">
                             <label class="nav-link">
                                 <HiOutlineClipboardDocumentList size={30} />
-                                <span class="link-text">Tracker</span>
+                                <span class="link-text">TRACKER</span>
                             </label>
                         </Link>
 
-                        <Link to="/" className="link">
+                        <Link to="/chart" className="link">
                             <label class="nav-link">
                                 <AiOutlineBarChart size={30} />
-                                <span class="link-text">Chart</span>
+                                <span class="link-text">CHART</span>
                             </label>
                         </Link>
 
-
-                        <Link to="/" className="link">
+                        <div className="link" onClick={logout}>
                             <label class="nav-link">
                                 <IoMdPower size={30} />
-                                <span class="link-text">Logout</span>
+                                <span class="link-text">LOGOUT</span>
                             </label>
-                        </Link>
+                        </div>
 
                     </ul>
                 </nav>

@@ -3,7 +3,7 @@
 
 .keeperContainer2 {
     display: grid;
-    grid-template-columns: 10% 83% 7%;
+    grid-template-columns: 12% 83% 5%;
     padding-top: 30px;
     /* border-bottom: black 2px solid; */
 }
@@ -16,17 +16,18 @@
 }
 
 .budget{
+    font-family: FakePearl-Regular;
     float: right;
     color: #FFFFFF;
     background-color: #AA5656;
-    width: 200px;
-    height: 40px;
+    width: 250px;
+    height: 50px;
     font-size: 20px;
     font-weight: 700;
     border-radius: 5px;
     border: none;
     text-align: center;
-    padding-top: 10px;
+    line-height: 50px;
 }
 
 .trackerContainer {
@@ -34,6 +35,7 @@
     grid-template-columns: 10% 85% 5%;
     padding-top: 50px;
     padding-bottom: 50px;
+    margin-bottom: 100px;
     /* border-bottom: black 2px solid; */
 }
 
@@ -46,14 +48,14 @@
 .trackerCard {
     background-color: #FAFAF9;
     width: min(100%, 1200px);
-    height: 180px;
+    /* height: 180px; */
     border-radius: 30px;
     margin: auto;
     -moz-box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
     -webkit-box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
     display: grid;
-    grid-template-columns: 30% 70%;
+    grid-template-columns: 25% 75%;
     margin-bottom: 50px;
     animation: fadeIn 1.5s;
 }
@@ -67,23 +69,29 @@
     }
 }
 
-.trackerPic {
-    border-right: 2px dashed #ccc;
-    /* display: grid;
-    grid-template-columns: 20% 80%; */
-    padding-top: 50px;
-    text-align: center;
+.trackerMain{
+    border-left: 2px dashed #ccc;
 }
 
-/* .tpic {
-    position: relative;
+.trackerPic {
+    
+    /* display: grid;
+    grid-template-columns: 20% 80%; */
+    text-align: center;
+    margin: auto;
+    line-height: 30px;
+}
+
+.tpic {
     justify-self: center;
-} */
+    color: #B99B6B;
+}
 
 .trackerCategory {
     font-family: 'Pacifico', cursive;
-    font-size: 40px;
+    font-size: 28px;
     color: #B99B6B;
+    /* letter-spacing: 1px; */
 }
 
 .trackerBudget {
@@ -93,10 +101,12 @@
 }
 
 .tbn {
+    font-family: FakePearl-Regular;
     margin-top: 20px;
     color: #AA5656;
     font-size: 20px;
     font-weight: 700;
+    letter-spacing: 3px;
 }
 
 
@@ -108,24 +118,24 @@
     margin-top: 20px;
     margin-bottom: 30px;
     color: #363636;
-    font-size: 24px;
+    font-size: 20px;
     text-align: center;
-}
-
-.tbmok:hover {
-    border: 5px #F1DBBF solid;
-    border-radius: 5px;
-    width: 20px;
+    word-wrap:break-word;
 }
 
 .binput {
     width: 70px;
-    height: 30px;
+    /* height: 25px; */
+    padding: 5px;
     font-size: 18px;
     border-style: none;
     text-align: center;
-    background-color: #F1DBBF;
+    background-color: #937b55;
+    opacity: 0.9;
+    color: #FFF;
     border-radius: 5px;
+    margin-right: 5px;
+    word-break: break-all;
 }
 
 .binput:focus {
@@ -140,15 +150,33 @@ input[type=number]::-webkit-inner-spin-button {
 }
 
 .tickicon {
-    background-color: #FAFAF9;
-    border-style: none;
-    font-size: 20px;
+    border: none;
+    /* background-color: #FAFAF9; */
+    font-size: 15px;
+    font-weight: 700;
+    color: #FAFAF9;
+    background-color: #698269;
+    border-radius: 50%;
+    text-align: left;
+    padding-left: 6px;
+    width: 27px;
+    height: 27px;
 }
 
-.pBar {
+
+.editicon{
+    color: #698269;
+    margin-left: 5px;
 }
 
-@media only screen and (max-width: 1155px) {
+.tickicon:hover,
+.editicon:hover{
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+
+@media only screen and (max-width: 1040px) {
     .tc {
         grid-template-columns: 100%;
         gap: 0%;
@@ -156,6 +184,11 @@ input[type=number]::-webkit-inner-spin-button {
 }
 
 @media only screen and (max-width: 860px) {
+    
+    .keeperContainer2 {
+        grid-template-columns: 15% 80% 5%;
+    }
+
     .trackerContainer {
         display: grid;
         grid-template-columns: 15% 80% 5%;
@@ -175,11 +208,13 @@ input[type=number]::-webkit-inner-spin-button {
 
     .budget{
         font-size: 18px;
-        height: 38px;
-        width: 180px;
+        width: 200px;
+    }
+    .trackerCategory{
+        font-size: 24px;
     }
     .binput{
-        width: 65px;
+        width: 60px;
     }
 }
 
@@ -191,9 +226,23 @@ input[type=number]::-webkit-inner-spin-button {
         position: relative;
         float: left;
     }
+    .trackerPic{
+        margin: auto;
+    }
+    .binput{
+        font-size: 16px;
+    }
+    .budget{
+        width: 180px;
+    }
 }
 
 @media only screen and (max-width: 440px) {
+  
+    .trackerCard{
+        grid-template-columns: 20% 80%;
+    }
+
     .binput{
         width: 45px;
     }
@@ -201,6 +250,7 @@ input[type=number]::-webkit-inner-spin-button {
         display: grid;
         grid-template-columns: 100%;
         margin: auto;
+        text-align: center;
     }
     .budget{
         margin-top: 20px;
@@ -209,6 +259,13 @@ input[type=number]::-webkit-inner-spin-button {
         width: 230px;
     }
     .trackerBudget{
-        grid-template-columns: 40% 30% 30%;
+        grid-template-columns: 34% 33% 33%;
+    }
+    .tbm{
+        font-size: 18px;
+    }
+    .trackerCategory{
+        font-size: 22px;
+        writing-mode:vertical-rl;
     }
 }

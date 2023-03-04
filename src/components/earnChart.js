@@ -61,13 +61,24 @@ const EarnChart = () => {
         earnGift, setEarnGift,
         earnOther, setEarnOther } = useBudgetTracker();
 
-    let totalEarn = earnSalary + earnStock + earnGift + earnOther;
+    const localSalary = localStorage.getItem('earn薪資');
+    const localStock = localStorage.getItem('earn獲利');
+    const localGift = localStorage.getItem('earn禮物');
+    const localEarnOther = localStorage.getItem('earn其他');
+
+    let totalEarn = (earnSalary + earnStock + earnGift + earnOther)
+        || (localSalary + localStock + localGift + localEarnOther);
     const data = {
         labels: ['薪資', '獲利', '禮物', '其他'],
         datasets: [
             {
                 label: ' $ ',
-                data: [earnSalary, earnStock, earnGift, earnOther],
+                data: [
+                    earnSalary || localSalary,
+                    earnStock || localStock,
+                    earnGift || localGift,
+                    earnOther || localEarnOther
+                ],
                 backgroundColor: ['#3C6255', '#61876E', '#A6BB8D', '#EAE7B1'],
                 hoverBackgroundColor: ['#3C6255', '#61876E', '#A6BB8D', '#EAE7B1'],
                 borderWidth: 0,

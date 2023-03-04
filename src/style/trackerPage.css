@@ -259,7 +259,7 @@ input[type=number]::-webkit-inner-spin-button {
         width: 230px;
     }
     .trackerBudget{
-        grid-template-columns: 40% 30% 30%;
+        grid-template-columns: 34% 33% 33%;
     }
     .tbm{
         font-size: 18px;

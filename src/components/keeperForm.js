@@ -4,7 +4,7 @@ import { useBudgetTracker } from '../hooks/useBudgetTracker';
 import { BsCaretRightFill, BsCaretLeftFill } from "react-icons/bs";
 import { db } from '../firebase';
 import { addDoc, collection } from "firebase/firestore";
-import { doc, updateDoc, getDoc, setDoc } from 'firebase/firestore';
+import { doc, getDoc, setDoc } from 'firebase/firestore';
 import { onSnapshot, where, query, deleteDoc, getDocs } from "firebase/firestore";
 
 
@@ -158,19 +158,6 @@ const KeeperForm = () => {
     //     setCategory({ type: '支出', subType: '' });
     //     setShowForm(false);
     // }
-
-    // useEffect(() => {
-    //     const fetchTotalIncome = async () => {
-    //         const totalIncomeDocRef = doc(db, "totalIncome", localStorage.getItem("uid"));
-    //         const totalIncomeDocSnap = await getDoc(totalIncomeDocRef);
-
-    //         if (totalIncomeDocSnap.exists()) {
-    //             setTotalIncome(totalIncomeDocSnap.data().total);
-    //         }
-    //     };
-
-    //     fetchTotalIncome();
-    // }, []);
 
     useEffect(() => {
 
@@ -368,6 +355,7 @@ const KeeperForm = () => {
         setAmount('');
         setDescription('');
     }
+    const dateTitle = date.substring(0, 7)
 
     return (
         <div>
@@ -376,7 +364,7 @@ const KeeperForm = () => {
                 <div className="kb">
                     <span className="kmonth">
                         <BsCaretLeftFill className="preMonth" size={30} onClick={handlePrevMonth} />
-                        &nbsp;{date.substring(0, 7)}&nbsp;
+                        &nbsp;{dateTitle}&nbsp;
                         {/* &nbsp;{(localStorage.getItem('firstDay')).substring(0, 7)}&nbsp; */}
                         <BsCaretRightFill className="nextMonth" size={30} onClick={handleNextMonth} />
                     </span>
@@ -433,7 +421,7 @@ const KeeperForm = () => {
                                          value={amount}
                                          placeholder='金額'
                                          minLength={1} maxLength={8}
-                                         onChange={event => setAmount(parseInt(event.target.value))}
+                                         onChange={event => setAmount(event.target.value)}
                                          required
                                     />
 

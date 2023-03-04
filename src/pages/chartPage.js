@@ -64,7 +64,7 @@ const ChartPage = () => {
             if (!currentUser) {
                 window.location.href = '/';
             } else {
-                console.log(currentUser)
+                // console.log(currentUser)
             }
         });
         return () => unsubscribe();
@@ -81,7 +81,7 @@ const ChartPage = () => {
         nextMonth.setMonth(nextMonth.getMonth() + 1);
         setDate(nextMonth.toISOString().substring(0, 10));
     };
-
+    const dateTitle = ((localStorage.getItem('firstDay')) || date).substring(0, 7)
 
     return (
         <div>
@@ -91,7 +91,7 @@ const ChartPage = () => {
                 <div className="kb2">
                     <span className="kmonth2">
                         {/* <BsCaretLeftFill className="preMonth" size={30} onClick={handlePrevMonth} /> */}
-                        &nbsp;{(localStorage.getItem('firstDay')).substring(0, 7)}&nbsp;
+                        &nbsp;{dateTitle}&nbsp;
                         {/* <BsCaretRightFill className="nextMonth" size={30} onClick={handleNextMonth} /> */}
                     </span>
                     <div className="monthItem">

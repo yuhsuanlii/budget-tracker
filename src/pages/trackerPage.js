@@ -9,16 +9,13 @@ import { MdFastfood } from "react-icons/md";
 import { GiClothes } from "react-icons/gi";
 import { FaCarSide, FaGraduationCap, FaPiggyBank, FaFolderOpen, FaHouseUser } from "react-icons/fa";
 
-
 import { FiEdit3 } from "react-icons/fi";
 import { auth } from "../firebase";
 import { onAuthStateChanged } from "firebase/auth";
 import { useEffect, useState } from "react";
 
 import { db } from '../firebase';
-import { addDoc, collection } from "firebase/firestore";
 import { doc, updateDoc, getDoc, setDoc } from 'firebase/firestore';
-import { onSnapshot, where, query, deleteDoc, getDocs } from "firebase/firestore";
 
 
 const TrackerPage = () => {
@@ -121,7 +118,7 @@ const TrackerPage = () => {
             getDoc(budgetRef)
                 .then((docSnapshot) => {
                     if (docSnapshot.exists()) {
-                        console.log("Document exists with data:", docSnapshot.data());
+                        // console.log("Document exists with data:", docSnapshot.data());
                         setFood(docSnapshot.data().food);
                         setTraffic(docSnapshot.data().traffic);
                         setPlay(docSnapshot.data().play);
@@ -256,6 +253,8 @@ const TrackerPage = () => {
     const localEducate = localStorage.getItem('cost教育');
     const localSavings = localStorage.getItem('cost儲蓄');
 
+    const dateTitle = ((localStorage.getItem('firstDay')) || date).substring(0, 7)
+
     return (
         <div>
             <Navbar />
@@ -264,7 +263,7 @@ const TrackerPage = () => {
                 <div className="kb">
                     <span className="kmonth2">
                         {/* <BsCaretLeftFill className="preMonth" size={30} onClick={handlePrevMonth} /> */}
-                        &nbsp;{(localStorage.getItem('firstDay')).substring(0, 7)}&nbsp;
+                        &nbsp;{dateTitle}&nbsp;
                         {/* <BsCaretRightFill className="nextMonth" size={30} onClick={handleNextMonth} /> */}
                     </span>
                     <div className="budget">待分配預算&nbsp;&nbsp;&nbsp;

@@ -49,13 +49,13 @@
 
 .ut{
     font-family: FakePearl-Regular;
-    /* background-color: #B99B6B; */
+    background-color: #B99B6B;
     opacity: 0.8;
     width: 90%;
     color: #FAFAF9;
     padding: 10px;
     border-radius: 50px;
-    font-size: 24px;
+    font-size: 22px;
     margin-bottom: 50px;
     text-align: center;
     letter-spacing: 5px;
@@ -196,6 +196,17 @@
     }
     .userbg{
         font-size: 30px;
+    }
+    .ut{
+        font-size: 20px;
+    }
+    .userTitle,
+    .userInfo,
+    .userEdit{
+        font-size: 18px;
+    }
+    .resetbtn{
+        font-size: 16px;
     }
 
 }

@@ -78,42 +78,12 @@ const NavbarCover = () => {
                             </label>
                         </li>
 
-                        {/* <Link to="/user" className="link">
-                            <label class="nav-link">
-                                <CgProfile size={30} />
-                                <span class="link-text">USER</span>
-                            </label>
-                        </Link>
-
-                        <Link to="/keeper" className="link">
-                            <label class="nav-link">
-                                <BiBook size={30} />
-                                <span class="link-text">KEEPER</span>
-                            </label>
-                        </Link>
-
-                        <Link to="/tracker" className="link">
-                            <label class="nav-link">
-                                <HiOutlineClipboardDocumentList size={30} />
-                                <span class="link-text">TRACKER</span>
-                            </label>
-                        </Link>
-
-                        <Link to="/chart" className="link">
-                            <label class="nav-link">
-                                <AiOutlineBarChart size={30} />
-                                <span class="link-text">CHART</span>
-                            </label>
-                        </Link> */}
-
-                        {/* <Link to="/logout" className="link"> */}
                         <div className="link2" onClick={handleLoginClick2}>
                             <label class="nav-link">
                                 <IoMdLogIn size={30} />
                                 <span class="link-text">LOGIN</span>
                             </label>
                         </div>
-                        {/* </Link> */}
 
                         <div className="link2" onClick={handleSignupClick2}>
                             <label class="nav-link">

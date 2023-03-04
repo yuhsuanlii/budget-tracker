@@ -7,7 +7,7 @@ import { FaPencilAlt, FaTrashAlt } from "react-icons/fa";
 import { useBudgetTracker } from '../hooks/useBudgetTracker';
 import { db, auth } from "../firebase";
 import { onAuthStateChanged } from "firebase/auth";
-import { collection, onSnapshot, where, query, setDoc, doc, deleteDoc, getDocs, getDoc, updateDoc } from "firebase/firestore";
+import { collection, onSnapshot, where, query, setDoc, doc, deleteDoc, updateDoc } from "firebase/firestore";
 
 
 const KeeperPage = () => {
@@ -84,7 +84,7 @@ const KeeperPage = () => {
             if (!currentUser) {
                 window.location.href = '/';
             } else {
-                console.log(currentUser.uid);
+                // console.log(currentUser.uid);
                 localStorage.setItem("uid", currentUser.uid);
             }
         });
@@ -95,9 +95,6 @@ const KeeperPage = () => {
 
         return () => unsubscribe();
     }, []);
-
-    // console.log(expenses.map(doc => ({ id: doc.id })));
-
 
     // function handleUpdate(expense) {
     //     setExpenses(
@@ -154,64 +151,6 @@ const KeeperPage = () => {
     //     }
     // }
 
-    // useEffect(() => {
-
-    //     const startDate = new Date(date);
-    //     startDate.setDate(1);
-
-    //     console.log(startDate)
-
-    //     const endDate = new Date(date);
-    //     endDate.setMonth(endDate.getMonth() + 1);
-    //     endDate.setDate(0);
-
-    //     const q = query(
-    //         collection(db, 'keeper'),
-    //         where('uid', '==', localStorage.getItem("uid")),
-    //         // where('category', '==', "收入"),
-    //         where('date', '>=', date),
-    //         where('date', '<=', endDate)
-    //     );
-    //     const unsubscribe = onSnapshot(q, (snapshot) => {
-    //         setExpenses(snapshot.docs.map(doc => ({ ...doc.data(), id: doc.id })));
-    //     });
-    //     return unsubscribe;
-    // }, []);
-    // const formatDate = (date) => {
-    //     const year = date.getFullYear();
-    //     const month = (date.getMonth() + 1).toString().padStart(2, '0');
-    //     const day = date.getDate().toString().padStart(2, '0');
-    //     return `${year}-${month}-${day}`;
-    // }
-
-    const handleSelect = async () => {
-
-        const fd = localStorage.getItem("firstDay");
-        const ld = localStorage.getItem("lastDay");
-        // const startDate = formatDate(startOfMonth(new Date(2023, 2))) ; // March 1st, 2023
-        // const endDate = formatDate(endOfMonth(new Date(2023, 2))); // March 31st, 2023
-
-        console.log(fd, ld);
-
-        const collectionRef1 = collection(db, 'keeper');
-        const q1 = query(
-            collectionRef1,
-            where('uid', '==', localStorage.getItem("uid")),
-            where('category', '==', "支出"),
-            where("date", ">=", fd),
-            where("date", "<=", ld)
-        );
-        const snapshot1 = await getDocs(q1);
-        const totalAmount = snapshot1.docs.reduce((acc, doc) => acc + doc.data().amount, 0);
-        console.log(`Total expenses for March 2023: $${totalAmount}`);
-
-        const results = snapshot1.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
-
-        results.forEach(async (result) => {
-            console.log(result.amount)
-        });
-
-    }
 
     const fd = localStorage.getItem("firstDay");
     const ld = localStorage.getItem("lastDay");
@@ -588,7 +527,7 @@ const KeeperPage = () => {
                                 value={amount}
                                 placeholder='金額'
                                 minLength={1} maxLength={8}
-                                onChange={event => setAmount(parseInt(event.target.value))}
+                                onChange={event => setAmount(event.target.value)}
                                 required
                             />
 

@@ -258,6 +258,8 @@ input[type=button]:hover {
     border-left: none;
     border-bottom: #8b4242 5px solid;
     border-right: #8b4242 5px solid;
+    text-align: left;
+    padding-left: 18px;
 }
 
 .description {

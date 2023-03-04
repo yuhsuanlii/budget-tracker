@@ -17,7 +17,6 @@
 
 .budget{
     font-family: FakePearl-Regular;
-    letter-spacing: 2px;
     float: right;
     color: #FFFFFF;
     background-color: #AA5656;
@@ -36,6 +35,7 @@
     grid-template-columns: 10% 85% 5%;
     padding-top: 50px;
     padding-bottom: 50px;
+    margin-bottom: 100px;
     /* border-bottom: black 2px solid; */
 }
 
@@ -48,7 +48,7 @@
 .trackerCard {
     background-color: #FAFAF9;
     width: min(100%, 1200px);
-    height: 180px;
+    /* height: 180px; */
     border-radius: 30px;
     margin: auto;
     -moz-box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
@@ -69,23 +69,29 @@
     }
 }
 
-.trackerPic {
-    border-right: 2px dashed #ccc;
-    /* display: grid;
-    grid-template-columns: 20% 80%; */
-    padding-top: 50px;
-    text-align: center;
+.trackerMain{
+    border-left: 2px dashed #ccc;
 }
 
-/* .tpic {
-    position: relative;
+.trackerPic {
+    
+    /* display: grid;
+    grid-template-columns: 20% 80%; */
+    text-align: center;
+    margin: auto;
+    line-height: 30px;
+}
+
+.tpic {
     justify-self: center;
-} */
+    color: #B99B6B;
+}
 
 .trackerCategory {
     font-family: 'Pacifico', cursive;
-    font-size: 40px;
+    font-size: 28px;
     color: #B99B6B;
+    /* letter-spacing: 1px; */
 }
 
 .trackerBudget {
@@ -114,11 +120,13 @@
     color: #363636;
     font-size: 20px;
     text-align: center;
+    word-wrap:break-word;
 }
 
 .binput {
-    width: 80px;
-    height: 25px;
+    width: 70px;
+    /* height: 25px; */
+    padding: 5px;
     font-size: 18px;
     border-style: none;
     text-align: center;
@@ -126,7 +134,8 @@
     opacity: 0.9;
     color: #FFF;
     border-radius: 5px;
-    width: 50px;
+    margin-right: 5px;
+    word-break: break-all;
 }
 
 .binput:focus {
@@ -141,18 +150,19 @@ input[type=number]::-webkit-inner-spin-button {
 }
 
 .tickicon {
+    border: none;
     /* background-color: #FAFAF9; */
-    border-style: none;
-    font-size: 18px;
+    font-size: 15px;
     font-weight: 700;
-    color: #FFF;
+    color: #FAFAF9;
     background-color: #698269;
     border-radius: 50%;
-    margin-left: 5px;
-    width: 26px;
-    height: 26px;
-    text-align: center;
+    text-align: left;
+    padding-left: 6px;
+    width: 27px;
+    height: 27px;
 }
+
 
 .editicon{
     color: #698269;
@@ -166,7 +176,7 @@ input[type=number]::-webkit-inner-spin-button {
 }
 
 
-@media only screen and (max-width: 1155px) {
+@media only screen and (max-width: 1040px) {
     .tc {
         grid-template-columns: 100%;
         gap: 0%;
@@ -200,8 +210,11 @@ input[type=number]::-webkit-inner-spin-button {
         font-size: 18px;
         width: 200px;
     }
+    .trackerCategory{
+        font-size: 24px;
+    }
     .binput{
-        width: 65px;
+        width: 60px;
     }
 }
 
@@ -213,11 +226,8 @@ input[type=number]::-webkit-inner-spin-button {
         position: relative;
         float: left;
     }
-    .trackerCategory{
-        font-size: 30px;
-    }
     .trackerPic{
-        padding-top: 60px;
+        margin: auto;
     }
     .binput{
         font-size: 16px;
@@ -228,6 +238,11 @@ input[type=number]::-webkit-inner-spin-button {
 }
 
 @media only screen and (max-width: 440px) {
+  
+    .trackerCard{
+        grid-template-columns: 20% 80%;
+    }
+
     .binput{
         width: 45px;
     }
@@ -248,5 +263,9 @@ input[type=number]::-webkit-inner-spin-button {
     }
     .tbm{
         font-size: 18px;
+    }
+    .trackerCategory{
+        font-size: 22px;
+        writing-mode:vertical-rl;
     }
 }

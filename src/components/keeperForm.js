@@ -271,7 +271,7 @@ const KeeperForm = () => {
     const handleSubmit = async (event) => {
 
         event.preventDefault();
-        if (!amount) {
+        if (!amount || isNaN(amount) || amount === "") {
             // 使用者輸入欄不能為空
             alert("請輸入金額");
             return;
@@ -282,7 +282,7 @@ const KeeperForm = () => {
             return;
         }
         if (category.type === '支出' && category.subType !== '飲食' && category.subType !== '交通' && category.subType !== '娛樂' && category.subType !== '其他'
-            && category.subType !== '服飾' && category.subType !== '居住' && category.subType !== '教育' && category.subType !== '儲蓄') {
+            && category.subType !== '治裝' && category.subType !== '居住' && category.subType !== '教育' && category.subType !== '儲蓄') {
             alert("請選擇類別");
             return;
         }
@@ -297,7 +297,7 @@ const KeeperForm = () => {
             date: date,
             category: category.type,
             subCategory: category.subType,
-            amount: amount,
+            amount: parseInt(amount),
             memo: description
         }
         // const docRef = 
@@ -407,14 +407,13 @@ const KeeperForm = () => {
                                         <select className="formSub" value={category.subType} onChange={event => setCategory({ type: category.type, subType: event.target.value })}>
                                             <option value="">選擇類別</option>
                                             <option className="formOp" value="飲食">飲食</option>
-                                            <option className="formOp" value="交通">交通</option>
-                                            <option className="formOp" value="娛樂">娛樂</option>
-                                            <option className="formOp" value="其他">其他</option>
-
                                             <option className="formOp" value="治裝">治裝</option>
                                             <option className="formOp" value="居住">居住</option>
+                                            <option className="formOp" value="交通">交通</option>
                                             <option className="formOp" value="教育">教育</option>
+                                            <option className="formOp" value="娛樂">娛樂</option>
                                             <option className="formOp" value="儲蓄">儲蓄</option>
+                                            <option className="formOp" value="其他">其他</option>
                                         </select>
                                     )}
                                     {category.type === '收入' && (
@@ -429,12 +428,13 @@ const KeeperForm = () => {
                                     <br />
 
                                     <input
-                                        className="formNum"
-                                        type="number"
-                                        placeholder='金額'
-                                        value={amount}
-                                        onChange={event => setAmount(parseInt(event.target.value))}
-                                        required
+                                         className="formNum"
+                                         type="text"
+                                         value={amount}
+                                         placeholder='金額'
+                                         minLength={1} maxLength={8}
+                                         onChange={event => setAmount(parseInt(event.target.value))}
+                                         required
                                     />
 
                                     <textarea

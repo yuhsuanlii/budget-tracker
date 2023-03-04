@@ -72,7 +72,7 @@ const KeeperPage = () => {
         costHousing, setCostHousing,
         costEducate, setCostEducate,
         costSavings, setCostSavings,
-    
+
         earnSalary, setEarnSalary,
         earnStock, setEarnStock,
         earnGift, setEarnGift,
@@ -237,37 +237,37 @@ const KeeperPage = () => {
 
     const fetchTotalCost = (subCategory, setCost) => {
         const q = query(
-          collection(db, 'keeper'),
-          where('uid', '==', localStorage.getItem("uid")),
-          where('category', '==', "支出"),
-          where('subCategory', '==', subCategory),
-          where('date', '>=', fd),
-          where('date', '<=', ld),
+            collection(db, 'keeper'),
+            where('uid', '==', localStorage.getItem("uid")),
+            where('category', '==', "支出"),
+            where('subCategory', '==', subCategory),
+            where('date', '>=', fd),
+            where('date', '<=', ld),
         );
         onSnapshot(q, (snapshot) => {
-          const totalCost = snapshot.docs.reduce((acc, doc) => acc + doc.data().amount, 0);
-          localStorage.setItem(`cost${subCategory}`, totalCost);
-          setCost(totalCost)
+            const totalCost = snapshot.docs.reduce((acc, doc) => acc + doc.data().amount, 0);
+            localStorage.setItem(`cost${subCategory}`, totalCost);
+            setCost(totalCost)
         });
-      };
-      
-      const fetchTotalEarn = (subCategory, setEarn) => {
-        const q = query(
-          collection(db, 'keeper'),
-          where('uid', '==', localStorage.getItem("uid")),
-          where('category', '==', "收入"),
-          where('subCategory', '==', subCategory),
-          where('date', '>=', fd),
-          where('date', '<=', ld),
-        );
-        onSnapshot(q, (snapshot) => {
-          const totalEarn = snapshot.docs.reduce((acc, doc) => acc + doc.data().amount, 0);
-          localStorage.setItem(`earn${subCategory}`, totalEarn);
-          setEarn(totalEarn)
-        });
-      };
+    };
 
-      useEffect(() => {
+    const fetchTotalEarn = (subCategory, setEarn) => {
+        const q = query(
+            collection(db, 'keeper'),
+            where('uid', '==', localStorage.getItem("uid")),
+            where('category', '==', "收入"),
+            where('subCategory', '==', subCategory),
+            where('date', '>=', fd),
+            where('date', '<=', ld),
+        );
+        onSnapshot(q, (snapshot) => {
+            const totalEarn = snapshot.docs.reduce((acc, doc) => acc + doc.data().amount, 0);
+            localStorage.setItem(`earn${subCategory}`, totalEarn);
+            setEarn(totalEarn)
+        });
+    };
+
+    useEffect(() => {
         fetchTotalCost('飲食', setCostFood);
         fetchTotalCost('交通', setCostTraffic);
         fetchTotalCost('娛樂', setCostPlay);
@@ -276,15 +276,15 @@ const KeeperPage = () => {
         fetchTotalCost('居住', setCostHousing);
         fetchTotalCost('教育', setCostEducate);
         fetchTotalCost('儲蓄', setCostSavings);
-      }, [fd, ld, costFood, costTraffic, costPlay, costOther, 
+    }, [fd, ld, costFood, costTraffic, costPlay, costOther,
         costApparel, costHousing, costEducate, costSavings, localStorage.getItem("uid")]);
-      
-      useEffect(() => {
+
+    useEffect(() => {
         fetchTotalEarn('薪資', setEarnSalary);
         fetchTotalEarn('獲利', setEarnStock);
         fetchTotalEarn('禮物', setEarnGift);
         fetchTotalEarn('其他', setEarnOther);
-      }, [fd, ld, earnSalary, earnStock, earnGift, earnOther, localStorage.getItem("uid")]);
+    }, [fd, ld, earnSalary, earnStock, earnGift, earnOther, localStorage.getItem("uid")]);
 
     useEffect(() => {
         // totalExpense
@@ -356,12 +356,12 @@ const KeeperPage = () => {
             totalExpense: totalExpense,
             totalIncome: totalIncome,
             costFood: costFood,
-            costTraffic: costTraffic, 
+            costTraffic: costTraffic,
             costPlay: costPlay,
             costOther: costOther,
             costApparel: costApparel,
-            costHousing: costHousing, 
-            costEducate: costEducate, 
+            costHousing: costHousing,
+            costEducate: costEducate,
             costSavings: costSavings,
             earnSalary: earnSalary,
             earnStock: earnStock,
@@ -369,9 +369,9 @@ const KeeperPage = () => {
             earnOther: earnOther
         }
         updateDoc(totalRef, payload);
-    }, [fd, ld, costFood, costTraffic, costPlay, costOther, 
+    }, [fd, ld, costFood, costTraffic, costPlay, costOther,
         costApparel, costHousing, costEducate, costSavings,
-         localStorage.getItem("uid"),totalExpense, totalIncome]);
+        localStorage.getItem("uid"), totalExpense, totalIncome]);
 
 
     const [listId, setListId] = useState("");
@@ -404,7 +404,7 @@ const KeeperPage = () => {
         event.preventDefault();
         console.log(listId);
 
-        if (!amount) {
+        if (!amount || isNaN(amount) || amount === "") {
             // 使用者輸入欄不能為空
             alert("請輸入金額");
             return;
@@ -415,7 +415,7 @@ const KeeperPage = () => {
             return;
         }
         if (category.type === '支出' && category.subType !== '飲食' && category.subType !== '交通' && category.subType !== '娛樂' && category.subType !== '其他'
-            && category.subType !== '服飾' && category.subType !== '居住' && category.subType !== '教育' && category.subType !== '儲蓄') {
+            && category.subType !== '治裝' && category.subType !== '居住' && category.subType !== '教育' && category.subType !== '儲蓄') {
             alert("請選擇類別");
             return;
         }
@@ -430,7 +430,7 @@ const KeeperPage = () => {
             date: date,
             category: category.type,
             subCategory: category.subType,
-            amount: amount,
+            amount: parseInt(amount),
             memo: description
         }
         await setDoc(docRef, payload);
@@ -544,7 +544,6 @@ const KeeperPage = () => {
 
             {showEditForm && (
                 <div>
-
                     <div className="form">
                         <button className="closeWindow" onClick={() => setShowEditForm(false)}>X</button>
                         <form onSubmit={handleUpdate}>
@@ -564,14 +563,13 @@ const KeeperPage = () => {
                                 <select className="formSub" value={category.subType} onChange={event => setCategory({ type: category.type, subType: event.target.value })}>
                                     <option value="">選擇類別</option>
                                     <option className="formOp" value="飲食">飲食</option>
+                                    <option className="formOp" value="治裝">治裝</option>
+                                    <option className="formOp" value="居住">居住</option>
                                     <option className="formOp" value="交通">交通</option>
+                                    <option className="formOp" value="教育">教育</option>
                                     <option className="formOp" value="娛樂">娛樂</option>
+                                    <option className="formOp" value="儲蓄">儲蓄</option>
                                     <option className="formOp" value="其他">其他</option>
-
-                                    {/* <option className="formOp" value="治裝">治裝</option>
-                                            <option className="formOp" value="居住">居住</option>
-                                            <option className="formOp" value="教育">教育</option>
-                                            <option className="formOp" value="儲蓄">儲蓄</option> */}
                                 </select>
                             )}
                             {category.type === '收入' && (
@@ -586,9 +584,10 @@ const KeeperPage = () => {
 
                             <input
                                 className="formNum"
-                                type="number"
+                                type="text"
+                                value={amount}
                                 placeholder='金額'
-                                // value={amount}
+                                minLength={1} maxLength={8}
                                 onChange={event => setAmount(parseInt(event.target.value))}
                                 required
                             />
@@ -596,6 +595,7 @@ const KeeperPage = () => {
                             <textarea
                                 className="formMemo"
                                 type="text"
+                                value={description}
                                 placeholder='備註(0-10字)'
                                 maxLength={10}
                                 // value={description}

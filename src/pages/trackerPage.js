@@ -4,6 +4,12 @@ import '../style/progressBar.css';
 import Navbar from "../components/navbar";
 import { useBudgetTracker } from '../hooks/useBudgetTracker';
 import { BsCaretRightFill, BsCaretLeftFill } from "react-icons/bs";
+import { IoGameController, IoHome } from "react-icons/io5";
+import { MdFastfood } from "react-icons/md";
+import { GiClothes } from "react-icons/gi";
+import { FaCarSide, FaGraduationCap, FaPiggyBank, FaFolderOpen, FaHouseUser } from "react-icons/fa";
+
+
 import { FiEdit3 } from "react-icons/fi";
 import { auth } from "../firebase";
 import { onAuthStateChanged } from "firebase/auth";
@@ -17,12 +23,7 @@ import { onSnapshot, where, query, deleteDoc, getDocs } from "firebase/firestore
 
 const TrackerPage = () => {
     const {
-
-        apparel, setApparel,
-        housing, setHousing,
-        educate, setEducate,
-        savings, setSavings,
-
+        uid, setUid,
         user, setUser,
         userData, setUserData,
         showLogin, setShowLogin,
@@ -33,23 +34,21 @@ const TrackerPage = () => {
         email, setEmail,
         password, setPassword,
 
-        isEditingName, setIsEditingName,
-        isEditingGender, setIsEditingGender,
-        isEditingBirthday, setIsEditingBirthday,
-        isEditingEmail, setIsEditingEmail,
-        isEditingPassword, setIsEditingPassword,
-
         showForm, setShowForm,
+        showEditForm, setShowEditForm,
         showLoginForm, setShowLoginForm,
+
         expenses, setExpenses,
         amount, setAmount,
         description, setDescription,
         category, setCategory,
         date, setDate,
         costs, setCosts,
+
         budget, setBudget,
         allocatedBudget, setAllocatedBudget,
         bcategory, setbCategory,
+
         food, setFood,
         traffic, setTraffic,
         play, setPlay,
@@ -59,10 +58,26 @@ const TrackerPage = () => {
 
         totalIncome, setTotalIncome,
         totalExpense, setTotalExpense,
+
         costFood, setCostFood,
         costTraffic, setCostTraffic,
         costPlay, setCostPlay,
-        costOther, setCostOther } = useBudgetTracker();
+        costOther, setCostOther,
+
+        costApparel, setCostApparel,
+        costHousing, setCostHousing,
+        costEducate, setCostEducate,
+        costSavings, setCostSavings,
+
+        apparel, setApparel,
+        housing, setHousing,
+        educate, setEducate,
+        savings, setSavings,
+
+        earnSalary, setEarnSalary,
+        earnStock, setEarnStock,
+        earnGift, setEarnGift,
+        earnOther, setEarnOther } = useBudgetTracker();
 
     const [isEditingFood, setIsEditingFood] = useState(false);
     const [isEditingTraffic, setIsEditingTraffic] = useState(false);
@@ -79,7 +94,7 @@ const TrackerPage = () => {
             if (!currentUser) {
                 window.location.href = '/';
             } else {
-                // console.log(currentUser)
+
             }
         });
         return () => unsubscribe();
@@ -128,111 +143,118 @@ const TrackerPage = () => {
     }, []);
 
     const handleUpdateFood = async () => {
-        if (isNaN(food) || food === "") {
+        if (!food || isNaN(food) || food === "") {
             alert("請輸入預算");
             return;
         }
         const docId = localStorage.getItem('firstDay') + localStorage.getItem('uid');
         const budgetRef = doc(db, "budget", docId);
         const payload = {
-            food: food
+            food: parseInt(food)
         }
         await updateDoc(budgetRef, payload);
         setIsEditingFood(null);
     }
     const handleUpdateTraffic = async () => {
-        if (isNaN(traffic) || traffic === "") {
+        if (!traffic || isNaN(traffic) || traffic === "") {
             alert("請輸入預算");
             return;
         }
         const docId = localStorage.getItem('firstDay') + localStorage.getItem('uid');
         const budgetRef = doc(db, "budget", docId);
         const payload = {
-            traffic: traffic
+            traffic: parseInt(traffic)
         }
         await updateDoc(budgetRef, payload);
         setIsEditingTraffic(null);
     }
     const handleUpdateOther = async () => {
-        if (isNaN(other) || other === "") {
+        if (!other || isNaN(other) || other === "") {
             alert("請輸入預算");
             return;
         }
         const docId = localStorage.getItem('firstDay') + localStorage.getItem('uid');
         const budgetRef = doc(db, "budget", docId);
         const payload = {
-            other: other
+            other: parseInt(other)
         }
         await updateDoc(budgetRef, payload);
         setIsEditingOther(null);
     }
     const handleUpdatePlay = async () => {
-        if (isNaN(play) || play === "") {
+        if (!play || isNaN(play) || play === "") {
             alert("請輸入預算");
             return;
         }
         const docId = localStorage.getItem('firstDay') + localStorage.getItem('uid');
         const budgetRef = doc(db, "budget", docId);
         const payload = {
-            play: play
+            play: parseInt(play)
         }
         await updateDoc(budgetRef, payload);
         setIsEditingPlay(null);
     }
     const handleUpdateApparel = async () => {
-        if (isNaN(apparel) || apparel === "") {
+        if (!apparel || isNaN(apparel) || apparel === "") {
             alert("請輸入預算");
             return;
         }
         const docId = localStorage.getItem('firstDay') + localStorage.getItem('uid');
         const budgetRef = doc(db, "budget", docId);
         const payload = {
-            apparel: apparel
+            apparel: parseInt(apparel)
         }
         await updateDoc(budgetRef, payload);
         setIsEditingApparel(null);
     }
     const handleUpdateHousing = async () => {
-        if (isNaN(housing) || housing === "") {
+        if (!housing || isNaN(housing) || housing === "") {
             alert("請輸入預算");
             return;
         }
         const docId = localStorage.getItem('firstDay') + localStorage.getItem('uid');
         const budgetRef = doc(db, "budget", docId);
         const payload = {
-            housing: housing
+            housing: parseInt(housing)
         }
         await updateDoc(budgetRef, payload);
         setIsEditingHousing(null);
     }
     const handleUpdateEducate = async () => {
-        if (isNaN(educate) || educate === "") {
+        if (!educate || isNaN(educate) || educate === "") {
             alert("請輸入預算");
             return;
         }
         const docId = localStorage.getItem('firstDay') + localStorage.getItem('uid');
         const budgetRef = doc(db, "budget", docId);
         const payload = {
-            educate: educate
+            educate: parseInt(educate)
         }
         await updateDoc(budgetRef, payload);
         setIsEditingEducate(null);
     }
     const handleUpdateSavings = async () => {
-        if (isNaN(savings) || savings === "") {
+        if (!savings || isNaN(savings) || savings === "") {
             alert("請輸入預算");
             return;
         }
         const docId = localStorage.getItem('firstDay') + localStorage.getItem('uid');
         const budgetRef = doc(db, "budget", docId);
         const payload = {
-            savings: savings
+            savings: parseInt(savings)
         }
         await updateDoc(budgetRef, payload);
         setIsEditingSavings(null);
     }
 
-
+    const localFood = localStorage.getItem('cost飲食');
+    const localTraffic = localStorage.getItem('cost交通');
+    const localPlay = localStorage.getItem('cost娛樂');
+    const localOther = localStorage.getItem('cost其他');
+    const localApparel = localStorage.getItem('cost治裝');
+    const localHousing = localStorage.getItem('cost居住');
+    const localEducate = localStorage.getItem('cost教育');
+    const localSavings = localStorage.getItem('cost儲蓄');
 
     return (
         <div>
@@ -257,7 +279,7 @@ const TrackerPage = () => {
                     {/* food */}
                     <div className="trackerCard">
                         <div className="trackerPic">
-                            {/* <CiForkAndKnife className="tpic"/> */}
+                        <MdFastfood className="tpic" size={40}/><br/>
                             <span className="trackerCategory">Food</span>
                         </div>
                         <div className="trackerMain">
@@ -268,11 +290,12 @@ const TrackerPage = () => {
                                         {isEditingFood ? (
                                             <>
                                                 <input
-                                                    type="number"
+                                                    type="text"
                                                     className="binput"
-                                                    max={8}
                                                     value={food}
-                                                    onChange={event => setFood(parseInt(event.target.value))}
+                                                    minLength={1} maxLength={8}
+                                                    required
+                                                    onChange={event => setFood(event.target.value)}
                                                 />
                                                 {/* <TiTick className="tickicon" size={20} onClick={() => setIsEditingFood(null)} /> */}
                                                 <button className="tickicon" onClick={handleUpdateFood}>✔</button>
@@ -287,26 +310,141 @@ const TrackerPage = () => {
                                 </div>
                                 <div>
                                     <div className="tbn">使用</div>
-                                    <div className="tbm">{costFood}</div>
+                                    <div className="tbm">{costFood || localFood}</div>
                                 </div>
                                 <div>
                                     <div className="tbn">剩餘</div>
-                                    <div className="tbm">{food - costFood}</div>
+                                    <div className="tbm">{food - (costFood || localFood)}</div>
                                 </div>
                             </div>
                             <div className="pBar">
                                 <div className="progress-bar">
-                                    <span className="progress-bar__inner" style={{ width: ((costFood / food) * 100) * 3 }}>
-                                        <span className='progress-bar__percent'>{Math.round((costFood / food) * 100)}%</span>
-                                    </span>
+                                    {food != 0 && (costFood || localFood) != 0 ? (
+                                        <span className="progress-bar__inner" style={{ width: (((costFood || localFood) / food) * 100) * 3 }}>
+                                            <span className='progress-bar__percent'>{Math.round(((costFood || localFood) / food) * 100)}%</span>
+                                        </span>
+                                    ) : (
+                                        <div className="needMoreBar">need more deta</div>
+                                    )}
                                 </div>
                             </div>
                         </div>
                     </div>
+
+                    {/* apparel */}
+                    <div className="trackerCard">
+                        <div className="trackerPic">
+                        <GiClothes className="tpic" size={45}/><br/>
+                            <span className="trackerCategory">Apparel</span>
+                        </div>
+                        <div className="trackerMain">
+                            <div className="trackerBudget">
+                                <div>
+                                    <div className="tbn">預算</div>
+                                    <div className="tbm">
+                                        {isEditingApparel ? (
+                                            <>
+                                                <input
+                                                    type="text"
+                                                    className="binput"
+                                                    value={apparel}
+                                                    minLength={1} maxLength={8}
+                                                    required
+                                                    onChange={event => setApparel(event.target.value)}
+                                                />
+                                                {/* <TiTick className="tickicon" size={20} onClick={() => setIsEditingFood(null)} /> */}
+                                                <button className="tickicon" onClick={handleUpdateApparel}>✔</button>
+                                            </>
+                                        ) : (
+                                            <>
+                                                <span>{apparel}</span>
+                                                <FiEdit3 className="editicon" size={20} onClick={() => setIsEditingApparel(true)} />
+                                            </>
+                                        )}
+                                    </div>
+                                </div>
+                                <div>
+                                    <div className="tbn">使用</div>
+                                    <div className="tbm">{costApparel || localApparel}</div>
+                                </div>
+                                <div>
+                                    <div className="tbn">剩餘</div>
+                                    <div className="tbm">{apparel - (costApparel || localApparel)}</div>
+                                </div>
+                            </div>
+                            <div className="pBar">
+                                <div className="progress-bar">
+                                    {apparel != 0 && (costApparel || localApparel) != 0 ? (
+                                        <span className="progress-bar__inner" style={{ width: (((costApparel || localApparel) / apparel) * 100) * 3 }}>
+                                            <span className='progress-bar__percent'>{Math.round(((costApparel || localApparel) / apparel) * 100)}%</span>
+                                        </span>
+                                    ) : (
+                                        <div className="needMoreBar">need more deta</div>
+                                    )}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* housing */}
+                    <div className="trackerCard">
+                        <div className="trackerPic">
+                        <IoHome className="tpic" size={35}/><br/>
+                            <span className="trackerCategory">Housing</span>
+                        </div>
+                        <div className="trackerMain">
+                            <div className="trackerBudget">
+                                <div>
+                                    <div className="tbn">預算</div>
+                                    <div className="tbm">
+                                        {isEditingHousing ? (
+                                            <>
+                                                <input
+                                                    type="text"
+                                                    className="binput"
+                                                    value={housing}
+                                                    minLength={1} maxLength={8}
+                                                    required
+                                                    onChange={event => setHousing(event.target.value)}
+                                                />
+                                                {/* <TiTick className="tickicon" size={20} onClick={() => setIsEditingFood(null)} /> */}
+                                                <button className="tickicon" onClick={handleUpdateHousing}>✔</button>
+                                            </>
+                                        ) : (
+                                            <>
+                                                <span>{housing}</span>
+                                                <FiEdit3 className="editicon" size={20} onClick={() => setIsEditingHousing(true)} />
+                                            </>
+                                        )}
+                                    </div>
+                                </div>
+                                <div>
+                                    <div className="tbn">使用</div>
+                                    <div className="tbm">{costHousing || localHousing}</div>
+                                </div>
+                                <div>
+                                    <div className="tbn">剩餘</div>
+                                    <div className="tbm">{housing - (costHousing || localHousing)}</div>
+                                </div>
+                            </div>
+                            <div className="pBar">
+                                <div className="progress-bar">
+                                    {housing != 0 && costHousing != 0 ? (
+                                        <span className="progress-bar__inner" style={{ width: (((costHousing || localHousing) / housing) * 100) * 3 }}>
+                                            <span className='progress-bar__percent'>{Math.round(((costHousing || localHousing) / housing) * 100)}%</span>
+                                        </span>
+                                    ) : (
+                                        <div className="needMoreBar">need more deta</div>
+                                    )}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                     {/* traffic */}
                     <div className="trackerCard">
                         <div className="trackerPic">
-                            {/* <CiForkAndKnife className="tpic"/> */}
+                        <FaCarSide className="tpic" size={38}/><br/>
                             <span className="trackerCategory">Traffic</span>
                         </div>
                         <div className="trackerMain">
@@ -317,11 +455,12 @@ const TrackerPage = () => {
                                         {isEditingTraffic ? (
                                             <>
                                                 <input
-                                                    type="number"
+                                                    type="text"
                                                     className="binput"
+                                                    minLength={1} maxLength={8}
                                                     value={traffic}
                                                     required
-                                                    onChange={event => setTraffic(parseInt(event.target.value))}
+                                                    onChange={event => setTraffic(event.target.value)}
                                                 />
                                                 <button className="tickicon" onClick={handleUpdateTraffic}>✔</button>
                                             </>
@@ -335,26 +474,86 @@ const TrackerPage = () => {
                                 </div>
                                 <div>
                                     <div className="tbn">使用</div>
-                                    <div className="tbm">{costTraffic}</div>
+                                    <div className="tbm">{costTraffic || localTraffic}</div>
                                 </div>
                                 <div>
                                     <div className="tbn">剩餘</div>
-                                    <div className="tbm">{traffic - costTraffic}</div>
+                                    <div className="tbm">{traffic - (costTraffic || localTraffic)}</div>
                                 </div>
                             </div>
                             <div className="pBar">
                                 <div className="progress-bar">
-                                    <span className="progress-bar__inner" style={{ width: ((costTraffic / traffic) * 100) * 3 }}>
-                                        <span className='progress-bar__percent'>{Math.round((costTraffic / traffic) * 100)}%</span>
-                                    </span>
+                                    {traffic != 0 && (costTraffic || localTraffic) != 0 ? (
+                                        <span className="progress-bar__inner" style={{ width: (((costTraffic || localTraffic) / traffic) * 100) * 3 }}>
+                                            <span className='progress-bar__percent'>{Math.round(((costTraffic || localTraffic) / traffic) * 100)}%</span>
+                                        </span>
+                                    ) : (
+                                        <div className="needMoreBar">need more deta</div>
+                                    )}
                                 </div>
                             </div>
                         </div>
                     </div>
+
+                    {/* educate */}
+                    <div className="trackerCard">
+                        <div className="trackerPic">
+                        <FaGraduationCap className="tpic" size={40}/><br/>
+                            <span className="trackerCategory">Educate</span>
+                        </div>
+                        <div className="trackerMain">
+                            <div className="trackerBudget">
+                                <div>
+                                    <div className="tbn">預算</div>
+                                    <div className="tbm">
+                                        {isEditingEducate ? (
+                                            <>
+                                                <input
+                                                    type="text"
+                                                    className="binput"
+                                                    value={educate}
+                                                    minLength={1} maxLength={8}
+                                                    required
+                                                    onChange={event => setEducate(event.target.value)}
+                                                />
+                                                {/* <TiTick className="tickicon" size={20} onClick={() => setIsEditingFood(null)} /> */}
+                                                <button className="tickicon" onClick={handleUpdateEducate}>✔</button>
+                                            </>
+                                        ) : (
+                                            <>
+                                                <span>{educate}</span>
+                                                <FiEdit3 className="editicon" size={20} onClick={() => setIsEditingEducate(true)} />
+                                            </>
+                                        )}
+                                    </div>
+                                </div>
+                                <div>
+                                    <div className="tbn">使用</div>
+                                    <div className="tbm">{costEducate || localEducate}</div>
+                                </div>
+                                <div>
+                                    <div className="tbn">剩餘</div>
+                                    <div className="tbm">{educate - (costEducate || localEducate)}</div>
+                                </div>
+                            </div>
+                            <div className="pBar">
+                                <div className="progress-bar">
+                                    {educate != 0 && (costEducate || localEducate) != 0 ? (
+                                        <span className="progress-bar__inner" style={{ width: (((costEducate || localEducate) / educate) * 100) * 3 }}>
+                                            <span className='progress-bar__percent'>{Math.round(((costEducate || localEducate) / educate) * 100)}%</span>
+                                        </span>
+                                    ) : (
+                                        <div className="needMoreBar">need more deta</div>
+                                    )}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                     {/* fun */}
                     <div className="trackerCard">
                         <div className="trackerPic">
-                            {/* <CiForkAndKnife className="tpic"/> */}
+                            <IoGameController className="tpic" size={35} /><br />
                             <span className="trackerCategory">Fun</span>
                         </div>
                         <div className="trackerMain">
@@ -365,10 +564,12 @@ const TrackerPage = () => {
                                         {isEditingPlay ? (
                                             <>
                                                 <input
-                                                    type="number"
+                                                    type="text"
                                                     className="binput"
+                                                    minLength={1} maxLength={8}
                                                     value={play}
-                                                    onChange={event => setPlay(parseInt(event.target.value))}
+                                                    required
+                                                    onChange={event => setPlay(event.target.value)}
                                                 />
                                                 <button className="tickicon" onClick={handleUpdatePlay}>✔</button>
                                             </>
@@ -382,26 +583,86 @@ const TrackerPage = () => {
                                 </div>
                                 <div>
                                     <div className="tbn">使用</div>
-                                    <div className="tbm">{costPlay}</div>
+                                    <div className="tbm">{costPlay || localPlay}</div>
                                 </div>
                                 <div>
                                     <div className="tbn">剩餘</div>
-                                    <div className="tbm">{play - costPlay}</div>
+                                    <div className="tbm">{play - (costPlay || localPlay)}</div>
                                 </div>
                             </div>
                             <div className="pBar">
                                 <div className="progress-bar">
-                                    <span className="progress-bar__inner" style={{ width: ((costPlay / play) * 100) * 3 }}>
-                                        <span className='progress-bar__percent'>{Math.round((costPlay / play) * 100)}%</span>
-                                    </span>
+                                    {play != 0 && (costPlay || localPlay) != 0 ? (
+                                        <span className="progress-bar__inner" style={{ width: (((costPlay || localPlay) / play) * 100) * 3 }}>
+                                            <span className='progress-bar__percent'>{Math.round(((costPlay || localPlay) / play) * 100)}%</span>
+                                        </span>
+                                    ) : (
+                                        <div className="needMoreBar">need more deta</div>
+                                    )}
                                 </div>
                             </div>
                         </div>
                     </div>
+
+                    {/* savings */}
+                    <div className="trackerCard">
+                        <div className="trackerPic">
+                            <FaPiggyBank className="tpic" size={35} /><br />
+                            <span className="trackerCategory">Savings</span>
+                        </div>
+                        <div className="trackerMain">
+                            <div className="trackerBudget">
+                                <div>
+                                    <div className="tbn">預算</div>
+                                    <div className="tbm">
+                                        {isEditingSavings ? (
+                                            <>
+                                                <input
+                                                    type="text"
+                                                    className="binput"
+                                                    value={savings}
+                                                    minLength={1} maxLength={8}
+                                                    required
+                                                    onChange={event => setSavings(event.target.value)}
+                                                />
+                                                {/* <TiTick className="tickicon" size={20} onClick={() => setIsEditingFood(null)} /> */}
+                                                <button className="tickicon" onClick={handleUpdateSavings}>✔</button>
+                                            </>
+                                        ) : (
+                                            <>
+                                                <span>{savings}</span>
+                                                <FiEdit3 className="editicon" size={20} onClick={() => setIsEditingSavings(true)} />
+                                            </>
+                                        )}
+                                    </div>
+                                </div>
+                                <div>
+                                    <div className="tbn">使用</div>
+                                    <div className="tbm">{costSavings || localSavings}</div>
+                                </div>
+                                <div>
+                                    <div className="tbn">剩餘</div>
+                                    <div className="tbm">{savings - (costSavings || localSavings)}</div>
+                                </div>
+                            </div>
+                            <div className="pBar">
+                                <div className="progress-bar">
+                                    {savings != 0 && (costSavings || localSavings) != 0 ? (
+                                        <span className="progress-bar__inner" style={{ width: (((costSavings || localSavings) / savings) * 100) * 3 }}>
+                                            <span className='progress-bar__percent'>{Math.round(((costSavings || localSavings) / savings) * 100)}%</span>
+                                        </span>
+                                    ) : (
+                                        <div className="needMoreBar">need more deta</div>
+                                    )}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                     {/* other */}
                     <div className="trackerCard">
                         <div className="trackerPic">
-                            {/* <CiForkAndKnife className="tpic"/> */}
+                        <FaFolderOpen className="tpic" size={35}/><br/>
                             <span className="trackerCategory">Other</span>
                         </div>
                         <div className="trackerMain">
@@ -412,10 +673,12 @@ const TrackerPage = () => {
                                         {isEditingOther ? (
                                             <>
                                                 <input
-                                                    type="number"
+                                                    type="text"
                                                     className="binput"
+                                                    minLength={1} maxLength={8}
                                                     value={other}
-                                                    onChange={event => setOther(parseInt(event.target.value))}
+                                                    required
+                                                    onChange={event => setOther(event.target.value)}
                                                 />
                                                 <button className="tickicon" onClick={handleUpdateOther}>✔</button>
                                             </>
@@ -429,22 +692,27 @@ const TrackerPage = () => {
                                 </div>
                                 <div>
                                     <div className="tbn">使用</div>
-                                    <div className="tbm">{costOther}</div>
+                                    <div className="tbm">{costOther || localOther}</div>
                                 </div>
                                 <div>
                                     <div className="tbn">剩餘</div>
-                                    <div className="tbm">{other - costOther}</div>
+                                    <div className="tbm">{other - (costOther || localOther)}</div>
                                 </div>
                             </div>
                             <div className="pBar">
                                 <div className="progress-bar">
-                                    <span className="progress-bar__inner" style={{ width: ((costOther / other) * 100) * 3 }}>
-                                        <span className='progress-bar__percent'>{Math.round((costOther / other) * 100)}%</span>
-                                    </span>
+                                    {other != 0 && (costOther || localOther) != 0 ? (
+                                        <span className="progress-bar__inner" style={{ width: (((costOther || localOther) / other) * 100) * 3 }}>
+                                            <span className='progress-bar__percent'>{Math.round(((costOther || localOther) / other) * 100)}%</span>
+                                        </span>
+                                    ) : (
+                                        <div className="needMoreBar">need more deta</div>
+                                    )}
                                 </div>
                             </div>
                         </div>
                     </div>
+
                 </div>
                 <div></div>
             </div>

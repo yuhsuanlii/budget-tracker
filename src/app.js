@@ -5,13 +5,13 @@ import KeeperPage from "./pages/keeperPage";
 import TrackerPage from "./pages/trackerPage";
 import ChartPage from "./pages/chartPage";
 import UserPage from "./pages/userPage";
-import LoginForm from "./components/loginForm";
+import CoverPage from "./pages/coverPage";
 
 const App = () => {
     return (
         <BudgetTrackerProvider>
             <Routes>
-                <Route path="/" element={<LoginForm />} />
+                <Route path="/" element={<CoverPage />} />
                 <Route path="/user" element={<UserPage />} />
                 <Route path="/keeper" element={<KeeperPage />} />
                 <Route path="/tracker" element={<TrackerPage />} />

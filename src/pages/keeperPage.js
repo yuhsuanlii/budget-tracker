@@ -324,20 +324,28 @@ const KeeperPage = () => {
         setAmount(amount);
         setDescription(memo);
     }
+    // const formatDate = (date) => {
+    //     const year = date.getFullYear();
+    //     const month = (date.getMonth() + 1).toString().padStart(2, '0');
+    //     const day = date.getDate().toString().padStart(2, '0');
+    //     return `${year}-${month}-${day}`;
+    // }
 
-    const handleDayChange = async (event) => {
-        const date1 = new Date(date);
-        const firstDay = new Date(date1.getFullYear(), date1.getMonth(), 1);
-        const lastDay = new Date(date1.getFullYear(), date1.getMonth() + 1, 0);
+    // const handleDayChange = async (event) => {
+    //     const date1 = new Date(date);
+    //     const firstDay = new Date(date1.getFullYear(), date1.getMonth(), 1);
+    //     const lastDay = new Date(date1.getFullYear(), date1.getMonth() + 1, 0);
 
-        setFirstDay(formatDate(firstDay));
-        setLastDay(formatDate(lastDay))
+    //     setFirstDay(formatDate(firstDay));
+    //     setLastDay(formatDate(lastDay))
+    //     // setFirstDay(firstDay);
+    //     // setLastDay(lastDay);
 
-        localStorage.setItem("firstDay", firstDay);
-        localStorage.setItem("lastDay", lastDay);
+    //     localStorage.setItem("firstDay", firstDay);
+    //     localStorage.setItem("lastDay", lastDay);
 
-        return setDate(event.target.value);
-    }
+    //     return setDate(event.target.value);
+    // }
 
     const handleUpdate = async (event) => {
         event.preventDefault();
@@ -491,7 +499,9 @@ const KeeperPage = () => {
                                 type="date"
                                 min="2020-01-01"
                                 value={date}
-                                onChange={handleDayChange} />
+                                // onChange={handleDayChange}
+                                onChange={(event) => setDate(event.target.value)}
+                            />
                             <br />
                             <select className="formCat" value={category.type} onChange={event => setCategory({ type: event.target.value, subType: category.subType })}>
                                 <option value="支出">支出</option>

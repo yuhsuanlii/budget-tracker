@@ -9,9 +9,10 @@
 .klist {
     font-family: FakePearl-Regular;
     position: relative;
-    width: min(100%, 1200px);
+    width: min(100%, 1920px);
     margin: auto;
     letter-spacing: 1px;
+    padding-top: 20px;
     /* font-family: tahoma; */
 }
 

@@ -46,7 +46,8 @@
 
 .cc {
     display: grid;
-    width: min(100%, 1180px);
+    /* width: min(100%, 1440px); */
+    width: 95%;
     grid-template-columns: 50% 50%;
     gap: 4%;
 }

@@ -267,7 +267,8 @@ const TrackerPage = () => {
                         {/* <BsCaretRightFill className="nextMonth" size={30} onClick={handleNextMonth} /> */}
                     </span>
                     <div className="budget">待分配預算&nbsp;&nbsp;&nbsp;
-                        {localStorage.getItem("totalIncome") - food - traffic - play - other}</div>
+                        {localStorage.getItem("totalIncome")
+                         - food - traffic - play - other - apparel - housing - educate - savings}</div>
                 </div>
                 <div></div>
             </div>
@@ -428,7 +429,7 @@ const TrackerPage = () => {
                             </div>
                             <div className="pBar">
                                 <div className="progress-bar">
-                                    {housing != 0 && costHousing != 0 ? (
+                                    {housing != 0 && costHousing || localHousing != 0 ? (
                                         <span className="progress-bar__inner" style={{ width: (((costHousing || localHousing) / housing) * 100) * 3 }}>
                                             <span className='progress-bar__percent'>{Math.round(((costHousing || localHousing) / housing) * 100)}%</span>
                                         </span>

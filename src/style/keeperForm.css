@@ -1,7 +1,7 @@
 .keeperContainer {
     display: grid;
     grid-template-columns: 12% 83% 5%;
-    width: min(100%, 1440px);
+    width: min(100%, 1920px);
     padding-top: 30px;
     margin: auto;
     /* border-bottom: black 2px solid; */

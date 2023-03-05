@@ -287,7 +287,6 @@ const LoginForm = () => {
                 <div></div>
                 <div className="kb">
                     <span className="projectName">
-                        Budget
                     </span>
                     {loggedIn ? (
                         // 如果用戶已經登入

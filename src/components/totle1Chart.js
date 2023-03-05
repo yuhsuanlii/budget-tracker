@@ -111,7 +111,7 @@ const Totle1Chart = () => {
             {
                 type: 'line',
                 label: '月結餘',
-                // data: [170, 400, 250, 300, 80, 130],
+                // data: [8050, 7030, 9920, 4230, 7460, 8100],
                 data: differences,
                 backgroundColor: '#562B08aa',
                 borderWidth: 3,
@@ -122,7 +122,7 @@ const Totle1Chart = () => {
             {
                 type: 'bar',
                 label: '總收入',
-                // data: [550, 800, 750, 900, 450, 760],
+                // data: [35500, 33800, 37750, 33900, 37450, 37600],
                 data: monthIncomes,
                 backgroundColor: '#61876Eaa',
                 hoverBackgroundColor: '#61876E',
@@ -132,7 +132,7 @@ const Totle1Chart = () => {
             {
                 type: 'bar',
                 label: '總支出',
-                // data: [745, 677, 583, 267, 599, 900],
+                // data: [27450, 26770, 27830, 29670, 29990, 29500],
                 data: monthExpenses,
                 backgroundColor: '#B05B3Baa',
                 hoverBackgroundColor: '#B05B3B',

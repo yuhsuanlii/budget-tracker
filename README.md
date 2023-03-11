@@ -94,7 +94,8 @@ If the user login with Google, the red cloud picture below will display the user
 
 .
 
-![1678513298877](https://user-images.githubusercontent.com/101781321/224467265-18255384-36a1-4e6f-829d-84a667e1e58f.gif)
+![1678514199581](https://user-images.githubusercontent.com/101781321/224467790-ed646111-776a-41a0-8739-affbbef54af0.gif)
+
 
 ***  
 

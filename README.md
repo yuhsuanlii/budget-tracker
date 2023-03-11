@@ -1,5 +1,6 @@
 # Budget Tracker 📝
-![budget-tracker](https://user-images.githubusercontent.com/101781321/224461557-de522b12-1e3c-4e49-bb23-371ee64ad5d2.JPG)
+
+![Desktop - 2 (2)](https://user-images.githubusercontent.com/101781321/224468959-3ff4e813-a5d2-4a6e-9123-02af4c3d8242.png)
 
 Budget Tracker is a budget-oriented bookkeeping website. You can record daily expenses and incomes according to categories, set a monthly budget and provide charts to track consumption situations.
 

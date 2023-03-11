@@ -15,11 +15,6 @@ Since Budget Tracker is used to record personal income, expense and budget, it n
 
 由於 Budget Tracker 是用來記錄個人的收支及預算，需要登入才可以使用。以下是測試帳號及密碼。
 
-| - | - |
-|-----|--------|
-| Account | test@test.com |
-| Password | test1234 |
-
 | Account | Password |
 |-----|--------|
 | test@test.com | test1234 |

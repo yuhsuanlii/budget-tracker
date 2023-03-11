@@ -28,7 +28,7 @@ Budget Tracker 在前端開發的部分是選擇使用 React 建構，搭配 Rea
 後端開發使用 Firebase 提供的服務平台，運用 Hosting 部屬網站、Firestore 作為資料庫、Authentication 建構會員系統，以及本地端 LocalStorage 儲存臨時數據。
 開發工具使用 Webpack 進行模組的打包、Babel 解決瀏覽器相容性問題 npm 作為套件管理、Git/GitHub 進行版本控管。
 
-![Skills Structure ](https://user-images.githubusercontent.com/101781321/224469842-9c9da306-c540-46d6-b020-61a011049133.JPG)
+![Skills Structure ](https://user-images.githubusercontent.com/101781321/224491872-9bbfa06c-7e0e-4c8b-b307-888ea89e3929.JPG)
 
 
 ## Features
@@ -90,7 +90,7 @@ If the user login with Google, the red cloud picture below will display the user
 
 ### 📱 Responsive Web Design (RWD)
 
-Implement a responsive design to ensure that tablet and mobile users have an optimal user experience.
+Implement a responsive design to ensure that tablet and mobile users have a better user experience.
 
 實作響應式頁面，讓平板及手機小螢幕使用者也可以有更好的使用體驗。
 

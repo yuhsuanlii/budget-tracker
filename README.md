@@ -80,6 +80,7 @@ The bar chart below shows the total income and expenses for each month in the fi
 
 ![chart](https://user-images.githubusercontent.com/101781321/224467068-a63698cb-b637-4302-9fb9-fc9c318fa19a.gif)
 
+.
 
 ### 💁‍♂️ USER
 

@@ -60,8 +60,6 @@ When both the budget and expenses data are available, the progress bar at the bo
 預算控管頁面，在記帳頁面新增的各類支出會同步顯示在這邊，收入則會變成待分配的預算，
 讓使用者可以依照生活習慣分配到各個消費類別之中，當預算和消費都有資料後，下方進度條會顯示目前已使用的%數，也可以得知目前還剩多少金額可以使用。
 
-.
-
 ![tracker](https://user-images.githubusercontent.com/101781321/224467056-14977af6-06e3-4250-8f1c-038676056512.gif)
 
 .
@@ -75,8 +73,6 @@ The bar chart below shows the total income and expenses for each month in the fi
 
 圖表分析頁面，首先在最上方明顯紀錄本月的總收入/支出及月結餘，下方的圖表使用chart.js套件實作圓餅圖及長條圖，
 選項可以隱藏不需要的類別，滑鼠移到圖表底下也會顯示各類別的使用金額，下方長條圖是上半年每個月的總收入/支出，折線圖是每個月結餘的金額。
-
-.
 
 ![chart](https://user-images.githubusercontent.com/101781321/224467068-a63698cb-b637-4302-9fb9-fc9c318fa19a.gif)
 
@@ -92,10 +88,9 @@ If the user login with Google, the red cloud picture below will display the user
 最後是會員頁的部分，會員的基本資料都可以進行修改，選擇將更改的資料轉為JSON格式同時儲存在Firebase Auth的displayName和網頁的LocalStorage中，
 提供重設密碼按鈕，下方紅色雲朵的部分如果是以google登入會顯示使用者在google設定的大頭貼。
 
-.
-
 ![1678514199581](https://user-images.githubusercontent.com/101781321/224467790-ed646111-776a-41a0-8739-affbbef54af0.gif)
 
+.
 
 ***  
 

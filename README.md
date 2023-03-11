@@ -45,8 +45,6 @@ Users can change the month by clicking the previous and next buttons located bef
 登入後隨即跳轉到記帳頁，點選上方按鈕即可新增一筆紀錄，在每筆紀錄後方都有提供按鈕讓使用者進修改或刪除，
 資料都會同步儲存在firestore資料庫中，點選上方的日期前後按鈕也可以更換月份。
 
-.
-
 ![keeper](https://user-images.githubusercontent.com/101781321/224467050-25dd23cc-8ca7-4790-a96f-0df640716f4f.gif)
 
 .

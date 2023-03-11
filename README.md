@@ -89,6 +89,16 @@ If the user login with Google, the red cloud picture below will display the user
 
 .
 
+### 📱 Responsive Web Design (RWD)
+
+Implement a responsive design to ensure that tablet and mobile users have an optimal user experience.
+
+實作響應式頁面，讓平板及手機小螢幕使用者也可以有更好的使用體驗。
+
+![1678515746583](https://user-images.githubusercontent.com/101781321/224468839-7be88ccf-e19d-4a5a-b005-ec2c0dcae5ca.gif)
+
+.
+
 ***  
 
 _Thanks for your reading & have a nice day 🌞_

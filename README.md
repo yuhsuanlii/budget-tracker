@@ -30,7 +30,7 @@ Budget Tracker 在前端開發的部分是選擇使用 React 建構，搭配 Rea
 後端開發使用 Firebase 提供的服務平台，運用 Hosting 部屬網站、Firestore 作為資料庫、Authentication 建構會員系統，以及本地端 LocalStorage 儲存臨時數據。
 開發工具使用 Webpack 進行模組的打包、Babel 解決瀏覽器相容性問題 npm 作為套件管理、Git/GitHub 進行版本控管。
 
-![Skills Structure ](https://user-images.githubusercontent.com/101781321/224463787-c1eb54ff-d3c5-47cf-986c-98531cb4284b.JPG)
+![Skills Structure ](https://user-images.githubusercontent.com/101781321/224469842-9c9da306-c540-46d6-b020-61a011049133.JPG)
 
 
 ## Features

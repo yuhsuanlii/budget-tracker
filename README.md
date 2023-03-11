@@ -20,6 +20,10 @@ Since Budget Tracker is used to record personal income, expense and budget, it n
 | Account | test@test.com |
 | Password | test1234 |
 
+| Account | Password |
+|-----|--------|
+| test@test.com | test1234 |
+
 
 ## Skills Structure
 Budget Tracker use ```React``` as the Front-End framework, implement Single Page Application (SPA) with ```React Router```, and also support page switching.

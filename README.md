@@ -1,11 +1,9 @@
 # Budget Tracker 📝
-
-![Desktop - 2 (2)](https://user-images.githubusercontent.com/101781321/224468959-3ff4e813-a5d2-4a6e-9123-02af4c3d8242.png)
-
 Budget Tracker is a budget-oriented bookkeeping website. You can record daily expenses and incomes according to categories, set a monthly budget and provide charts to track consumption situations.
 
 Budget Tracker 是一個以預算為導向的記帳軟體。可以依照類別記錄每天的支出和收入，設置每個月的消費預算以確保不超支，並提供收入、支出類別月比例及整年度結餘分析圖追蹤消費情況。
 
+![Desktop - 2 (2)](https://user-images.githubusercontent.com/101781321/224468959-3ff4e813-a5d2-4a6e-9123-02af4c3d8242.png)
 
 ## Live DEMO
 https://budget-tracker-tw.web.app/

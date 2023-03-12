@@ -28,7 +28,7 @@ Budget Tracker 在前端開發的部分是選擇使用 React 建構，搭配 Rea
 後端開發使用 Firebase 提供的服務平台，運用 Hosting 部屬網站、Firestore 作為資料庫、Authentication 建構會員系統，以及本地端 LocalStorage 儲存臨時數據。
 開發工具使用 Webpack 進行模組的打包、Babel 解決瀏覽器相容性問題 npm 作為套件管理、Git/GitHub 進行版本控管。
 
-![Skills Structure ](https://user-images.githubusercontent.com/101781321/224491872-9bbfa06c-7e0e-4c8b-b307-888ea89e3929.JPG)
+![Skills Structure ](https://user-images.githubusercontent.com/101781321/224555795-cc3c1b4a-0a1c-4763-a37e-69dee376f48f.JPG)
 
 
 ## Features
@@ -45,7 +45,7 @@ Users can change the month by clicking the previous and next buttons located bef
 
 ![keeper](https://user-images.githubusercontent.com/101781321/224467050-25dd23cc-8ca7-4790-a96f-0df640716f4f.gif)
 
-.
+<br/>
 
 ### 📋 TRACKER
 
@@ -58,7 +58,7 @@ When both the budget and expenses data are available, the progress bar at the bo
 
 ![tracker](https://user-images.githubusercontent.com/101781321/224467056-14977af6-06e3-4250-8f1c-038676056512.gif)
 
-.
+<br/>
 
 ### 📊 CHART
 
@@ -72,7 +72,7 @@ The bar chart below shows the total income and expenses for each month in the fi
 
 ![chart](https://user-images.githubusercontent.com/101781321/224467068-a63698cb-b637-4302-9fb9-fc9c318fa19a.gif)
 
-.
+<br/>
 
 ### 💁‍♂️ USER
 
@@ -86,7 +86,7 @@ If the user login with Google, the red cloud picture below will display the user
 
 ![1678514199581](https://user-images.githubusercontent.com/101781321/224467790-ed646111-776a-41a0-8739-affbbef54af0.gif)
 
-.
+<br/>
 
 ### 📱 Responsive Web Design (RWD)
 
@@ -96,7 +96,7 @@ Implement a responsive design to ensure that tablet and mobile users have a bett
 
 ![1678515746583](https://user-images.githubusercontent.com/101781321/224468839-7be88ccf-e19d-4a5a-b005-ec2c0dcae5ca.gif)
 
-.
+<br/>
 
 ***  
 

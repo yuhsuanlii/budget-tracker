@@ -11,108 +11,12 @@ import { auth, singInWithGoogle } from "../firebase";
 const LoginForm = () => {
 
     const {
+
         user, setUser,
-        userData, setUserData,
-
-        username, setUsername,
-        gender, setGender,
-        birthday, setBirthday,
-        email, setEmail,
-        password, setPassword,
-
-        isEditingName, setIsEditingName,
-        isEditingGender, setIsEditingGender,
-        isEditingBirthday, setIsEditingBirthday,
-        isEditingEmail, setIsEditingEmail,
-        isEditingPassword, setIsEditingPassword,
-
-        showForm, setShowForm,
         showLoginForm, setShowLoginForm,
-        expenses, setExpenses,
-        amount, setAmount,
-        description, setDescription,
-        category, setCategory,
-        date, setDate,
-        costs, setCosts,
-        budget, setBudget,
-        allocatedBudget, setAllocatedBudget,
-        bcategory, setbCategory,
-        food, setFood,
-        traffic, setTraffic,
-        play, setPlay,
-        other, setOther,
-        isEditingFood, setIsEditingFood,
-        isEditingTraffic, setIsEditingTraffic,
-        isEditingPlay, setIsEditingPlay,
-        isEditingOther, setIsEditingOther,
-        selectedBudgetId, setSelectedBudgetId,
-
-        totalIncome, setTotalIncome,
-        totalExpense, setTotalExpense,
-        costFood, setCostFood,
-        costTraffic, setCostTraffic,
-        costPlay, setCostPlay,
-        costOther, setCostOther,
-
         showLogin, setShowLogin
-
+        
     } = useBudgetTracker();
-
-    // function handleSubmit(event) {
-    //     event.preventDefault();
-    //     if (!amount) {
-    //         // 使用者輸入欄不能為空
-    //         alert("請輸入金額");
-    //         return;
-    //     }
-    //     if (!category.subType) {
-    //         // 使用者輸入欄不能為空
-    //         alert("請選擇類別");
-    //         return;
-    //     }
-
-    //     if (category.type === '支出' && category.subType !== '飲食' && category.subType !== '交通' && category.subType !== '娛樂' && category.subType !== '其他') {
-    //         alert("請選擇類別");
-    //         return;
-    //     }
-
-    //     if (category.type === '收入' && category.subType !== '薪資' && category.subType !== '獲利' && category.subType !== '其他') {
-    //         alert("請選擇類別");
-    //         return;
-    //     }
-
-    //     // 繼續提交表單
-    //     setExpenses([
-    //         ...expenses,
-    //         { id: expenses.length + 1, amount: parseInt(amount), description, category, date }
-    //     ]);
-
-    //     if (category.type === '收入') {
-    //         setTotalIncome(totalIncome + parseInt(amount));
-    //     } else {
-    //         setTotalExpense(totalExpense + parseInt(amount));
-    //     }
-
-    //     if (category.type === '支出' && category.subType === '飲食') {
-    //         setCostFood(costFood + parseInt(amount));
-    //     }
-    //     if (category.type === '支出' && category.subType === '交通') {
-    //         setCostTraffic(costTraffic + parseInt(amount));
-    //     }
-    //     if (category.type === '支出' && category.subType === '娛樂') {
-    //         setCostPlay(costPlay + parseInt(amount));
-    //     }
-    //     if (category.type === '支出' && category.subType === '其他') {
-    //         setCostOther(costOther + parseInt(amount));
-    //     }
-
-    //     setAmount('');
-    //     setDescription('');
-    //     setCategory({ type: '支出', subType: '' });
-    //     // setShowForm(false);
-    // }
-
-    // const [showLogin, setShowLogin] = useState(true);
 
     const handleLoginClick = () => {
         setShowLogin(true);
@@ -120,38 +24,6 @@ const LoginForm = () => {
 
     const handleSignupClick = () => {
         setShowLogin(false);
-    };
-
-    // const [isLogin, setIsLogin] = useState(true);
-    const [confirmPassword, setConfirmPassword] = useState('');
-
-    const handleLoginSubmit = (event) => {
-        event.preventDefault();
-        if (isLogin) {
-            // 登入處理邏輯
-            console.log('登入', email, password);
-        } else {
-            // 註冊處理邏輯
-            console.log('註冊', email, password, confirmPassword);
-        }
-    };
-
-    const handleSignupSubmit = (event) => {
-        event.preventDefault();
-        if (isLogin) {
-            // 登入處理邏輯
-            console.log('登入', email, password);
-        } else {
-            // 註冊處理邏輯
-            console.log('註冊', email, password, confirmPassword);
-        }
-    };
-
-    const handleToggle = () => {
-        setIsLogin(!isLogin);
-        setEmail('');
-        setPassword('');
-        setConfirmPassword('');
     };
 
     // firebase auth
@@ -162,8 +34,8 @@ const LoginForm = () => {
     const [signupGender, setSignupGender] = useState("");
     const [signupBirthday, setSignupBirthday] = useState("");
 
-    const [loginEmail, setLoginEmail] = useState("");
-    const [loginPassword, setLoginPassword] = useState("");
+    const [loginEmail, setLoginEmail] = useState("test@test.com");
+    const [loginPassword, setLoginPassword] = useState("test1234");
 
     const [signupNotice, setSignupNotice] = useState("");
     const [loginNotice, setLoginNotice] = useState("");
@@ -287,24 +159,22 @@ const LoginForm = () => {
                 <div></div>
                 <div className="kb">
                     <span className="projectName">
-                        Budget
                     </span>
                     {loggedIn ? (
-                        // 如果用戶已經登入
+                        // 已登入
                         <>
                             <button className="lbtn" onClick={logout}>
                                 登出系統
                             </button>
                         </>
                     ) : (
-                        // 如果用戶還沒有登入，渲染帶有按鈕的頁面
+                        // 未登入
                         <>
                             <button className="lbtn" onClick={() => setShowLoginForm(!showLoginForm)}>
                                 {showLoginForm ? '關閉介面' : '點此登入'}
                             </button>
                         </>
                     )}
-
 
                     {showLoginForm && (
                         <>
@@ -324,7 +194,7 @@ const LoginForm = () => {
                                                 type="email"
                                                 className="loginEmail"
                                                 placeholder="電子信箱"
-                                                // value={email}
+                                                value={loginEmail}
                                                 onChange={(event) => setLoginEmail(event.target.value)}
                                                 required
                                             />
@@ -334,7 +204,7 @@ const LoginForm = () => {
                                                     type="password"
                                                     className="loginPassword"
                                                     placeholder="密碼"
-                                                    // value={password}
+                                                    value={loginPassword}
                                                     onChange={(event) => setLoginPassword(event.target.value)}
                                                     required
                                                 />
@@ -367,7 +237,6 @@ const LoginForm = () => {
                                             </button>
                                         </div>
                                         <div>
-                                            {/* <h1>註冊</h1> */}
                                             {/* 註冊表單 */}
 
                                             <div className="signupLayout">
@@ -417,15 +286,6 @@ const LoginForm = () => {
                                             <button className="loginFormBtn" onClick={signup}>註冊</button>
                                             {/* <div>{user?.email}</div> */}
                                             <div className="notice">{signupNotice}</div>
-
-                                            {/* <div className="dashsignup"></div>
-                                            <div className="loginThird">
-                                                <div className="signupWith">or signup with </div>
-                                                <div className="signupGoogle">
-                                                    <FcGoogle size={30} className='iconG' />
-                                                </div>
-                                            </div> */}
-
                                         </div>
                                     </div>
                                     <div className="formbkg"></div>

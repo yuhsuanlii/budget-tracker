@@ -34,7 +34,6 @@ export const BudgetTrackerProvider = ({ children }) => {
   const [showEditForm, setShowEditForm] = useState(false);
   const [showLoginForm, setShowLoginForm] = useState(false);
   const [date, setDate] = useState(new Date().toISOString().substring(0, 10));
-  // const [date, setDate] = useState('');
 
   const [costs, setCosts] = useState([]); // 設定預算的陣列
   const [budget, setBudget] = useState(0); // 設定預算金額

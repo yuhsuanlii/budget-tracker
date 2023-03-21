@@ -3,41 +3,16 @@
     grid-template-columns: 10% 85% 5%;
     padding-top: 30px;
     padding-bottom: 30px;
-    /* border-bottom: black 2px solid; */
 }
 
 .klist {
     font-family: FakePearl-Regular;
     position: relative;
-    width: min(100%, 1200px);
+    width: min(100%, 1920px);
     margin: auto;
     letter-spacing: 1px;
-    /* font-family: tahoma; */
+    padding-top: 20px;
 }
-
-/* receipt */
-
-/* .paid {
-    display: none;
-    width: 300px;
-    margin: 0 auto;
-    background-color: #fff;
-    text-align: center;
-    padding-top: 25px;
-    border-radius: 0px 0px 10px 10px;
-    padding-bottom: 25px;
-    color: #00773D;
-    line-height: 30px;
-}
-
-.paid p {
-    background-image: url("http://dc455.4shared.com/download/VILITso0/tsid20130720-183900-9216b81f/check.png");
-    background-repeat: no-repeat;
-    background-position: left center;
-    padding-left: 30px;
-    width: 190px;
-    margin: 0 auto;
-} */
 
 .tab {
     width: 100%;
@@ -107,8 +82,8 @@
     padding-top: 10px;
     padding-bottom: 10px;
     word-wrap: break-word;
-    line-height: 38px;
     /* 換行 */
+    line-height: 38px;
 }
 
 .listEdit:hover,
@@ -142,7 +117,6 @@
     clear: both;
     width: 96%;
     margin: 0 auto;
-    /* color: #5B5B5B; */
     font-size: 18px;
     padding-top: 10px;
     padding-bottom: 20px;
@@ -264,26 +238,14 @@ input[type=button]:hover {
 
 .description {
     padding-left: 10px;
-    /* margin-right: 10px; */
-    /* background-color: #f7f4f4; */
-    /* background-color: #EFE8E2; */
     background-color: rgb(249, 240, 228);
     border-right: 3px solid #F1DBBF;
     border-bottom: 3px solid #F1DBBF;
     border-radius: 30px;
     width: 90%;
-
-    /* border-right: 3px solid #eaeaea; */
-    /* border-bottom: 3px solid #eaeaea; */
 }
 
 .date {
-    /* margin-right: 10px; */
-    /* background-color: #f7f4f4; */
-    /* background-color: #EFE8E2; */
-    /* background-color: rgb(249, 240, 228); */
-    /* border-right: 3px solid #F1DBBF;
-    border-bottom: 3px solid #F1DBBF; */
     color: #FFF;
     background-color: #cdac78;
     border-right: 3px solid #b89a6b;
@@ -309,7 +271,6 @@ input[type=button]:hover {
     line-height: 14px;
     font-size: 14px;
     margin-top: 10px;
-    /* color: #5B5B5B; */
     color: #B99B6B;
     width: 100%;
     padding-bottom: 30px;

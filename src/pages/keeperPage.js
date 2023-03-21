@@ -13,53 +13,17 @@ import { collection, onSnapshot, where, query, setDoc, doc, deleteDoc, updateDoc
 const KeeperPage = () => {
 
     const {
-        firstDay, setFirstDay,
-        lastDay, setLastDay,
-
-        uid, setUid,
+     
         user, setUser,
-        userData, setUserData,
-        showLogin, setShowLogin,
-
-        username, setUsername,
-        gender, setGender,
-        birthday, setBirthday,
-        email, setEmail,
-        password, setPassword,
-
-        isEditingName, setIsEditingName,
-        isEditingGender, setIsEditingGender,
-        isEditingBirthday, setIsEditingBirthday,
-        isEditingEmail, setIsEditingEmail,
-        isEditingPassword, setIsEditingPassword,
-
         showForm, setShowForm,
         showEditForm, setShowEditForm,
-        showLoginForm, setShowLoginForm,
 
         expenses, setExpenses,
         amount, setAmount,
         description, setDescription,
         category, setCategory,
         date, setDate,
-        costs, setCosts,
-
-        budget, setBudget,
-        allocatedBudget, setAllocatedBudget,
-        bcategory, setbCategory,
-
-        food, setFood,
-        traffic, setTraffic,
-        play, setPlay,
-        other, setOther,
-
-        isEditingFood, setIsEditingFood,
-        isEditingTraffic, setIsEditingTraffic,
-        isEditingPlay, setIsEditingPlay,
-        isEditingOther, setIsEditingOther,
-
-        selectedBudgetId, setSelectedBudgetId,
-
+       
         totalIncome, setTotalIncome,
         totalExpense, setTotalExpense,
 
@@ -88,92 +52,12 @@ const KeeperPage = () => {
                 localStorage.setItem("uid", currentUser.uid);
             }
         });
-
-        // onSnapshot(collection(db, "keeper"), (snapshot) => {
-        //     setExpenses(snapshot.docs.map(doc => ({ ...doc.data(), id: doc.id })));
-        // });
-
         return () => unsubscribe();
     }, []);
 
-    // function handleUpdate(expense) {
-    //     setExpenses(
-    //         expenses.map(e => (e.id === expense.id ? { ...e, amount: '', description: '', category: '', date: '' } : e))
-    //     );
-    //     setExpenses(expenses.filter(e => e.id !== expense.id));
-
-
-    //     if (expense.category.type === '收入') {
-    //         setTotalIncome(totalIncome - expense.amount);
-    //     } else {
-    //         setTotalExpense(totalExpense - expense.amount);
-    //         if (expense.category.type === '支出' && expense.category.subType === '飲食') {
-    //             setCostFood(costFood - expense.amount);
-    //         }
-    //         if (expense.category.type === '支出' && expense.category.subType === '交通') {
-    //             setCostTraffic(costTraffic - expense.amount);
-    //         }
-    //         if (expense.category.type === '支出' && expense.category.subType === '娛樂') {
-    //             setCostPlay(costPlay - expense.amount);
-    //         }
-    //         if (expense.category.type === '支出' && expense.category.subType === '其他') {
-    //             setCostOther(costOther - expense.amount);
-    //         }
-    //     }
-
-
-
-    //     setAmount(expense.amount);
-    //     setDescription(expense.description);
-    //     setCategory(expense.category);
-    //     setShowForm(true);
-    // }
-
-    // function handleDelete(expense) {
-    //     setExpenses(expenses.filter(e => e.id !== expense.id));
-
-    //     if (expense.category.type === '收入') {
-    //         setTotalIncome(totalIncome - expense.amount);
-    //     } else {
-    //         setTotalExpense(totalExpense - expense.amount);
-    //         if (expense.category.type === '支出' && expense.category.subType === '飲食') {
-    //             setCostFood(costFood - expense.amount);
-    //         }
-    //         if (expense.category.type === '支出' && expense.category.subType === '交通') {
-    //             setCostTraffic(costTraffic - expense.amount);
-    //         }
-    //         if (expense.category.type === '支出' && expense.category.subType === '娛樂') {
-    //             setCostPlay(costPlay - expense.amount);
-    //         }
-    //         if (expense.category.type === '支出' && expense.category.subType === '其他') {
-    //             setCostOther(costOther - expense.amount);
-    //         }
-    //     }
-    // }
-
-
     const fd = localStorage.getItem("firstDay");
     const ld = localStorage.getItem("lastDay");
-    // const getTotal = (category) => {
-    //     const q = query(
-    //         collection(db, 'keeper'),
-    //         where('uid', '==', localStorage.getItem("uid")),
-    //         where('category', '==', category),
-    //         where('date', '>=', fd),
-    //         where('date', '<=', ld),
-    //     );
-    //     onSnapshot(q, (snapshot) => {
-    //         const totalAmount = snapshot.docs.reduce((acc, doc) => acc + doc.data().amount, 0);
-    //         console.log(`Total ${category} for March 2023: $${totalAmount}`);
-    //         localStorage.setItem(`total${category}`, totalAmount);
-    //     });
-    // }
-
-    // useEffect(() => {
-    //     getTotal("支出");
-    //     getTotal("收入");
-    // }, [fd, ld]);
-
+   
     const fetchTotalCost = (subCategory, setCost) => {
         const q = query(
             collection(db, 'keeper'),
@@ -325,20 +209,6 @@ const KeeperPage = () => {
         setDescription(memo);
     }
 
-    const handleDayChange = async (event) => {
-        const date1 = new Date(date);
-        const firstDay = new Date(date1.getFullYear(), date1.getMonth(), 1);
-        const lastDay = new Date(date1.getFullYear(), date1.getMonth() + 1, 0);
-
-        setFirstDay(formatDate(firstDay));
-        setLastDay(formatDate(lastDay))
-
-        localStorage.setItem("firstDay", firstDay);
-        localStorage.setItem("lastDay", lastDay);
-
-        return setDate(event.target.value);
-    }
-
     const handleUpdate = async (event) => {
         event.preventDefault();
         console.log(listId);
@@ -394,7 +264,6 @@ const KeeperPage = () => {
                 <div>
                     <div className="klist">
                         <div className="tab"></div>
-                        {/* <div className="paid"><p>Receipt Paid successfully</p></div> */}
                         <div className="receipt">
                             <div className="paper">
                                 <div className="title">Account Book</div>
@@ -412,27 +281,6 @@ const KeeperPage = () => {
                                 </div>
                                 <div className="table">
                                     <div>
-                                        {/* <tr><td>2 x Coffee</td><td className="right">$10</td></tr>
-                                        <tr><td>1 x Rice</td><td className="right">$30</td></tr>
-                                        <tr><td>5 x Milk</td><td className="right">$90</td></tr> */}
-                                        {/* <ul> */}
-                                        {/* {expenses.map((expense, index) => (
-                                                <li key={index} className="lilist">
-                                                    <div className="list">
-                                                        <div>{expense.date.substring(8, 10)}</div>
-                                                        <div>{expense.category.type}</div>
-                                                        <div>{expense.category.subType}</div>
-                                                        <div>${expense.amount}</div>
-                                                        <div className="description">{expense.description}</div>
-                                                        <div><FaPencilAlt className="listEdit" size={25} color='#698269' onClick={() => handleUpdate(expense)} /></div>
-                                                        <div>
-                                                            <FaTrashAlt className="listDelete" size={25} color='#AA5656' onClick={() => handleDelete(expense)} />
-                                                        </div>
-                                                    </div>
-                                                </li>
-
-                                            ))} */}
-
                                         {expenses.map((expense) => (
                                             <li key={expense.id} className="lilist">
                                                 <div className="list">
@@ -442,14 +290,10 @@ const KeeperPage = () => {
                                                     <div>${expense.amount}</div>
                                                     <div className="description">{expense.memo}&nbsp;</div>
                                                     <div>
-
-                                                        {/*  */}
                                                         <FaPencilAlt size={25} color='#698269' className="listEdit"
                                                             onClick={() => handleShowEdit(expense.id, expense.date, expense.category, expense.subCategory, expense.amount, expense.memo)}>
                                                             {showEditForm ? "hi" : "hello"}
                                                         </FaPencilAlt>
-
-                                                        {/*  */}
                                                     </div>
                                                     <div>
                                                         <FaTrashAlt className="listDelete" size={25} color='#AA5656' onClick={() => handleDelete(expense.id)} />
@@ -458,7 +302,6 @@ const KeeperPage = () => {
 
                                             </li>
                                         ))}
-                                        {/* </ul> */}
                                     </div>
                                     <div className="tnbtn">
                                         <Link to="/tracker">
@@ -468,7 +311,7 @@ const KeeperPage = () => {
 
                                 </div>
                                 <div className="sign center">
-                                    <span className="barcode">00020230223000</span>
+                                    <span className="barcode">202303210513</span>
                                     <br />
                                     <div className="thankyou">
                                         A penny saved is a penny earned
@@ -491,7 +334,9 @@ const KeeperPage = () => {
                                 type="date"
                                 min="2020-01-01"
                                 value={date}
-                                onChange={handleDayChange} />
+                                // onChange={handleDayChange}
+                                onChange={(event) => setDate(event.target.value)}
+                            />
                             <br />
                             <select className="formCat" value={category.type} onChange={event => setCategory({ type: event.target.value, subType: category.subType })}>
                                 <option value="支出">支出</option>

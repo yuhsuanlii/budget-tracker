@@ -20,38 +20,15 @@ import {
 
 const UserPage = () => {
     const {
-        user, setUser,
-        userData, setUserData,
 
+        user, setUser,
         username, setUsername,
         gender, setGender,
         birthday, setBirthday,
         email, setEmail,
         password, setPassword,
-
-        showForm, setShowForm,
-        expenses, setExpenses,
-        amount, setAmount,
-        description, setDescription,
-        category, setCategory,
-        date, setDate,
-        costs, setCosts,
-        budget, setBudget,
-        allocatedBudget, setAllocatedBudget,
-        bcategory, setbCategory,
-        food, setFood,
-        traffic, setTraffic,
-        play, setPlay,
-        other, setOther,
-
-        selectedBudgetId, setSelectedBudgetId,
-
-        totalIncome, setTotalIncome,
-        totalExpense, setTotalExpense,
-        costFood, setCostFood,
-        costTraffic, setCostTraffic,
-        costPlay, setCostPlay,
-        costOther, setCostOther } = useBudgetTracker();
+        
+    } = useBudgetTracker();
 
     const [isEditingName, setIsEditingName] = useState(false);
     const [isEditingGender, setIsEditingGender] = useState(false);
@@ -78,10 +55,6 @@ const UserPage = () => {
 
         return () => unsubscribe();
     }, []);
-
-    // if (!currentUser) {
-    //     return <div>Loading...</div>;
-    // }
 
     const handleResetPassword = () => {
         const auth = getAuth();
@@ -121,9 +94,6 @@ const UserPage = () => {
                     .catch((error) => {
                         console.log(error.message);
                     });
-                // localStorage.setItem('username', newUsername);
-                // setIsEditingBirthday(false);
-                // setBirthday(newUsername);
             }
         })
 
@@ -150,9 +120,6 @@ const UserPage = () => {
                     .catch((error) => {
                         console.log(error.message);
                     });
-                // localStorage.setItem('gender', newGender);
-                // setIsEditingBirthday(false);
-                // setBirthday(newGender);
             }
         })
     }
@@ -178,9 +145,6 @@ const UserPage = () => {
                     .catch((error) => {
                         console.log(error.message);
                     });
-                // localStorage.setItem('birthday', newBirthday);
-                // setIsEditingBirthday(false);
-                // setBirthday(newBirthday);
             }
         })
     }
@@ -283,23 +247,7 @@ const UserPage = () => {
                                     電子信箱
                                 </div>
                                 <div className="userInfo">
-                                    {/* {isEditingEmail ? (
-                                        <>
-                                            <input
-                                                className="userEdit"
-                                                type="text"
-                                                placeholder={email}
-                                                onChange={event => setNewEmail(event.target.value)}
-                                                required
-                                            />
-                                            <button className="btntick" onClick={updateUserEmail}>✔</button>
-                                        </>
-                                    ) : (
-                                        <> */}
                                     <span>{email || localStorage.getItem("email")}</span>
-                                    {/* <FiEdit3 className="editicon2" size={20} onClick={() => setIsEditingEmail(true)} />
-                                        </>
-                                    )} */}
                                 </div>
                             </div>
                             <div className="ut2">

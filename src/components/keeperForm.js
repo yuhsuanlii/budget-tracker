@@ -1,61 +1,31 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import '../style/keeperForm.css';
 import { useBudgetTracker } from '../hooks/useBudgetTracker';
 import { BsCaretRightFill, BsCaretLeftFill } from "react-icons/bs";
 import { db } from '../firebase';
 import { addDoc, collection } from "firebase/firestore";
 import { doc, getDoc, setDoc } from 'firebase/firestore';
-import { onSnapshot, where, query, deleteDoc, getDocs } from "firebase/firestore";
+import { onSnapshot, where, query} from "firebase/firestore";
 
 
 const KeeperForm = () => {
 
     const {
-        uid, setUid,
-        user, setUser,
-        userData, setUserData,
-        showLogin, setShowLogin,
-
-        username, setUsername,
-        gender, setGender,
-        birthday, setBirthday,
-        email, setEmail,
-        password, setPassword,
-
-        isEditingName, setIsEditingName,
-        isEditingGender, setIsEditingGender,
-        isEditingBirthday, setIsEditingBirthday,
-        isEditingEmail, setIsEditingEmail,
-        isEditingPassword, setIsEditingPassword,
 
         showForm, setShowForm,
         showEditForm, setShowEditForm,
-        showLoginForm, setShowLoginForm,
+
         expenses, setExpenses,
         amount, setAmount,
         description, setDescription,
         category, setCategory,
         date, setDate,
-        costs, setCosts,
-        budget, setBudget,
-        allocatedBudget, setAllocatedBudget,
-        bcategory, setbCategory,
-        food, setFood,
-        traffic, setTraffic,
-        play, setPlay,
-        other, setOther,
-        isEditingFood, setIsEditingFood,
-        isEditingTraffic, setIsEditingTraffic,
-        isEditingPlay, setIsEditingPlay,
-        isEditingOther, setIsEditingOther,
-        selectedBudgetId, setSelectedBudgetId,
 
         totalIncome, setTotalIncome,
         totalExpense, setTotalExpense,
         costFood, setCostFood,
-        costTraffic, setCostTraffic,
-        costPlay, setCostPlay,
-        costOther, setCostOther } = useBudgetTracker();
+    
+    } = useBudgetTracker();
 
     const formatDate = (date) => {
         const year = date.getFullYear();
@@ -105,64 +75,9 @@ const KeeperForm = () => {
         return formatDate(firstDay), formatDate(lastDay);
     };
 
-    // function handleSubmit(event) {
-    //     event.preventDefault();
-    //     if (!amount) {
-    //         // 使用者輸入欄不能為空
-    //         alert("請輸入金額");
-    //         return;
-    //     }
-    //     if (!category.subType) {
-    //         // 使用者輸入欄不能為空
-    //         alert("請選擇類別");
-    //         return;
-    //     }
-
-    //     if (category.type === '支出' && category.subType !== '飲食' && category.subType !== '交通' && category.subType !== '娛樂' && category.subType !== '其他') {
-    //         alert("請選擇類別");
-    //         return;
-    //     }
-
-    //     if (category.type === '收入' && category.subType !== '薪資' && category.subType !== '獲利' && category.subType !== '其他') {
-    //         alert("請選擇類別");
-    //         return;
-    //     }
-
-    //     // 繼續提交表單
-    //     setExpenses([
-    //         ...expenses,
-    //         { id: expenses.length + 1, amount: parseInt(amount), description, category, date }
-    //     ]);
-
-    //     if (category.type === '收入') {
-    //         setTotalIncome(totalIncome + parseInt(amount));
-    //     } else {
-    //         setTotalExpense(totalExpense + parseInt(amount));
-    //     }
-
-    //     if (category.type === '支出' && category.subType === '飲食') {
-    //         setCostFood(costFood + parseInt(amount));
-    //     }
-    //     if (category.type === '支出' && category.subType === '交通') {
-    //         setCostTraffic(costTraffic + parseInt(amount));
-    //     }
-    //     if (category.type === '支出' && category.subType === '娛樂') {
-    //         setCostPlay(costPlay + parseInt(amount));
-    //     }
-    //     if (category.type === '支出' && category.subType === '其他') {
-    //         setCostOther(costOther + parseInt(amount));
-    //     }
-
-    //     setAmount('');
-    //     setDescription('');
-    //     setCategory({ type: '支出', subType: '' });
-    //     setShowForm(false);
-    // }
-
     useEffect(() => {
 
         console.log(firstDay, lastDay);
-
         localStorage.setItem("firstDay", firstDay);
         localStorage.setItem("lastDay", lastDay);
 
@@ -175,23 +90,9 @@ const KeeperForm = () => {
             where('date', '<=', localStorage.getItem('lastDay')),
         );
 
-        // const unsubscribe = 
         onSnapshot(q, (snapshot) => {
             setExpenses(snapshot.docs.map(doc => ({ ...doc.data(), id: doc.id })));
         });
-
-        // const totalExpense1 = expenses
-        //     .filter((expense) => expense.category === "支出")
-        //     .reduce((total, expense) => total + expense.amount, 0);
-
-
-        // console.log(totalExpense1);
-
-        // setExpenses(expenses);
-        // setTotalExpense(totalExpense);
-        // setTotalIncome(totalIncome);
-
-        // return unsubscribe;
         setDate(date);
 
     }, [(localStorage.getItem("uid")), date, firstDay, lastDay]);
@@ -208,12 +109,12 @@ const KeeperForm = () => {
                 totalExpense: 0,
                 totalIncome: 0,
                 costFood: 0,
-                costTraffic: 0, 
+                costTraffic: 0,
                 costPlay: 0,
                 costOther: 0,
                 costApparel: 0,
-                costHousing: 0, 
-                costEducate: 0, 
+                costHousing: 0,
+                costEducate: 0,
                 costSavings: 0,
                 earnSalary: 0,
                 earnStock: 0,
@@ -287,52 +188,7 @@ const KeeperForm = () => {
             amount: parseInt(amount),
             memo: description
         }
-        // const docRef = 
         await addDoc(collectionRef, payload);
-        // console.log(docRef.id);
-
-
-        // 取得 total 文件的 docRef
-        // const totalDocId = localStorage.getItem("firstDay") + localStorage.getItem("uid");
-        // const totalDocRef = doc(db, "total", totalDocId);
-
-        // // 取得原本的 total 文件資料
-        // const totalDocSnapshot = await getDoc(totalDocRef);
-        // let totalData;
-        // if (totalDocSnapshot.exists()) {
-        //     totalData = totalDocSnapshot.data();
-        // } else {
-        //     // 如果 total 文件不存在，則新增一個
-        //     totalData = {
-        //         totalExpense: 0,
-        //         totalIncome: 0,
-        //     };
-        //     await setDoc(totalDocRef, totalData);
-        // }
-
-        // // 更新 total 文件
-        // if (category.type === '支出') {
-        //     totalData.totalExpense += Number(amount);
-        // } else {
-        //     totalData.totalIncome += Number(amount);
-        // }
-        // await updateDoc(totalDocRef, totalData);
-
-        // original code
-        
-        // const docId = localStorage.getItem("firstDay") + localStorage.getItem("uid")
-        // const totalRef = doc(db, "total", docId);
-        // if(category.type === "支出"){
-        //     const payloadTotal = {
-        //         totalExpense: amount
-        //     }
-        //     await updateDoc(totalRef, payloadTotal);
-        // }else if(category.type === "收入"){
-        //     const payloadTotal = {
-        //         totalIncome: amount
-        //     }
-        //     await updateDoc(totalRef, payloadTotal);
-        // }
 
         const year = date.split("-")[0];
         const month = date.split("-")[1];
@@ -365,10 +221,8 @@ const KeeperForm = () => {
                     <span className="kmonth">
                         <BsCaretLeftFill className="preMonth" size={30} onClick={handlePrevMonth} />
                         &nbsp;{dateTitle}&nbsp;
-                        {/* &nbsp;{(localStorage.getItem('firstDay')).substring(0, 7)}&nbsp; */}
                         <BsCaretRightFill className="nextMonth" size={30} onClick={handleNextMonth} />
                     </span>
-                    {/* <button className="kbtn" onClick={() => setShowForm(!showForm)}> */}
 
                     <button className="kbtn" onClick={handleClean}>
                         {showForm ? '新增一筆' : '新增一筆'}
@@ -416,13 +270,13 @@ const KeeperForm = () => {
                                     <br />
 
                                     <input
-                                         className="formNum"
-                                         type="text"
-                                         value={amount}
-                                         placeholder='金額'
-                                         minLength={1} maxLength={8}
-                                         onChange={event => setAmount(event.target.value)}
-                                         required
+                                        className="formNum"
+                                        type="text"
+                                        value={amount}
+                                        placeholder='金額'
+                                        minLength={1} maxLength={8}
+                                        onChange={event => setAmount(event.target.value)}
+                                        required
                                     />
 
                                     <textarea
@@ -435,7 +289,6 @@ const KeeperForm = () => {
                                     />
 
                                     <button className="formBtn" type="submit">新增</button>
-                                    {/* <button type="button" onClick={() => setShowForm(false)}>關閉</button> */}
                                 </form>
                             </div>
                             <div className="formbkg"></div>

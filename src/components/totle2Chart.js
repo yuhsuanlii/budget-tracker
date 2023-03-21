@@ -1,40 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { useBudgetTracker } from '../hooks/useBudgetTracker';
 import Chart from 'chart.js/auto';
-import { Bar, Line } from "react-chartjs-2";
+import { Bar } from "react-chartjs-2";
 
 import { db } from '../firebase';
 import { doc, getDoc, setDoc } from 'firebase/firestore';
 
 const Totle2Chart = () => {
-    const {
-        showForm, setShowForm,
-        expenses, setExpenses,
-        amount, setAmount,
-        description, setDescription,
-        category, setCategory,
-        date, setDate,
-        costs, setCosts,
-        budget, setBudget,
-        allocatedBudget, setAllocatedBudget,
-        bcategory, setbCategory,
-        food, setFood,
-        traffic, setTraffic,
-        play, setPlay,
-        other, setOther,
-        isEditingFood, setIsEditingFood,
-        isEditingTraffic, setIsEditingTraffic,
-        isEditingPlay, setIsEditingPlay,
-        isEditingOther, setIsEditingOther,
-        selectedBudgetId, setSelectedBudgetId,
-
-        totalIncome, setTotalIncome,
-        totalExpense, setTotalExpense,
-        costFood, setCostFood,
-        costTraffic, setCostTraffic,
-        costPlay, setCostPlay,
-        costOther, setCostOther } = useBudgetTracker();
-
+ 
     const [monthExpenses, setMonthExpenses] = useState([]);
     const [monthIncomes, setMonthIncomes] = useState([]);
     const [months, setMonths] = useState(["07", "08", "09", "10", "11", "12"]);
@@ -92,10 +64,9 @@ const Totle2Chart = () => {
         fetchData();
     }, []);
 
+    const differences = monthIncomes.map((monthIncome, index) => monthIncome - monthExpenses[index]);
     // console.log("下半年Expenses:", monthExpenses);
     // console.log("下半年Incomes:", monthIncomes);
-
-    const differences = monthIncomes.map((monthIncome, index) => monthIncome - monthExpenses[index]);
     // console.log("下半年月結餘:", differences);
 
     const data = {
@@ -151,9 +122,6 @@ const Totle2Chart = () => {
             legend: {
                 position: 'top',
                 labels: {
-                    // This more specific font property overrides the global property
-                    // padding: 10,
-                    // textAlign: 'left',
                     font: {
                         size: 16,
                         weight: 'bold',

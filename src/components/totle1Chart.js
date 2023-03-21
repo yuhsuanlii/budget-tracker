@@ -1,40 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { useBudgetTracker } from '../hooks/useBudgetTracker';
 import Chart from 'chart.js/auto';
-import { Bar, Line } from "react-chartjs-2";
+import { Bar } from "react-chartjs-2";
 
 import { db } from '../firebase';
-import { addDoc, collection } from "firebase/firestore";
-import { doc, updateDoc, getDoc, setDoc } from 'firebase/firestore';
+import { doc, getDoc, setDoc } from 'firebase/firestore';
 
 const Totle1Chart = () => {
-    const {
-        showForm, setShowForm,
-        expenses, setExpenses,
-        amount, setAmount,
-        description, setDescription,
-        category, setCategory,
-        date, setDate,
-        costs, setCosts,
-        budget, setBudget,
-        allocatedBudget, setAllocatedBudget,
-        bcategory, setbCategory,
-        food, setFood,
-        traffic, setTraffic,
-        play, setPlay,
-        other, setOther,
-        isEditingFood, setIsEditingFood,
-        isEditingTraffic, setIsEditingTraffic,
-        isEditingPlay, setIsEditingPlay,
-        isEditingOther, setIsEditingOther,
-        selectedBudgetId, setSelectedBudgetId,
-
-        totalIncome, setTotalIncome,
-        totalExpense, setTotalExpense,
-        costFood, setCostFood,
-        costTraffic, setCostTraffic,
-        costPlay, setCostPlay,
-        costOther, setCostOther } = useBudgetTracker();
 
     const [monthExpenses, setMonthExpenses] = useState([]);
     const [monthIncomes, setMonthIncomes] = useState([]);
@@ -93,17 +64,9 @@ const Totle1Chart = () => {
         fetchData();
     }, []);
 
-    // console.log("上半年Expenses:", monthExpenses);
-    // console.log("上半年Incomes:", monthIncomes);
-
-    // useEffect(() => {
-    //     fetchBudgetData("03");
-    // }, []);
-
     const differences = monthIncomes.map((monthIncome, index) => monthIncome - monthExpenses[index]);
-    // console.log("上半年月結餘:", differences);
 
-    let totalCost = costFood + costTraffic + costPlay + costOther;
+    // let totalCost = costFood + costTraffic + costPlay + costOther;
 
     const data = {
         labels: ['1月', '2月', '3月', '4月', '5月', '6月'],
@@ -111,7 +74,7 @@ const Totle1Chart = () => {
             {
                 type: 'line',
                 label: '月結餘',
-                // data: [170, 400, 250, 300, 80, 130],
+                // data: [8050, 7030, 9920, 4230, 7460, 8100],
                 data: differences,
                 backgroundColor: '#562B08aa',
                 borderWidth: 3,
@@ -122,7 +85,7 @@ const Totle1Chart = () => {
             {
                 type: 'bar',
                 label: '總收入',
-                // data: [550, 800, 750, 900, 450, 760],
+                // data: [35500, 33800, 37750, 33900, 37450, 37600],
                 data: monthIncomes,
                 backgroundColor: '#61876Eaa',
                 hoverBackgroundColor: '#61876E',
@@ -132,7 +95,7 @@ const Totle1Chart = () => {
             {
                 type: 'bar',
                 label: '總支出',
-                // data: [745, 677, 583, 267, 599, 900],
+                // data: [27450, 26770, 27830, 29670, 29990, 29500],
                 data: monthExpenses,
                 backgroundColor: '#B05B3Baa',
                 hoverBackgroundColor: '#B05B3B',
@@ -158,9 +121,6 @@ const Totle1Chart = () => {
             legend: {
                 position: 'top',
                 labels: {
-                    // This more specific font property overrides the global property
-                    // padding: 10,
-                    // textAlign: 'left',
                     font: {
                         size: 16,
                         weight: 'bold',

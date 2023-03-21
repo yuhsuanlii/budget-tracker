@@ -2,11 +2,8 @@
 @import url(https://fonts.googleapis.com/css?family=Titillium+Web:300);
 
 body {
-    /* font-family: 'Noto Sans TC', '微軟正黑體', sans-serif; */
-    margin: 0px;
-    /* background-color: #fffdfa; */
+	margin: 0px;
 	background-color: #EFE8E2;
-	/* font-family: 'Raleway', sans-serif; */
 	font-family: FakePearl-Regular;
 }
 
@@ -16,16 +13,12 @@ body {
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap');
 
 :root {
-  font-size: 16px;
-  /* font-family: 'Open Sans', sans-serif; */
-  --text-primary: #b6b6b6;
-  --text-secondary: #ececec;
+	font-size: 16px;
+	--text-primary: #b6b6b6;
+	--text-secondary: #ececec;
 	--fa-fill: #A22C29;
-  /* --bg-primary: #0A100D; */
-  --bg-primary: #698269;
-  /* --bg-secondary: #E2C044; */
-  --bg-secondary: #B99B6B;
-
+	--bg-primary: #698269;
+	--bg-secondary: #B99B6B;
 	--transition-speed: 600ms;
 }
 
@@ -48,17 +41,17 @@ body {
 
 /* 防止置右 */
 
-.link{
-    width: 100%;
+.link {
+	width: 100%;
 }
 
-.link:last-child{
-    margin-top: auto;
+.link:last-child {
+	margin-top: auto;
 }
 
-.link2{
-    width: 100%;
-    text-decoration: none;
+.link2 {
+	width: 100%;
+	text-decoration: none;
 }
 
 .nav-link {
@@ -67,10 +60,10 @@ body {
 	height: 5rem;
 	color: var(--text-primary);
 	fill: var(--fa-fill);
-	text-decoration: none;	
+	text-decoration: none;
 	filter: grayscale(100%) opacity(0.7);
 	transition: var(--transition-speed);
-    text-decoration: none;
+	text-decoration: none;
 }
 
 .nav-link:hover {
@@ -80,20 +73,20 @@ body {
 
 .link-text {
 	display: none;
-    font-size: 18px;
-    margin-left: -15px;
-    text-decoration: none;
-    color: #b6b6b6;
+	font-size: 18px;
+	margin-left: -15px;
+	text-decoration: none;
+	color: #b6b6b6;
 	letter-spacing: 0.2em;
 }
 
-.link{
-    text-decoration: none;
+.link {
+	text-decoration: none;
 }
 
-.username{
-    font-size: 20px;
-    margin-left: 40px;
+.username {
+	font-size: 20px;
+	margin-left: 40px;
 }
 
 .nav-link svg {
@@ -108,7 +101,6 @@ body {
 	text-align: center;
 	color: black;
 	background: var(--bg-secondary);
-	/* font-size: 1.5rem; */
 	letter-spacing: 0.3ch;
 	width: 100%;
 }
@@ -124,18 +116,18 @@ body {
 		width: 100vw;
 		height: 5rem;
 	}
-	
+
 	.logo {
 		display: none;
 	}
-	
+
 	.navbar-nav {
 		flex-direction: row;
 	}
-	
+
 	.nav-link {
-		 justify-content: center;
-         
+		justify-content: center;
+
 	}
 }
 
@@ -146,12 +138,12 @@ body {
 		width: 5rem;
 		height: 100vh;
 	}
-	
+
 	.navbar:hover {
 		width: 12rem;
 	}
-	
+
 	.navbar:hover .link-text {
 		display: block;
-  }
+	}
 }

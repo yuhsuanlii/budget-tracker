@@ -3,7 +3,6 @@ import { useEffect } from "react";
 import '../style/chartPage.css';
 import Navbar from "../components/navbar";
 import { useBudgetTracker } from '../hooks/useBudgetTracker';
-import { BsCaretRightFill, BsCaretLeftFill } from "react-icons/bs";
 import CostChart from "../components/costChart";
 import EarnChart from "../components/earnChart";
 import Totle1Chart from "../components/totle1Chart";
@@ -15,48 +14,8 @@ const ChartPage = () => {
 
     const {
         user, setUser,
-        userData, setUserData,
-        showLogin, setShowLogin,
-
-        username, setUsername,
-        gender, setGender,
-        birthday, setBirthday,
-        email, setEmail,
-        password, setPassword,
-
-        isEditingName, setIsEditingName,
-        isEditingGender, setIsEditingGender,
-        isEditingBirthday, setIsEditingBirthday,
-        isEditingEmail, setIsEditingEmail,
-        isEditingPassword, setIsEditingPassword,
-
-        showForm, setShowForm,
-        showLoginForm, setShowLoginForm,
-        expenses, setExpenses,
-        amount, setAmount,
-        description, setDescription,
-        category, setCategory,
         date, setDate,
-        costs, setCosts,
-        budget, setBudget,
-        allocatedBudget, setAllocatedBudget,
-        bcategory, setbCategory,
-        food, setFood,
-        traffic, setTraffic,
-        play, setPlay,
-        other, setOther,
-        isEditingFood, setIsEditingFood,
-        isEditingTraffic, setIsEditingTraffic,
-        isEditingPlay, setIsEditingPlay,
-        isEditingOther, setIsEditingOther,
-        selectedBudgetId, setSelectedBudgetId,
-
-        totalIncome, setTotalIncome,
-        totalExpense, setTotalExpense,
-        costFood, setCostFood,
-        costTraffic, setCostTraffic,
-        costPlay, setCostPlay,
-        costOther, setCostOther } = useBudgetTracker();
+    } = useBudgetTracker();
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
@@ -70,17 +29,6 @@ const ChartPage = () => {
         return () => unsubscribe();
     }, []);
 
-    const handlePrevMonth = () => {
-        const prevMonth = new Date(date);
-        prevMonth.setMonth(prevMonth.getMonth() - 1);
-        setDate(prevMonth.toISOString().substring(0, 10));
-    };
-
-    const handleNextMonth = () => {
-        const nextMonth = new Date(date);
-        nextMonth.setMonth(nextMonth.getMonth() + 1);
-        setDate(nextMonth.toISOString().substring(0, 10));
-    };
     const dateTitle = ((localStorage.getItem('firstDay')) || date).substring(0, 7)
 
     return (
@@ -90,9 +38,7 @@ const ChartPage = () => {
                 <div></div>
                 <div className="kb2">
                     <span className="kmonth2">
-                        {/* <BsCaretLeftFill className="preMonth" size={30} onClick={handlePrevMonth} /> */}
                         &nbsp;{dateTitle}&nbsp;
-                        {/* <BsCaretRightFill className="nextMonth" size={30} onClick={handleNextMonth} /> */}
                     </span>
                     <div className="monthItem">
                         <div className="monthIncome">

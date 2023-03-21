@@ -1,17 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import '../style/coverPage.css';
 import LoginForm from "../components/loginForm";
-// import example from '../image/example.JPG';
 import keeper from '../image/keeper.gif';
 import tracker from '../image/tracker.gif';
 import chart from '../image/chart.gif';
 
-
-import { auth } from "../firebase";
-import { onAuthStateChanged } from "firebase/auth";
-
 const CoverPage = () => {
-
 
     return (
         <div>
@@ -20,10 +14,7 @@ const CoverPage = () => {
                 <div></div>
                 <div className="ca">
                     <div className="coverCard1">
-                        {/* <div className="coverInner1"> */}
                         <div className="coverTitle">Budget Tracker</div>
-                        {/* </div> */}
-                        {/* <div className="coverInner2"> */}
                         <div className="coverDetail">
                             {/* 想花錢必須先有預算！<br />
                             BUDGET TRACKER是您開始理財的好幫手，<br />
@@ -32,7 +23,6 @@ const CoverPage = () => {
                             BUDGET TRACKER is a good helper for you to start financial management.
                             {/* Provide the budget usage progress percentage, and you can see the remaining budget amount at a glance while keeping the account, so that every dollar can be properly used. */}
                         </div>
-                        {/* </div> */}
                     </div>
                     <div className="coverCard2">
                         <img src={keeper} alt="keeper" className="img" />
@@ -76,8 +66,8 @@ const CoverPage = () => {
                         </div>
                     </div>
                     <div className="coverCard6">
-                    <img src={chart} alt="chart" className="img3" />
-                </div>
+                        <img src={chart} alt="chart" className="img3" />
+                    </div>
                 </div>
                 <div></div>
             </div>

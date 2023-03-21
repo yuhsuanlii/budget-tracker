@@ -5,7 +5,6 @@
     display: grid;
     grid-template-columns: 12% 83% 5%;
     padding-top: 30px;
-    /* border-bottom: black 2px solid; */
 }
 
 .kmonth2 {
@@ -36,7 +35,6 @@
     padding-top: 50px;
     padding-bottom: 50px;
     margin-bottom: 100px;
-    /* border-bottom: black 2px solid; */
 }
 
 .tc {
@@ -48,7 +46,6 @@
 .trackerCard {
     background-color: #FAFAF9;
     width: min(100%, 1200px);
-    /* height: 180px; */
     border-radius: 30px;
     margin: auto;
     -moz-box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
@@ -74,9 +71,6 @@
 }
 
 .trackerPic {
-    
-    /* display: grid;
-    grid-template-columns: 20% 80%; */
     text-align: center;
     margin: auto;
     line-height: 30px;
@@ -91,7 +85,6 @@
     font-family: 'Pacifico', cursive;
     font-size: 28px;
     color: #B99B6B;
-    /* letter-spacing: 1px; */
 }
 
 .trackerBudget {
@@ -125,7 +118,6 @@
 
 .binput {
     width: 70px;
-    /* height: 25px; */
     padding: 5px;
     font-size: 18px;
     border-style: none;
@@ -151,7 +143,6 @@ input[type=number]::-webkit-inner-spin-button {
 
 .tickicon {
     border: none;
-    /* background-color: #FAFAF9; */
     font-size: 15px;
     font-weight: 700;
     color: #FAFAF9;
@@ -255,7 +246,6 @@ input[type=number]::-webkit-inner-spin-button {
     .budget{
         margin-top: 20px;
         margin-bottom: -20px;
-        /* margin-left: 20px; */
         width: 230px;
     }
     .trackerBudget{

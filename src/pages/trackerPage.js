@@ -3,11 +3,10 @@ import '../style/trackerPage.css';
 import '../style/progressBar.css';
 import Navbar from "../components/navbar";
 import { useBudgetTracker } from '../hooks/useBudgetTracker';
-import { BsCaretRightFill, BsCaretLeftFill } from "react-icons/bs";
 import { IoGameController, IoHome } from "react-icons/io5";
 import { MdFastfood } from "react-icons/md";
 import { GiClothes } from "react-icons/gi";
-import { FaCarSide, FaGraduationCap, FaPiggyBank, FaFolderOpen, FaHouseUser } from "react-icons/fa";
+import { FaCarSide, FaGraduationCap, FaPiggyBank, FaFolderOpen } from "react-icons/fa";
 
 import { FiEdit3 } from "react-icons/fi";
 import { auth } from "../firebase";
@@ -20,41 +19,13 @@ import { doc, updateDoc, getDoc, setDoc } from 'firebase/firestore';
 
 const TrackerPage = () => {
     const {
-        uid, setUid,
         user, setUser,
-        userData, setUserData,
-        showLogin, setShowLogin,
-
-        username, setUsername,
-        gender, setGender,
-        birthday, setBirthday,
-        email, setEmail,
-        password, setPassword,
-
-        showForm, setShowForm,
-        showEditForm, setShowEditForm,
-        showLoginForm, setShowLoginForm,
-
-        expenses, setExpenses,
-        amount, setAmount,
-        description, setDescription,
-        category, setCategory,
         date, setDate,
-        costs, setCosts,
-
-        budget, setBudget,
-        allocatedBudget, setAllocatedBudget,
-        bcategory, setbCategory,
-
+      
         food, setFood,
         traffic, setTraffic,
         play, setPlay,
         other, setOther,
-
-        selectedBudgetId, setSelectedBudgetId,
-
-        totalIncome, setTotalIncome,
-        totalExpense, setTotalExpense,
 
         costFood, setCostFood,
         costTraffic, setCostTraffic,
@@ -71,10 +42,7 @@ const TrackerPage = () => {
         educate, setEducate,
         savings, setSavings,
 
-        earnSalary, setEarnSalary,
-        earnStock, setEarnStock,
-        earnGift, setEarnGift,
-        earnOther, setEarnOther } = useBudgetTracker();
+    } = useBudgetTracker();
 
     const [isEditingFood, setIsEditingFood] = useState(false);
     const [isEditingTraffic, setIsEditingTraffic] = useState(false);
@@ -262,9 +230,7 @@ const TrackerPage = () => {
                 <div></div>
                 <div className="kb">
                     <span className="kmonth2">
-                        {/* <BsCaretLeftFill className="preMonth" size={30} onClick={handlePrevMonth} /> */}
                         &nbsp;{dateTitle}&nbsp;
-                        {/* <BsCaretRightFill className="nextMonth" size={30} onClick={handleNextMonth} /> */}
                     </span>
                     <div className="budget">待分配預算&nbsp;&nbsp;&nbsp;
                         {localStorage.getItem("totalIncome")
@@ -352,7 +318,6 @@ const TrackerPage = () => {
                                                     required
                                                     onChange={event => setApparel(event.target.value)}
                                                 />
-                                                {/* <TiTick className="tickicon" size={20} onClick={() => setIsEditingFood(null)} /> */}
                                                 <button className="tickicon" onClick={handleUpdateApparel}>✔</button>
                                             </>
                                         ) : (
@@ -407,7 +372,6 @@ const TrackerPage = () => {
                                                     required
                                                     onChange={event => setHousing(event.target.value)}
                                                 />
-                                                {/* <TiTick className="tickicon" size={20} onClick={() => setIsEditingFood(null)} /> */}
                                                 <button className="tickicon" onClick={handleUpdateHousing}>✔</button>
                                             </>
                                         ) : (
@@ -516,7 +480,6 @@ const TrackerPage = () => {
                                                     required
                                                     onChange={event => setEducate(event.target.value)}
                                                 />
-                                                {/* <TiTick className="tickicon" size={20} onClick={() => setIsEditingFood(null)} /> */}
                                                 <button className="tickicon" onClick={handleUpdateEducate}>✔</button>
                                             </>
                                         ) : (
@@ -625,7 +588,6 @@ const TrackerPage = () => {
                                                     required
                                                     onChange={event => setSavings(event.target.value)}
                                                 />
-                                                {/* <TiTick className="tickicon" size={20} onClick={() => setIsEditingFood(null)} /> */}
                                                 <button className="tickicon" onClick={handleUpdateSavings}>✔</button>
                                             </>
                                         ) : (

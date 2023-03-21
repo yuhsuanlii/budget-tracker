@@ -1,8 +1,6 @@
 @keyframes wave {
     0% { transform: translateY(0); }
-    /* 33% { transform: translateY(-5px); } */
     50% { transform: translateY(-3px); }
-    /* 66% { transform: translateY(5px); } */
     100% { transform: translateY(0); }
   }
 
@@ -21,7 +19,6 @@
     position: relative;
     float: right;
     color: #FFFFFF;
-    /* background-color: #AA5656; */
     background-color: #698269;
     width: 200px;
     height: 50px;
@@ -37,7 +34,6 @@
 }
 
 .kform2 {
-    /* background-color: #ede1d6; */
     background-color: #dbb77f;
     width: 300px;
     margin: auto;
@@ -57,7 +53,6 @@
 
 .kform3 {
     background-color: #ede1d6;
-    /* background-color: #dbb77f; */
     width: 300px;
     margin: auto;
     text-align: center;
@@ -183,7 +178,6 @@
 
 .loginPassword{
     font-family: FakePearl-Regular;
-    /* width: 210px; */
     font-size: 16px;
     border-style: none;
     border-radius: 5px;
@@ -409,14 +403,10 @@
 }
 
 @media only screen and (max-width: 440px) {
-
-
     .kform2,
     .kform3{
-        top: 215px;
+        left: 13%;
     }
-
-   
 }
 
 @media only screen and (max-width: 400px) {

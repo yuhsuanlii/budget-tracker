@@ -8,7 +8,6 @@
 .userbg {
     width: min(100%, 1200px);
     font-family: FakePearl-Regular;
-    /* float: left; */
     font-size: 36px;
     font-weight: 700;
     color: #698269;
@@ -36,16 +35,12 @@
     width: min(97%, 1180px);
     grid-template-columns: 50% 50%;
     height: 96%;
-    /* background-color: #FAFAF9; */
-    /* border: 3px dashed #B99B6B; */
     background-color: #FAFAF9;
     margin: auto;
-    /* background-color: #B99B6B; */
 }
 
 .userbd3 {
     padding: 40px;
-    /* background-color: antiquewhite; */
 }
 
 .ut{
@@ -75,7 +70,6 @@
     font-family: FakePearl-Regular;
     font-weight: 600;
     font-size: 20px;
-    /* font-family: 'Tilt Neon', cursive; */
     color: #B99B6B;
     padding-bottom: 20px;
     letter-spacing: 2px;
@@ -105,12 +99,10 @@
     outline: none;
     color: #AA5656;
     width: 150px;
-    /* border-bottom: 2px solid #B99B6B; */
 }
 
 .btntick{
     border: none;
-    /* background-color: #FAFAF9; */
     font-size: 18px;
     font-weight: 700;
     color: #FAFAF9;
@@ -131,7 +123,6 @@
 .editicon2{
     color: #698269;
     float: right;
-    /* margin-right: 5%; */
 }
 
 .connectbtn{

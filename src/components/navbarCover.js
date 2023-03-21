@@ -5,51 +5,12 @@ import { IoMdLogIn } from "react-icons/io";
 import { MdOutlineCreate } from "react-icons/md";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { useBudgetTracker } from "../hooks/useBudgetTracker";
-import { useState } from "react";
 
 const NavbarCover = () => {
 
     const { 
-        
-        username, setUsername,
-        gender, setGender,
-        birthday, setBirthday,
-        email, setEmail,
-        password, setPassword,
-
-        isEditingName, setIsEditingName,
-        isEditingGender, setIsEditingGender,
-        isEditingBirthday, setIsEditingBirthday,
-        isEditingEmail, setIsEditingEmail,
-        isEditingPassword, setIsEditingPassword,
-
-        showForm, setShowForm,
+ 
         showLoginForm, setShowLoginForm,
-        expenses, setExpenses,
-        amount, setAmount,
-        description, setDescription,
-        category, setCategory,
-        date, setDate,
-        costs, setCosts,
-        budget, setBudget,
-        allocatedBudget, setAllocatedBudget,
-        bcategory, setbCategory,
-        food, setFood,
-        traffic, setTraffic,
-        play, setPlay,
-        other, setOther,
-        isEditingFood, setIsEditingFood,
-        isEditingTraffic, setIsEditingTraffic,
-        isEditingPlay, setIsEditingPlay,
-        isEditingOther, setIsEditingOther,
-        selectedBudgetId, setSelectedBudgetId,
-
-        totalIncome, setTotalIncome,
-        totalExpense, setTotalExpense,
-        costFood, setCostFood,
-        costTraffic, setCostTraffic,
-        costPlay, setCostPlay,
-        costOther, setCostOther,
         showLogin, setShowLogin
 
      } = useBudgetTracker();

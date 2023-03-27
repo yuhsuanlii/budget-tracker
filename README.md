@@ -100,7 +100,7 @@ Implement a responsive design to ensure that tablet and mobile users have a bett
 
 ## Contact
 
-🙋 YOU-ZHEN, LI
+🙋 李宥臻 YOU-ZHEN, LI
 
 📧 charlie9684@gmail.com
 

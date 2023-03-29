@@ -48,7 +48,6 @@ const KeeperPage = () => {
             if (!currentUser) {
                 window.location.href = '/';
             } else {
-                // console.log(currentUser.uid);
                 localStorage.setItem("uid", currentUser.uid);
             }
         });

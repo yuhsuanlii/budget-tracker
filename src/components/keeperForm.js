@@ -49,7 +49,6 @@ const KeeperForm = () => {
     const handlePrevMonth = () => {
         const prevMonth = new Date(date);
         prevMonth.setMonth(prevMonth.getMonth() - 1);
-        // setDate(prevMonth.toISOString().substring(0, 10));
 
         const firstDay = new Date(prevMonth.getFullYear(), prevMonth.getMonth(), 1);
         const lastDay = new Date(prevMonth.getFullYear(), prevMonth.getMonth() + 1, 0);
@@ -57,21 +56,18 @@ const KeeperForm = () => {
         setDate(formatDate(prevMonth))
         setFirstDay(formatDate(firstDay));
         setLastDay(formatDate(lastDay))
-        // console.log(formatDate(firstDay),formatDate(lastDay))
         return formatDate(firstDay), formatDate(lastDay);
     };
 
     const handleNextMonth = () => {
         const nextMonth = new Date(date);
         nextMonth.setMonth(nextMonth.getMonth() + 1);
-        // setDate(nextMonth.toISOString().substring(0, 10));
 
         const firstDay = new Date(nextMonth.getFullYear(), nextMonth.getMonth(), 1);
         const lastDay = new Date(nextMonth.getFullYear(), nextMonth.getMonth() + 1, 0);
         setDate(formatDate(nextMonth));
         setFirstDay(formatDate(firstDay));
         setLastDay(formatDate(lastDay))
-        // console.log(formatDate(firstDay),formatDate(lastDay))
         return formatDate(firstDay), formatDate(lastDay);
     };
 

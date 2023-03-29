@@ -16,12 +16,8 @@ const CoverPage = () => {
                     <div className="coverCard1">
                         <div className="coverTitle">Budget Tracker</div>
                         <div className="coverDetail">
-                            {/* 想花錢必須先有預算！<br />
-                            BUDGET TRACKER是您開始理財的好幫手，<br />
-                            提供預算使用進度百分比，在記帳的同時也能一目了然剩餘的預算金額，讓每一塊錢都可以妥善被運用。 */}
-                            If you want to spend money, you must first have a budget!
-                            BUDGET TRACKER is a good helper for you to start financial management.
-                            {/* Provide the budget usage progress percentage, and you can see the remaining budget amount at a glance while keeping the account, so that every dollar can be properly used. */}
+                            If you want to spend money, you must have a budget first!
+                            BUDGET TRACKER is your best helper to start financial management.
                         </div>
                     </div>
                     <div className="coverCard2">
@@ -41,8 +37,6 @@ const CoverPage = () => {
                             Keeper & Tracker
                         </div>
                         <div className="coverSubDetail">
-                            {/* 將收入妥善分配到每項支出的類別上，
-                        替每個月的消費先訂定好預算，防止過度消費產生負債情形。 */}
                             Allocate income properly to each spending category, set a budget for each month's expenses in advance, and prevent excessive spending from leading to debt.
                         </div>
                     </div>
@@ -58,10 +52,7 @@ const CoverPage = () => {
                             Chart
                         </div>
                         <div className="coverSubDetail3">
-                            {/* 將收入妥善分配到每項支出的類別上，
-                        替每個月的消費先訂定好預算，防止過度消費產生負債情形。 */}
-                            {/* 透過收入及消費類別圓餅圖和上下年度結餘圖表分析，清楚了解金錢動向。 */}
-                            Users can clearly understand the money flow by
+                            Users can understand the money flow clearly by
                             income/expense category pie charts and the balance charts of current year.
                         </div>
                     </div>

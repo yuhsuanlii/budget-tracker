@@ -65,9 +65,6 @@ const Totle2Chart = () => {
     }, []);
 
     const differences = monthIncomes.map((monthIncome, index) => monthIncome - monthExpenses[index]);
-    // console.log("下半年Expenses:", monthExpenses);
-    // console.log("下半年Incomes:", monthIncomes);
-    // console.log("下半年月結餘:", differences);
 
     const data = {
         labels: ['7月', '8月', '9月', '10月', '11月', '12月'],
@@ -75,7 +72,6 @@ const Totle2Chart = () => {
             {
                 type: 'line',
                 label: '月結餘',
-                // data: [170, 400, 250, 300, 80, 130],
                 data: differences,
                 backgroundColor: '#562B08aa',
                 borderWidth: 3,
@@ -86,7 +82,6 @@ const Totle2Chart = () => {
             {
                 type: 'bar',
                 label: '總收入',
-                // data: [550, 800, 750, 900, 450, 760],
                 data: monthIncomes,
                 backgroundColor: '#61876Eaa',
                 hoverBackgroundColor: '#61876E',
@@ -96,7 +91,6 @@ const Totle2Chart = () => {
             {
                 type: 'bar',
                 label: '總支出',
-                // data: [745, 677, 583, 267, 599, 900],
                 data: monthExpenses,
                 backgroundColor: '#B05B3Baa',
                 hoverBackgroundColor: '#B05B3B',
@@ -136,7 +130,7 @@ const Totle2Chart = () => {
             {monthIncomes.some(income => income !== 0) && monthExpenses.some(expense => expense !== 0) ? (
                 <Bar data={data} options={options} />
             ) : (
-                <div className="nodata2">No data to display</div>
+                <div className="nodata2">need more data</div>
             )}
         </div>
     )

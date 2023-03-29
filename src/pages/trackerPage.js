@@ -290,7 +290,7 @@ const TrackerPage = () => {
                                             <span className='progress-bar__percent'>{Math.round(((costFood || localFood) / food) * 100)}%</span>
                                         </span>
                                     ) : (
-                                        <div className="needMoreBar">need more deta</div>
+                                        <div className="needMoreBar">need more data</div>
                                     )}
                                 </div>
                             </div>
@@ -344,7 +344,7 @@ const TrackerPage = () => {
                                             <span className='progress-bar__percent'>{Math.round(((costApparel || localApparel) / apparel) * 100)}%</span>
                                         </span>
                                     ) : (
-                                        <div className="needMoreBar">need more deta</div>
+                                        <div className="needMoreBar">need more data</div>
                                     )}
                                 </div>
                             </div>
@@ -398,7 +398,7 @@ const TrackerPage = () => {
                                             <span className='progress-bar__percent'>{Math.round(((costHousing || localHousing) / housing) * 100)}%</span>
                                         </span>
                                     ) : (
-                                        <div className="needMoreBar">need more deta</div>
+                                        <div className="needMoreBar">need more data</div>
                                     )}
                                 </div>
                             </div>
@@ -452,7 +452,7 @@ const TrackerPage = () => {
                                             <span className='progress-bar__percent'>{Math.round(((costTraffic || localTraffic) / traffic) * 100)}%</span>
                                         </span>
                                     ) : (
-                                        <div className="needMoreBar">need more deta</div>
+                                        <div className="needMoreBar">need more data</div>
                                     )}
                                 </div>
                             </div>
@@ -506,7 +506,7 @@ const TrackerPage = () => {
                                             <span className='progress-bar__percent'>{Math.round(((costEducate || localEducate) / educate) * 100)}%</span>
                                         </span>
                                     ) : (
-                                        <div className="needMoreBar">need more deta</div>
+                                        <div className="needMoreBar">need more data</div>
                                     )}
                                 </div>
                             </div>
@@ -560,7 +560,7 @@ const TrackerPage = () => {
                                             <span className='progress-bar__percent'>{Math.round(((costPlay || localPlay) / play) * 100)}%</span>
                                         </span>
                                     ) : (
-                                        <div className="needMoreBar">need more deta</div>
+                                        <div className="needMoreBar">need more data</div>
                                     )}
                                 </div>
                             </div>
@@ -614,7 +614,7 @@ const TrackerPage = () => {
                                             <span className='progress-bar__percent'>{Math.round(((costSavings || localSavings) / savings) * 100)}%</span>
                                         </span>
                                     ) : (
-                                        <div className="needMoreBar">need more deta</div>
+                                        <div className="needMoreBar">need more data</div>
                                     )}
                                 </div>
                             </div>
@@ -668,7 +668,7 @@ const TrackerPage = () => {
                                             <span className='progress-bar__percent'>{Math.round(((costOther || localOther) / other) * 100)}%</span>
                                         </span>
                                     ) : (
-                                        <div className="needMoreBar">need more deta</div>
+                                        <div className="needMoreBar">need more data</div>
                                     )}
                                 </div>
                             </div>

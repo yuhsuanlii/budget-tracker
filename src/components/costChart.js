@@ -75,7 +75,7 @@ const CostChart = () => {
             {totalCost > 0 ? (
                 <Pie data={data} options={options} className='pieChart' />
             ) : (
-                <div className="nodata">No data to display</div>
+                <div className="nodata">need more data</div>
             )}
         </div>
     )

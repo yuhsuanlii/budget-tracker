@@ -47,10 +47,8 @@ const LoginForm = () => {
             setUser(currentUser);
             if (currentUser) {
                 setLoginNotice("登入成功")
-                // console.log(currentUser);
                 setLoggedIn(true);
                 setShowLoginForm(false);
-                // window.location.href = '/keeper';
             } else {
                 console.log(currentUser);
                 setLoggedIn(false);
@@ -77,16 +75,6 @@ const LoginForm = () => {
                     gender: signupGender,
                     birthday: signupBirthday
                 };
-
-                // const username = userData.username;
-                // const email = userData.email;
-                // const gender = userData.gender;
-                // const birthday = userData.birthday;
-
-                // localStorage.setItem("username", username);
-                // localStorage.setItem("email", email);
-                // localStorage.setItem("gender", gender);
-                // localStorage.setItem("birthday", birthday);
 
                 await updateProfile(user.user, {
                     displayName: JSON.stringify(userData)

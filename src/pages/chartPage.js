@@ -23,7 +23,6 @@ const ChartPage = () => {
             if (!currentUser) {
                 window.location.href = '/';
             } else {
-                // console.log(currentUser)
             }
         });
         return () => unsubscribe();

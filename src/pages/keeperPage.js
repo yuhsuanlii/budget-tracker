@@ -360,6 +360,7 @@ const KeeperPage = () => {
                                     <option value="">選擇類別</option>
                                     <option className="formOp" value="薪資">薪資</option>
                                     <option className="formOp" value="獲利">獲利</option>
+                                    <option className="formOp" value="禮物">禮物</option>
                                     <option className="formOp" value="其他">其他</option>
                                 </select>
                             )}
@@ -381,12 +382,10 @@ const KeeperPage = () => {
                                 value={description}
                                 placeholder='備註(0-10字)'
                                 maxLength={10}
-                                // value={description}
                                 onChange={event => setDescription(event.target.value)}
                             />
 
                             <button className="formBtn2" type="submit">更新</button>
-                            {/* <button type="button" onClick={() => setShowForm(false)}>關閉</button> */}
                         </form>
                     </div>
                     <div className="formbkg"></div>
